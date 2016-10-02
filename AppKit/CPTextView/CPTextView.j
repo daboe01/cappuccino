@@ -2452,12 +2452,13 @@ var _CPCopyPlaceholder = '-';
                 }
             };
 
-        // this is the native rich safari path
-        // the detection leverages the observation that safari puts a lot of cryptic types on the pasteboard (16 or so)
-        // this is not the case with any other browser that i have seen so far.
-        // safari does not currently provide data for any of the rich types that it advertises, though.
-        // for this reason, we have to let the paste execute and collect data from the DOM afterwards
-        // i did not get this working so far. the event is not forwarded for reasons that are beyond my understanding :-(
+        // This will be the native rich safari path
+        // Safari sniffing leverages the observation that only safari advertises 16+ types on the pasteboard
+        // We might alternatively use CPBrowserIsEngine(CPWebKitBrowserEngine)
+        // Safari does not currently provide data for any of the rich types that it advertises (see bugzilla xx).
+        // The plan is to let the paste execute into a contentediable div and collect data from there
+        // i did not get this working so far. the pasting event seems to be cancelled upstream from the cappuccino document.onpaste function.
+        // i have not found a way to undo this and make the event go through to the contentediable div from here :-(
         // for this reason, i disabled the code path so at least the plain content gets pasted
         if (NO && nativeClipboard.types.length > 10)
         {
