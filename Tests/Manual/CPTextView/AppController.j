@@ -63,13 +63,13 @@
     _textView = [[CPTextView alloc] initWithFrame:CGRectMake(0, 0, 500, 500)];
     [_textView setRichText:YES];
 
-    _textView2 = [[CPTextView alloc] initWithFrame:CGRectMake(0, 0, 500, 500)];
+    _textView2 = [[CPTextView alloc] initWithFrame:CGRectMake(0, 0, 1000, 100)];
     _textView2._isRichText = NO;
     [_textView setBackgroundColor:[CPColor whiteColor]];
     [_textView2 setBackgroundColor:[CPColor whiteColor]];
 
     var scrollView = [[CPScrollView alloc] initWithFrame:CGRectMake(20, 70, 520, 510)];
-    var scrollView2 = [[CPScrollView alloc] initWithFrame:CGRectMake(560, 70, 520, 510)];
+    var scrollView2 = [[CPScrollView alloc] initWithFrame:CGRectMake(20, 600, 1020, 110)];
 
     [scrollView setDocumentView:_textView];
     [scrollView2 setDocumentView:_textView2];
@@ -125,6 +125,18 @@
                                                                                                  forKeys:[CPFontAttributeName, CPBackgroundColorAttributeName]]]];
     [theWindow orderFront:self];
     [CPMenu setMenuBarVisible:YES];
+
+console.log([[CPFont systemFontOfSize:12.0] cssString]);
+        var stringSizeMeasuringContext = document.createElement("canvas").getContext("2d"),
+            testFont = [CPFont systemFontOfSize:12.0],
+            testString = 'Bis zum vollständigen Epithelschluss sollte die Kontaktlinse am linken Auge gemieden werden. So lange bitte Bepanthen Augensalbe in das linke Auge applizieren.';
+        stringSizeMeasuringContext.font = '12px Arial, sans-serif';
+
+console.log(stringSizeMeasuringContext.measureText(testString));
+console.log([CPPlatformString sizeOfString:testString withFont:[CPFont systemFontOfSize:12.0] forWidth:NULL]);
+
+//
+
 }
 
 - (void) makeRTF:(id)sender
