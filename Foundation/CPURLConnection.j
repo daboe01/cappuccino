@@ -170,13 +170,23 @@ var CPURLConnectionDelegate = nil;
 	    }
 	}
 */
-+ (async JSObject /* { response: CPURLResponse, data: CPData, error: CPError } */)sendAsynchronousRequest:(CPURLRequest)aRequest
++ (async JSObject)sendAsynchronousRequest:(CPURLRequest)aRequest
 {
     return new Promise((resolve, reject) =>
-        [[self alloc] _initWithRequest:aRequest
-                                 queue:[CPOperationQueue mainQueue]
-                     completionHandler:(aResponse, aData, anError) => resolve( {response: aResponse, data: aData, error:anError })]
-    );
+                       [[self alloc] _initWithRequest:aRequest
+                                                queue:[CPOperationQueue mainQueue]
+                                    completionHandler:(aResponse, aData, anError) => {
+
+                                        // Fix: Ensure data is wrapped in CPData if it is a string
+                                        var finalData = aData;
+                                        if (typeof aData === "string" || [aData isKindOfClass:[CPString class]])
+                                        {
+                                            finalData = [CPData dataWithString:aData];
+                                        }
+
+                                        resolve({ response: aResponse, data: finalData, error: anError });
+                                    }]
+                       );
 }
 
 /*
