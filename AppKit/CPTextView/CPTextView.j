@@ -2756,6 +2756,12 @@ var _CPCopyPlaceholder = '-';
         if (currentFirstResponder && [currentFirstResponder respondsToSelector:@selector(insertText:)])
             var event = [CPApp currentEvent];
 
+            // _isKeyEquivalent is attached to the event by CPMenu
+            // in case of successfully dispatching a keyboard shortcut
+            // Without this, the keystrokes from the keyboard shortcut would
+            // mess up the content of any focussed textview.
+            // We need setTimeout here to prevent flickering
+
             if (!event._isKeyEquivalent)
                 setTimeout(function(){
                     [currentFirstResponder insertText:textToInsert]
