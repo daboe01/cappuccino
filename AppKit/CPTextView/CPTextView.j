@@ -475,6 +475,9 @@ var kDelegateRespondsTo_textShouldBeginEditing                                  
     if (!stringForPasting)
         return;
 
+    if (![stringForPasting isKindOfClass:[CPAttributedString class]])
+        stringForPasting = [[CPAttributedString alloc] initWithString:stringForPasting attributes:nil];
+
     var shouldUseSmartPasting = [self _shouldUseSmartPasting];
 
     if (shouldUseSmartPasting)
@@ -2294,6 +2297,9 @@ Sets the selection to a range of characters in response to user action.
 
     caretRect.origin.x += _textContainerOrigin.x;
     caretRect.origin.y += _textContainerOrigin.y;
+
+    caretRect.size.width = MAX(1.0, caretRect.size.width);
+    caretRect.size.height = MAX(1.0, caretRect.size.height);
 
     return caretRect;
 }
