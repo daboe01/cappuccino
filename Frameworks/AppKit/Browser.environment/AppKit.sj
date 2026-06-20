@@ -17347,7 +17347,7 @@ CPDOMEventTouchStart = "touchstart";
 CPDOMEventTouchMove = "touchmove";
 CPDOMEventTouchEnd = "touchend";
 CPDOMEventTouchCancel = "touchcancel";
-p;8;CPFont.jt;28312;@STATIC;1.0;I;21;Foundation/CPObject.jI;21;Foundation/CPBundle.ji;8;CPView.ji;18;CPFontDescriptor.ji;17;_CPObject+Theme.ji;11;CPControl.jt;28167;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPBundle.j", NO);objj_executeFile("CPView.j", YES);objj_executeFile("CPFontDescriptor.j", YES);objj_executeFile("_CPObject+Theme.j", YES);objj_executeFile("CPControl.j", YES);CPFontDefaultSystemFontFace = "Arial, sans-serif";
+p;8;CPFont.jt;28677;@STATIC;1.0;I;21;Foundation/CPObject.jI;21;Foundation/CPBundle.ji;8;CPView.ji;18;CPFontDescriptor.ji;17;_CPObject+Theme.ji;11;CPControl.jt;28532;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPBundle.j", NO);objj_executeFile("CPView.j", YES);objj_executeFile("CPFontDescriptor.j", YES);objj_executeFile("_CPObject+Theme.j", YES);objj_executeFile("CPControl.j", YES);CPFontDefaultSystemFontFace = "Arial, sans-serif";
 CPFontDefaultSystemFontSize = 12;
 CPFontCurrentSystemSize = -1;
 _CPFontSystemFacePlaceholder = "_CPFontSystemFacePlaceholder";
@@ -17444,7 +17444,17 @@ class_addMethods(the_class, [new objj_method(sel_getUid("isBold"), function $CPF
     return self._size <= 0 ? _CPFontSystemFontSize : self._size;
 }
 
-,["float"]), new objj_method(sel_getUid("cssString"), function $CPFont__cssString(self, _cmd)
+,["float"]), new objj_method(sel_getUid("pointSize"), function $CPFont__pointSize(self, _cmd)
+{
+    return (self.isa.method_msgSend["size"] || _objj_forward)(self, "size");
+}
+
+,["float"]), new objj_method(sel_getUid("fontName"), function $CPFont__fontName(self, _cmd)
+{
+    return (self.isa.method_msgSend["familyName"] || _objj_forward)(self, "familyName");
+}
+
+,["CPString"]), new objj_method(sel_getUid("cssString"), function $CPFont__cssString(self, _cmd)
 {
     var font = self._isSystem ? _CPSystemFontCache[String(self._size) + (self._isBold ? "b" : "")] || ((___r1 = (CPFont.isa.method_msgSend["alloc"] || _objj_forward)(CPFont, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_initWithName:size:bold:italic:system:"] || _objj_forward)(___r1, "_initWithName:size:bold:italic:system:", _CPFontSystemFacePlaceholder, self._size, self._isBold, NO, YES)) : self;
     return font._cssString;
@@ -19576,7 +19586,7 @@ var meta_class = the_class.isa;class_addMethods(meta_class, [new objj_method(sel
 
 ,["CPImage","CPString"])]);
 }
-p;14;CPKeyBinding.jt;13228;@STATIC;1.0;I;21;Foundation/CPObject.jI;20;Foundation/CPArray.ji;19;CPEvent_Constants.ji;8;CPText.jt;13121;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPArray.j", NO);objj_executeFile("CPEvent_Constants.j", YES);objj_executeFile("CPText.j", YES);CPStandardKeyBindings = {"@.": "cancelOperation:", "@a": "selectAll:", "^a": "moveToBeginningOfParagraph:", "^$a": "moveToBeginningOfParagraphAndModifySelection:", "^b": "moveBackward:", "^$b": "moveBackwardAndModifySelection:", "^~b": "moveWordBackward:", "^~$b": "moveWordBackwardAndModifySelection:", "^d": "deleteForward:", "^e": "moveToEndOfParagraph:", "^$e": "moveToEndOfParagraphAndModifySelection:", "^f": "moveForward:", "^$f": "moveForwardAndModifySelection:", "^~f": "moveWordForward:", "^~$f": "moveWordForwardAndModifySelection:", "^h": "deleteBackward:", "^k": "deleteToEndOfParagraph:", "^l": "centerSelectionInVisibleArea:", "^n": "moveDown:", "^$n": "moveDownAndModifySelection:", "^o": ["insertNewlineIgnoringFieldEditor:", "moveBackward:"], "^p": "moveUp:", "^$p": "moveUpAndModifySelection:", "^t": "transpose:", "^v": "pageDown:", "^$v": "pageDownAndModifySelection:", "^y": "yank:"};
+p;14;CPKeyBinding.jt;13257;@STATIC;1.0;I;21;Foundation/CPObject.jI;20;Foundation/CPArray.ji;19;CPEvent_Constants.ji;8;CPText.jt;13150;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPArray.j", NO);objj_executeFile("CPEvent_Constants.j", YES);objj_executeFile("CPText.j", YES);CPStandardKeyBindings = {"@.": "cancelOperation:", "@a": "selectAll:", "@~$v": "pasteAsPlainText:", "^a": "moveToBeginningOfParagraph:", "^$a": "moveToBeginningOfParagraphAndModifySelection:", "^b": "moveBackward:", "^$b": "moveBackwardAndModifySelection:", "^~b": "moveWordBackward:", "^~$b": "moveWordBackwardAndModifySelection:", "^d": "deleteForward:", "^e": "moveToEndOfParagraph:", "^$e": "moveToEndOfParagraphAndModifySelection:", "^f": "moveForward:", "^$f": "moveForwardAndModifySelection:", "^~f": "moveWordForward:", "^~$f": "moveWordForwardAndModifySelection:", "^h": "deleteBackward:", "^k": "deleteToEndOfParagraph:", "^l": "centerSelectionInVisibleArea:", "^n": "moveDown:", "^$n": "moveDownAndModifySelection:", "^o": ["insertNewlineIgnoringFieldEditor:", "moveBackward:"], "^p": "moveUp:", "^$p": "moveUpAndModifySelection:", "^t": "transpose:", "^v": "pageDown:", "^$v": "pageDownAndModifySelection:", "^y": "yank:"};
 CPStandardKeyBindings[CPNewlineCharacter] = "insertNewline:";
 CPStandardKeyBindings[CPCarriageReturnCharacter] = "insertNewline:";
 CPStandardKeyBindings[CPEnterCharacter] = "insertNewline:";
@@ -40013,7 +40023,7 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void","CPCoder"])]);
 }
-p;13;CPTextField.jt;130515;@STATIC;1.0;i;11;CPControl.ji;17;CPStringDrawing.ji;17;CPCompatibility.ji;8;CPText.ji;20;CPWindow_Constants.ji;21;_CPImageAndTextView.jt;130371;objj_executeFile("CPControl.j", YES);objj_executeFile("CPStringDrawing.j", YES);objj_executeFile("CPCompatibility.j", YES);objj_executeFile("CPText.j", YES);objj_executeFile("CPWindow_Constants.j", YES);objj_executeFile("_CPImageAndTextView.j", YES);{var the_protocol = objj_allocateProtocol("CPTextFieldDelegate");
+p;13;CPTextField.jt;133090;@STATIC;1.0;i;11;CPControl.ji;17;CPStringDrawing.ji;17;CPCompatibility.ji;8;CPText.ji;20;CPWindow_Constants.ji;21;_CPImageAndTextView.jt;132946;objj_executeFile("CPControl.j", YES);objj_executeFile("CPStringDrawing.j", YES);objj_executeFile("CPCompatibility.j", YES);objj_executeFile("CPText.j", YES);objj_executeFile("CPWindow_Constants.j", YES);objj_executeFile("_CPImageAndTextView.j", YES);{var the_protocol = objj_allocateProtocol("CPTextFieldDelegate");
 var aProtocol = objj_getProtocol("CPControlTextEditingDelegate");
 if (!aProtocol) throw new SyntaxError("*** Could not find definition for protocol \"CPTextFieldDelegate\"");
 protocol_addProtocol(the_protocol, aProtocol);
@@ -41325,7 +41335,26 @@ default:
         (self.isa.method_msgSend["_setCSSStyleForInputElement"] || _objj_forward)(self, "_setCSSStyleForInputElement");
 }
 
-,["void"]), new objj_method(sel_getUid("takeValueFromKeyPath:ofObjects:"), function $CPTextField__takeValueFromKeyPath_ofObjects_(self, _cmd, aKeyPath, objects)
+,["void"]), new objj_method(sel_getUid("setFont:"), function $CPTextField__setFont_(self, _cmd, aFont)
+{
+    if ((self.isa.method_msgSend["currentValueForThemeAttribute:"] || _objj_forward)(self, "currentValueForThemeAttribute:", "font") === aFont)
+        return;
+    (self.isa.method_msgSend["setValue:forThemeAttribute:"] || _objj_forward)(self, "setValue:forThemeAttribute:", aFont, "font");
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateEditing);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateBezeled);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateBordered);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPTextFieldStateRounded);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeState(CPTextFieldStateRounded, CPThemeStateEditing));
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateControlSizeRegular);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateControlSizeSmall);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateControlSizeMini);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeStateTableDataView);
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeState(CPThemeStateTableDataView, CPThemeStateSelectedDataView));
+    (self.isa.method_msgSend["setValue:forThemeAttribute:inState:"] || _objj_forward)(self, "setValue:forThemeAttribute:inState:", aFont, "font", CPThemeState(CPThemeStateTableDataView, CPThemeStateSelectedDataView, CPThemeStateFirstResponder, CPThemeStateKeyWindow));
+    (self.isa.method_msgSend["layoutSubviews"] || _objj_forward)(self, "layoutSubviews");
+}
+
+,["void","CPFont"]), new objj_method(sel_getUid("takeValueFromKeyPath:ofObjects:"), function $CPTextField__takeValueFromKeyPath_ofObjects_(self, _cmd, aKeyPath, objects)
 {
     var count = objects.length,
         value = ((___r1 = objects[0]), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["valueForKeyPath:"] || _objj_forward)(___r1, "valueForKeyPath:", aKeyPath));
@@ -64355,7 +64384,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("template"), function $_
 
 ,["CPString"])]);
 }
-p;24;_CPRuleEditorLocalizer.jt;4470;@STATIC;1.0;I;21;Foundation/CPObject.jI;25;Foundation/CPDictionary.jI;21;Foundation/CPString.jI;28;Foundation/CPURLConnection.jI;25;Foundation/CPURLRequest.jt;4306;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPDictionary.j", NO);objj_executeFile("Foundation/CPString.j", NO);objj_executeFile("Foundation/CPURLConnection.j", NO);objj_executeFile("Foundation/CPURLRequest.j", NO);var LocalizerStringsRegex = new RegExp("\"(.+)\"\\s*=\\s*\"(.+)\"\\s*;\\s*(//.+)?");
+p;24;_CPRuleEditorLocalizer.jt;19477;@STATIC;1.0;I;21;Foundation/CPObject.jI;25;Foundation/CPDictionary.jI;21;Foundation/CPString.jI;28;Foundation/CPURLConnection.jI;25;Foundation/CPURLRequest.jt;19312;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPDictionary.j", NO);objj_executeFile("Foundation/CPString.j", NO);objj_executeFile("Foundation/CPURLConnection.j", NO);objj_executeFile("Foundation/CPURLRequest.j", NO);var LocalizerStringsRegex = new RegExp("\"(.+)\"\\s*=\\s*\"(.+)\"\\s*;\\s*(//.+)?");
 
 {var the_class = objj_allocateClassPair(CPObject, "_CPRuleEditorLocalizer"),
 meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_dictionary", "CPDictionary"), new objj_ivar("connection", "CPURLConnection"), new objj_ivar("request", "CPURLRequest")]);objj_registerClassPair(the_class);
@@ -64408,6 +64437,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("dictionary"), function 
         }
     }
     self._dictionary = (CPDictionary.isa.method_msgSend["dictionaryWithDictionary:"] || _objj_forward)(CPDictionary, "dictionaryWithDictionary:", dict);
+    ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["postNotificationName:object:"] || _objj_forward)(___r1, "postNotificationName:object:", "_CPRuleEditorLocalizerDidLoadNotification", self));
     var ___r1;
 }
 
@@ -64424,7 +64454,204 @@ class_addMethods(the_class, [new objj_method(sel_getUid("dictionary"), function 
     var ___r1;
 }
 
-,["CPString","CPString"])]);
+,["CPString","CPString"]), new objj_method(sel_getUid("_englishRepresentationForView:"), function $_CPRuleEditorLocalizer___englishRepresentationForView_(self, _cmd, aView)
+{
+    if ((aView == null ? aView : (aView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(aView, "isKindOfClass:", (CPPopUpButton.isa.method_msgSend["class"] || _objj_forward)(CPPopUpButton, "class"))))
+    {
+        var selectedItem = (aView == null ? aView : (aView.isa.method_msgSend["selectedItem"] || _objj_forward)(aView, "selectedItem"));
+        if (selectedItem)
+        {
+            var originalTitle = selectedItem._originalTitle;
+            if (!originalTitle)
+            {
+                var rep = (selectedItem == null ? selectedItem : (selectedItem.isa.method_msgSend["representedObject"] || _objj_forward)(selectedItem, "representedObject"));
+                if (rep && typeof rep === "object" && (rep == null ? rep : (rep.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(rep, "respondsToSelector:", sel_getUid("objectForKey:"))))
+                {
+                    originalTitle = (rep == null ? rep : (rep.isa.method_msgSend["objectForKey:"] || _objj_forward)(rep, "objectForKey:", "value"));
+                }
+                else if (rep && typeof rep === "string")
+                {
+                    originalTitle = rep;
+                }
+            }
+            if (!originalTitle)
+            {
+                originalTitle = (selectedItem == null ? selectedItem : (selectedItem.isa.method_msgSend["title"] || _objj_forward)(selectedItem, "title"));
+            }
+            return "%[" + originalTitle + "]@";
+        }
+        return "%[]@";
+    }
+    else if ((aView == null ? aView : (aView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(aView, "isKindOfClass:", (CPTextField.isa.method_msgSend["class"] || _objj_forward)(CPTextField, "class"))) && !(aView == null ? aView : (aView.isa.method_msgSend["isEditable"] || _objj_forward)(aView, "isEditable")))
+    {
+        return aView._originalText || (aView == null ? aView : (aView.isa.method_msgSend["stringValue"] || _objj_forward)(aView, "stringValue"));
+    }
+    else
+    {
+        return "%@";
+    }
+}
+
+,["CPString","id"]), new objj_method(sel_getUid("formattingKeyForViews:"), function $_CPRuleEditorLocalizer__formattingKeyForViews_(self, _cmd, views)
+{
+    var keyParts = [];
+    var count = (views == null ? views : (views.isa.method_msgSend["count"] || _objj_forward)(views, "count"));
+    for (var i = 0; i < count; i++)
+    {
+        var view = (views == null ? views : (views.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(views, "objectAtIndex:", i));
+        (keyParts == null ? keyParts : (keyParts.isa.method_msgSend["addObject:"] || _objj_forward)(keyParts, "addObject:", (self.isa.method_msgSend["_englishRepresentationForView:"] || _objj_forward)(self, "_englishRepresentationForView:", view)));
+    }
+    return (keyParts == null ? keyParts : (keyParts.isa.method_msgSend["componentsJoinedByString:"] || _objj_forward)(keyParts, "componentsJoinedByString:", " "));
+}
+
+,["CPString","CPArray"]), new objj_method(sel_getUid("localizeMenuItemsForViews:"), function $_CPRuleEditorLocalizer__localizeMenuItemsForViews_(self, _cmd, views)
+{
+    var count = (views == null ? views : (views.isa.method_msgSend["count"] || _objj_forward)(views, "count"));
+    for (var i = 0; i < count; i++)
+    {
+        var view = (views == null ? views : (views.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(views, "objectAtIndex:", i));
+        if ((view == null ? view : (view.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(view, "isKindOfClass:", (CPPopUpButton.isa.method_msgSend["class"] || _objj_forward)(CPPopUpButton, "class"))))
+        {
+            var menuItems = (view == null ? view : (view.isa.method_msgSend["itemArray"] || _objj_forward)(view, "itemArray"));
+            var menuItemsCount = (menuItems == null ? menuItems : (menuItems.isa.method_msgSend["count"] || _objj_forward)(menuItems, "count"));
+            var selectedItem = (view == null ? view : (view.isa.method_msgSend["selectedItem"] || _objj_forward)(view, "selectedItem"));
+            for (var j = 0; j < menuItemsCount; j++)
+            {
+                var item = (menuItems == null ? menuItems : (menuItems.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(menuItems, "objectAtIndex:", j));
+                if (!item._originalTitle)
+                {
+                    var rep = (item == null ? item : (item.isa.method_msgSend["representedObject"] || _objj_forward)(item, "representedObject"));
+                    if (rep && typeof rep === "object" && (rep == null ? rep : (rep.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(rep, "respondsToSelector:", sel_getUid("objectForKey:"))))
+                    {
+                        item._originalTitle = (rep == null ? rep : (rep.isa.method_msgSend["objectForKey:"] || _objj_forward)(rep, "objectForKey:", "value"));
+                    }
+                    else
+                    {
+                        item._originalTitle = (item == null ? item : (item.isa.method_msgSend["title"] || _objj_forward)(item, "title"));
+                    }
+                }
+                (view == null ? view : (view.isa.method_msgSend["selectItem:"] || _objj_forward)(view, "selectItem:", item));
+                var tempKey = (self.isa.method_msgSend["formattingKeyForViews:"] || _objj_forward)(self, "formattingKeyForViews:", views);
+                var tempPattern = (self.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(self, "localizedStringForString:", tempKey);
+                if (tempPattern !== tempKey)
+                {
+                    var regex = /%(\d+)\$(?:\[([^\]]+)\])?@/g;
+                    var match;
+                    while ((match = regex.exec(tempPattern)) !== null)
+                    {
+                        var position = parseInt(match[1], 10) - 1;
+                        var translatedValue = match[2];
+                        if (position === i && translatedValue)
+                        {
+                            (item == null ? item : (item.isa.method_msgSend["setTitle:"] || _objj_forward)(item, "setTitle:", translatedValue));
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    (item == null ? item : (item.isa.method_msgSend["setTitle:"] || _objj_forward)(item, "setTitle:", item._originalTitle));
+                }
+            }
+            if (selectedItem)
+            {
+                (view == null ? view : (view.isa.method_msgSend["selectItem:"] || _objj_forward)(view, "selectItem:", selectedItem));
+            }
+        }
+    }
+}
+
+,["void","CPArray"]), new objj_method(sel_getUid("localizeAndReorderViews:"), function $_CPRuleEditorLocalizer__localizeAndReorderViews_(self, _cmd, views)
+{
+    var key = (self.isa.method_msgSend["formattingKeyForViews:"] || _objj_forward)(self, "formattingKeyForViews:", views);
+    var localizedPattern = (self.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(self, "localizedStringForString:", key);
+    if (localizedPattern === key)
+    {
+        var count = (views == null ? views : (views.isa.method_msgSend["count"] || _objj_forward)(views, "count"));
+        for (var i = 0; i < count; i++)
+        {
+            var originalView = (views == null ? views : (views.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(views, "objectAtIndex:", i));
+            if ((originalView == null ? originalView : (originalView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(originalView, "isKindOfClass:", (CPPopUpButton.isa.method_msgSend["class"] || _objj_forward)(CPPopUpButton, "class"))))
+            {
+                var selectedItem = (originalView == null ? originalView : (originalView.isa.method_msgSend["selectedItem"] || _objj_forward)(originalView, "selectedItem"));
+                if (selectedItem && selectedItem._originalTitle)
+                {
+                    (selectedItem == null ? selectedItem : (selectedItem.isa.method_msgSend["setTitle:"] || _objj_forward)(selectedItem, "setTitle:", selectedItem._originalTitle));
+                }
+            }
+            else if ((originalView == null ? originalView : (originalView.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(originalView, "respondsToSelector:", sel_getUid("setStringValue:"))) && originalView._originalText)
+            {
+                (originalView == null ? originalView : (originalView.isa.method_msgSend["setStringValue:"] || _objj_forward)(originalView, "setStringValue:", originalView._originalText));
+                if ((originalView == null ? originalView : (originalView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(originalView, "isKindOfClass:", (CPTextField.isa.method_msgSend["class"] || _objj_forward)(CPTextField, "class"))) && !(originalView == null ? originalView : (originalView.isa.method_msgSend["isEditable"] || _objj_forward)(originalView, "isEditable")))
+                {
+                    var font = (originalView == null ? originalView : (originalView.isa.method_msgSend["font"] || _objj_forward)(originalView, "font")) || (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", (CPFont.isa.method_msgSend["systemFontSize"] || _objj_forward)(CPFont, "systemFontSize")),
+                        size = ((___r1 = originalView._originalText), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["sizeWithFont:"] || _objj_forward)(___r1, "sizeWithFont:", font));
+                    (originalView == null ? originalView : (originalView.isa.method_msgSend["setFrameSize:"] || _objj_forward)(originalView, "setFrameSize:", CGSizeMake(size.width + 4, CGRectGetHeight((originalView == null ? originalView : (originalView.isa.method_msgSend["frame"] || _objj_forward)(originalView, "frame"))))));
+                }
+            }
+        }
+        return views;
+    }
+    var newViews = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+    var regex = /%(\d+)\$(?:\[([^\]]+)\])?@/g;
+    var lastIndex = 0;
+    var match;
+    while ((match = regex.exec(localizedPattern)) !== null)
+    {
+        var literalText = localizedPattern.substring(lastIndex, match.index);
+        if (literalText.length > 0 && /\S/.test(literalText))
+        {
+            var label = (CPTextField.isa.method_msgSend["labelWithTitle:"] || _objj_forward)(CPTextField, "labelWithTitle:", literalText);
+            (newViews == null ? newViews : (newViews.isa.method_msgSend["addObject:"] || _objj_forward)(newViews, "addObject:", label));
+        }
+        var position = parseInt(match[1], 10) - 1;
+        var translatedValue = match[2];
+        if (position >= 0 && position < (views == null ? views : (views.isa.method_msgSend["count"] || _objj_forward)(views, "count")))
+        {
+            var originalView = (views == null ? views : (views.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(views, "objectAtIndex:", position));
+            if (translatedValue !== undefined && translatedValue !== null)
+            {
+                if ((originalView == null ? originalView : (originalView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(originalView, "isKindOfClass:", (CPPopUpButton.isa.method_msgSend["class"] || _objj_forward)(CPPopUpButton, "class"))))
+                {
+                    var selectedItem = (originalView == null ? originalView : (originalView.isa.method_msgSend["selectedItem"] || _objj_forward)(originalView, "selectedItem"));
+                    if (selectedItem)
+                    {
+                        if (!selectedItem._originalTitle)
+                        {
+                            selectedItem._originalTitle = (selectedItem == null ? selectedItem : (selectedItem.isa.method_msgSend["title"] || _objj_forward)(selectedItem, "title"));
+                        }
+                        (selectedItem == null ? selectedItem : (selectedItem.isa.method_msgSend["setTitle:"] || _objj_forward)(selectedItem, "setTitle:", translatedValue));
+                    }
+                }
+                else if ((originalView == null ? originalView : (originalView.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(originalView, "respondsToSelector:", sel_getUid("setStringValue:"))))
+                {
+                    (originalView == null ? originalView : (originalView.isa.method_msgSend["setStringValue:"] || _objj_forward)(originalView, "setStringValue:", translatedValue));
+                    if ((originalView == null ? originalView : (originalView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(originalView, "isKindOfClass:", (CPTextField.isa.method_msgSend["class"] || _objj_forward)(CPTextField, "class"))) && !(originalView == null ? originalView : (originalView.isa.method_msgSend["isEditable"] || _objj_forward)(originalView, "isEditable")))
+                    {
+                        var font = (originalView == null ? originalView : (originalView.isa.method_msgSend["font"] || _objj_forward)(originalView, "font")) || (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", (CPFont.isa.method_msgSend["systemFontSize"] || _objj_forward)(CPFont, "systemFontSize")),
+                            size = (translatedValue == null ? translatedValue : (translatedValue.isa.method_msgSend["sizeWithFont:"] || _objj_forward)(translatedValue, "sizeWithFont:", font));
+                        (originalView == null ? originalView : (originalView.isa.method_msgSend["setFrameSize:"] || _objj_forward)(originalView, "setFrameSize:", CGSizeMake(size.width + 4, CGRectGetHeight((originalView == null ? originalView : (originalView.isa.method_msgSend["frame"] || _objj_forward)(originalView, "frame"))))));
+                    }
+                }
+            }
+            (newViews == null ? newViews : (newViews.isa.method_msgSend["addObject:"] || _objj_forward)(newViews, "addObject:", originalView));
+        }
+        lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < localizedPattern.length)
+    {
+        var literalText = localizedPattern.substring(lastIndex);
+        if (literalText.length > 0 && /\S/.test(literalText))
+        {
+            var label = (CPTextField.isa.method_msgSend["labelWithTitle:"] || _objj_forward)(CPTextField, "labelWithTitle:", literalText);
+            (newViews == null ? newViews : (newViews.isa.method_msgSend["addObject:"] || _objj_forward)(newViews, "addObject:", label));
+        }
+    }
+    return newViews;
+    var ___r1;
+}
+
+,["CPArray","CPArray"])]);
 }
 p;24;_CPRuleEditorViewSlice.jt;7565;@STATIC;1.0;i;8;CPView.jt;7534;objj_executeFile("CPView.j", YES);
 {var the_class = objj_allocateClassPair(CPView, "_CPRuleEditorViewSlice"),
@@ -64566,7 +64793,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("indentation"), function
 
 ,["CPString"])]);
 }
-p;27;_CPRuleEditorViewSliceRow.jt;40454;@STATIC;1.0;i;24;CPRuleEditor_Constants.ji;24;_CPRuleEditorViewSlice.ji;10;CPButton.ji;14;CPDatePicker.ji;15;CPPopUpButton.jt;40322;objj_executeFile("CPRuleEditor_Constants.j", YES);objj_executeFile("_CPRuleEditorViewSlice.j", YES);objj_executeFile("CPButton.j", YES);objj_executeFile("CPDatePicker.j", YES);objj_executeFile("CPPopUpButton.j", YES);
+p;27;_CPRuleEditorViewSliceRow.jt;42939;@STATIC;1.0;i;24;CPRuleEditor_Constants.ji;24;_CPRuleEditorViewSlice.ji;10;CPButton.ji;14;CPDatePicker.ji;15;CPPopUpButton.jt;42807;objj_executeFile("CPRuleEditor_Constants.j", YES);objj_executeFile("_CPRuleEditorViewSlice.j", YES);objj_executeFile("CPButton.j", YES);objj_executeFile("CPDatePicker.j", YES);objj_executeFile("CPPopUpButton.j", YES);
 {var the_class = objj_allocateClassPair(_CPRuleEditorViewSlice, "_CPRuleEditorViewSliceRow"),
 meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_addButton", "CPButton"), new objj_ivar("_subtractButton", "CPButton"), new objj_ivar("_correspondingRuleItems", "CPMutableArray"), new objj_ivar("_ruleOptionFrames", "CPMutableArray"), new objj_ivar("_ruleOptionInitialViewFrames", "CPMutableArray"), new objj_ivar("_ruleOptionViews", "CPMutableArray"), new objj_ivar("_rowType", "CPRuleEditorRowType"), new objj_ivar("_plusButtonRowType", "CPRuleEditorRowType")]);objj_registerClassPair(the_class);
 class_addMethods(the_class, [new objj_method(sel_getUid("_rowType"), function $_CPRuleEditorViewSliceRow___rowType(self, _cmd)
@@ -64642,12 +64869,31 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_rowType"), function $_
 
 ,["CPButton"]), new objj_method(sel_getUid("_createMenuItemWithTitle:"), function $_CPRuleEditorViewSliceRow___createMenuItemWithTitle_(self, _cmd, title)
 {
-    title = ((___r1 = ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["standardLocalizer"] || _objj_forward)(___r2, "standardLocalizer"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", title));
-    return ((___r1 = (CPMenuItem.isa.method_msgSend["alloc"] || _objj_forward)(CPMenuItem, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithTitle:action:keyEquivalent:"] || _objj_forward)(___r1, "initWithTitle:action:keyEquivalent:", title, nil, ""));
+    var originalTitle = title;
+    var localizedTitle = ((___r1 = ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["standardLocalizer"] || _objj_forward)(___r2, "standardLocalizer"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", title));
+    var item = ((___r1 = (CPMenuItem.isa.method_msgSend["alloc"] || _objj_forward)(CPMenuItem, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithTitle:action:keyEquivalent:"] || _objj_forward)(___r1, "initWithTitle:action:keyEquivalent:", localizedTitle, nil, ""));
+    item._originalTitle = originalTitle;
+    return item;
     var ___r1, ___r2;
 }
 
-,["CPMenuItem","CPString"]), new objj_method(sel_getUid("_createPopUpButtonWithItems:selectedItemIndex:"), function $_CPRuleEditorViewSliceRow___createPopUpButtonWithItems_selectedItemIndex_(self, _cmd, itemsArray, index)
+,["CPMenuItem","CPString"]), new objj_method(sel_getUid("_createStaticTextFieldWithStringValue:"), function $_CPRuleEditorViewSliceRow___createStaticTextFieldWithStringValue_(self, _cmd, text)
+{
+    var textField = ((___r1 = (CPTextField.isa.method_msgSend["alloc"] || _objj_forward)(CPTextField, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMakeZero())),
+        ruleEditorFont = ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["font"] || _objj_forward)(___r1, "font")),
+        font = (CPFont.isa.method_msgSend["fontWithName:size:"] || _objj_forward)(CPFont, "fontWithName:size:", (ruleEditorFont == null ? ruleEditorFont : (ruleEditorFont.isa.method_msgSend["familyName"] || _objj_forward)(ruleEditorFont, "familyName")), (ruleEditorFont == null ? ruleEditorFont : (ruleEditorFont.isa.method_msgSend["size"] || _objj_forward)(ruleEditorFont, "size")) + 2),
+        localizedText = ((___r1 = ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["standardLocalizer"] || _objj_forward)(___r2, "standardLocalizer"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", text)),
+        size = (localizedText == null ? localizedText : (localizedText.isa.method_msgSend["sizeWithFont:"] || _objj_forward)(localizedText, "sizeWithFont:", font));
+    (textField == null ? textField : (textField.isa.method_msgSend["setFrameSize:"] || _objj_forward)(textField, "setFrameSize:", CGSizeMake(size.width + 4, ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["rowHeight"] || _objj_forward)(___r1, "rowHeight")))));
+    (textField == null ? textField : (textField.isa.method_msgSend["setValue:forThemeAttribute:"] || _objj_forward)(textField, "setValue:forThemeAttribute:", font, "font"));
+    (textField == null ? textField : (textField.isa.method_msgSend["setValue:forThemeAttribute:"] || _objj_forward)(textField, "setValue:forThemeAttribute:", ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_verticalAlignment"] || _objj_forward)(___r1, "_verticalAlignment")), "vertical-alignment"));
+    (textField == null ? textField : (textField.isa.method_msgSend["setStringValue:"] || _objj_forward)(textField, "setStringValue:", localizedText));
+    textField._originalText = text;
+    return textField;
+    var ___r1, ___r2;
+}
+
+,["CPTextField","CPString"]), new objj_method(sel_getUid("_createPopUpButtonWithItems:selectedItemIndex:"), function $_CPRuleEditorViewSliceRow___createPopUpButtonWithItems_selectedItemIndex_(self, _cmd, itemsArray, index)
 {
     var title = ((___r1 = (itemsArray == null ? itemsArray : (itemsArray.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(itemsArray, "objectAtIndex:", index))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["title"] || _objj_forward)(___r1, "title")),
         font = ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["font"] || _objj_forward)(___r1, "font")),
@@ -64668,22 +64914,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_rowType"), function $_
     return (CPMenuItem.isa.method_msgSend["separatorItem"] || _objj_forward)(CPMenuItem, "separatorItem");
 }
 
-,["CPMenuItem"]), new objj_method(sel_getUid("_createStaticTextFieldWithStringValue:"), function $_CPRuleEditorViewSliceRow___createStaticTextFieldWithStringValue_(self, _cmd, text)
-{
-    var textField = ((___r1 = (CPTextField.isa.method_msgSend["alloc"] || _objj_forward)(CPTextField, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMakeZero())),
-        ruleEditorFont = ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["font"] || _objj_forward)(___r1, "font")),
-        font = (CPFont.isa.method_msgSend["fontWithName:size:"] || _objj_forward)(CPFont, "fontWithName:size:", (ruleEditorFont == null ? ruleEditorFont : (ruleEditorFont.isa.method_msgSend["familyName"] || _objj_forward)(ruleEditorFont, "familyName")), (ruleEditorFont == null ? ruleEditorFont : (ruleEditorFont.isa.method_msgSend["size"] || _objj_forward)(ruleEditorFont, "size")) + 2),
-        localizedText = ((___r1 = ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["standardLocalizer"] || _objj_forward)(___r2, "standardLocalizer"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", text)),
-        size = (localizedText == null ? localizedText : (localizedText.isa.method_msgSend["sizeWithFont:"] || _objj_forward)(localizedText, "sizeWithFont:", font));
-    (textField == null ? textField : (textField.isa.method_msgSend["setFrameSize:"] || _objj_forward)(textField, "setFrameSize:", CGSizeMake(size.width + 4, ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["rowHeight"] || _objj_forward)(___r1, "rowHeight")))));
-    (textField == null ? textField : (textField.isa.method_msgSend["setValue:forThemeAttribute:"] || _objj_forward)(textField, "setValue:forThemeAttribute:", font, "font"));
-    (textField == null ? textField : (textField.isa.method_msgSend["setValue:forThemeAttribute:"] || _objj_forward)(textField, "setValue:forThemeAttribute:", ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_verticalAlignment"] || _objj_forward)(___r1, "_verticalAlignment")), "vertical-alignment"));
-    (textField == null ? textField : (textField.isa.method_msgSend["setStringValue:"] || _objj_forward)(textField, "setStringValue:", localizedText));
-    return textField;
-    var ___r1, ___r2;
-}
-
-,["CPTextField","CPString"]), new objj_method(sel_getUid("_addOption:"), function $_CPRuleEditorViewSliceRow___addOption_(self, _cmd, sender)
+,["CPMenuItem"]), new objj_method(sel_getUid("_addOption:"), function $_CPRuleEditorViewSliceRow___addOption_(self, _cmd, sender)
 {
     if (self._rowIndex == ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["numberOfRows"] || _objj_forward)(___r1, "numberOfRows")) - 1)
         (self.isa.method_msgSend["setNeedsDisplay:"] || _objj_forward)(self, "setNeedsDisplay:", YES);
@@ -64829,6 +65060,22 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_rowType"), function $_
         }
     }
     ((___r1 = self._correspondingRuleItems), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setArray:"] || _objj_forward)(___r1, "setArray:", ruleItems));
+    var localizer = ((___r1 = self._ruleEditor), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["standardLocalizer"] || _objj_forward)(___r1, "standardLocalizer"));
+    if (localizer)
+    {
+        (localizer == null ? localizer : (localizer.isa.method_msgSend["localizeMenuItemsForViews:"] || _objj_forward)(localizer, "localizeMenuItemsForViews:", self._ruleOptionViews));
+        self._ruleOptionViews = (localizer == null ? localizer : (localizer.isa.method_msgSend["localizeAndReorderViews:"] || _objj_forward)(localizer, "localizeAndReorderViews:", self._ruleOptionViews));
+    }
+    ((___r1 = self._ruleOptionFrames), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["removeAllObjects"] || _objj_forward)(___r1, "removeAllObjects"));
+    ((___r1 = self._ruleOptionInitialViewFrames), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["removeAllObjects"] || _objj_forward)(___r1, "removeAllObjects"));
+    var newCount = ((___r1 = self._ruleOptionViews), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+    for (var i = 0; i < newCount; i++)
+    {
+        var view = ((___r1 = self._ruleOptionViews), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", i)),
+            frame = (view == null ? view : (view.isa.method_msgSend["frame"] || _objj_forward)(view, "frame"));
+        ((___r1 = self._ruleOptionFrames), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObject:"] || _objj_forward)(___r1, "addObject:", frame));
+        ((___r1 = self._ruleOptionInitialViewFrames), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObject:"] || _objj_forward)(___r1, "addObject:", frame));
+    }
     if (!self._editable)
         (self.isa.method_msgSend["_updateEnabledStateForSubviews"] || _objj_forward)(self, "_updateEnabledStateForSubviews");
     (self.isa.method_msgSend["_relayoutSubviewsWidthChanged:"] || _objj_forward)(self, "_relayoutSubviewsWidthChanged:", YES);
@@ -64897,6 +65144,8 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_rowType"), function $_
 {
     ((___r1 = self._addButton), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setHidden:"] || _objj_forward)(___r1, "setHidden:", ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["_shouldHideAddButtonForSlice:"] || _objj_forward)(___r2, "_shouldHideAddButtonForSlice:", self))));
     ((___r1 = self._subtractButton), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setHidden:"] || _objj_forward)(___r1, "setHidden:", ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["_shouldHideSubtractButtonForSlice:"] || _objj_forward)(___r2, "_shouldHideSubtractButtonForSlice:", self))));
+    ((___r1 = self._addButton), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setToolTip:"] || _objj_forward)(___r1, "setToolTip:", ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["_toolTipForAddSimpleRowButton"] || _objj_forward)(___r2, "_toolTipForAddSimpleRowButton"))));
+    ((___r1 = self._subtractButton), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setToolTip:"] || _objj_forward)(___r1, "setToolTip:", ((___r2 = self._ruleEditor), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["_toolTipForDeleteRowButton"] || _objj_forward)(___r2, "_toolTipForDeleteRowButton"))));
     var ___r1, ___r2;
 }
 
@@ -66206,7 +66455,7 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["id"])]);
 }
-p;14;CPRuleEditor.jt;152636;@STATIC;1.0;I;24;Foundation/CPPredicate.jI;20;Foundation/CPArray.jI;25;Foundation/CPDictionary.jI;23;Foundation/CPIndexSet.ji;14;CPPasteboard.ji;24;CPRuleEditor_Constants.ji;13;CPTextField.ji;17;CPViewAnimation.ji;8;CPView.ji;27;_CPRuleEditorViewSliceRow.ji;24;_CPRuleEditorLocalizer.jt;152342;objj_executeFile("Foundation/CPPredicate.j", NO);objj_executeFile("Foundation/CPArray.j", NO);objj_executeFile("Foundation/CPDictionary.j", NO);objj_executeFile("Foundation/CPIndexSet.j", NO);objj_executeFile("CPPasteboard.j", YES);objj_executeFile("CPRuleEditor_Constants.j", YES);objj_executeFile("CPTextField.j", YES);objj_executeFile("CPViewAnimation.j", YES);objj_executeFile("CPView.j", YES);objj_executeFile("_CPRuleEditorViewSliceRow.j", YES);objj_executeFile("_CPRuleEditorLocalizer.j", YES);{var the_protocol = objj_allocateProtocol("CPRuleEditorDelegate");
+p;14;CPRuleEditor.jt;155826;@STATIC;1.0;I;24;Foundation/CPPredicate.jI;20;Foundation/CPArray.jI;25;Foundation/CPDictionary.jI;23;Foundation/CPIndexSet.ji;14;CPPasteboard.ji;24;CPRuleEditor_Constants.ji;13;CPTextField.ji;17;CPViewAnimation.ji;8;CPView.ji;27;_CPRuleEditorViewSliceRow.ji;24;_CPRuleEditorLocalizer.jt;155532;objj_executeFile("Foundation/CPPredicate.j", NO);objj_executeFile("Foundation/CPArray.j", NO);objj_executeFile("Foundation/CPDictionary.j", NO);objj_executeFile("Foundation/CPIndexSet.j", NO);objj_executeFile("CPPasteboard.j", YES);objj_executeFile("CPRuleEditor_Constants.j", YES);objj_executeFile("CPTextField.j", YES);objj_executeFile("CPViewAnimation.j", YES);objj_executeFile("CPView.j", YES);objj_executeFile("_CPRuleEditorViewSliceRow.j", YES);objj_executeFile("_CPRuleEditorLocalizer.j", YES);{var the_protocol = objj_allocateProtocol("CPRuleEditorDelegate");
 var aProtocol = objj_getProtocol("CPObject");
 if (!aProtocol) throw new SyntaxError("*** Could not find definition for protocol \"CPRuleEditorDelegate\"");
 protocol_addProtocol(the_protocol, aProtocol);
@@ -66234,17 +66483,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("boundArrayKeyPath"), fu
     self._boundArrayKeyPath = newValue;
 }
 
-,["void","CPString"]), new objj_method(sel_getUid("standardLocalizer"), function $CPRuleEditor__standardLocalizer(self, _cmd)
-{
-    return self._standardLocalizer;
-}
-
-,["_CPRuleEditorLocalizer"]), new objj_method(sel_getUid("setStandardLocalizer:"), function $CPRuleEditor__setStandardLocalizer_(self, _cmd, newValue)
-{
-    self._standardLocalizer = newValue;
-}
-
-,["void","_CPRuleEditorLocalizer"]), new objj_method(sel_getUid("initWithFrame:"), function $CPRuleEditor__initWithFrame_(self, _cmd, frame)
+,["void","CPString"]), new objj_method(sel_getUid("initWithFrame:"), function $CPRuleEditor__initWithFrame_(self, _cmd, frame)
 {
     self = (objj_getClass("CPRuleEditor").super_class.method_dtable["initWithFrame:"] || _objj_forward)(self, "initWithFrame:", frame);
     if (self)
@@ -66289,10 +66528,32 @@ class_addMethods(the_class, [new objj_method(sel_getUid("boundArrayKeyPath"), fu
     ((___r1 = self._slicesHolder), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addSubview:"] || _objj_forward)(___r1, "addSubview:", self._dropLineView));
     (self.isa.method_msgSend["registerForDraggedTypes:"] || _objj_forward)(self, "registerForDraggedTypes:", (CPArray.isa.method_msgSend["arrayWithObjects:"] || _objj_forward)(CPArray, "arrayWithObjects:", CPRuleEditorItemPBoardType, nil));
     ((___r1 = self._boundArrayOwner), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObserver:forKeyPath:options:context:"] || _objj_forward)(___r1, "addObserver:forKeyPath:options:context:", self, self._boundArrayKeyPath, CPKeyValueObservingOptionOld | CPKeyValueObservingOptionNew, boundArrayContext));
+    ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObserver:selector:name:object:"] || _objj_forward)(___r1, "addObserver:selector:name:object:", self, sel_getUid("_ruleEditorLocalizerDidLoad:"), "_CPRuleEditorLocalizerDidLoadNotification", nil));
     var ___r1;
 }
 
-,["void"]), new objj_method(sel_getUid("delegate"), function $CPRuleEditor__delegate(self, _cmd)
+,["void"]), new objj_method(sel_getUid("_ruleEditorLocalizerDidLoad:"), function $CPRuleEditor___ruleEditorLocalizerDidLoad_(self, _cmd, aNotification)
+{
+    if ((aNotification == null ? aNotification : (aNotification.isa.method_msgSend["object"] || _objj_forward)(aNotification, "object")) === (self.isa.method_msgSend["standardLocalizer"] || _objj_forward)(self, "standardLocalizer"))
+    {
+        ((___r1 = (CPRunLoop.isa.method_msgSend["mainRunLoop"] || _objj_forward)(CPRunLoop, "mainRunLoop")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["performBlock:argument:order:modes:"] || _objj_forward)(___r1, "performBlock:argument:order:modes:",         function()
+        {
+            var count = ((___r1 = self._slices), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+            for (var i = 0; i < count; i++)
+            {
+                var slice = ((___r1 = self._slices), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", i));
+                (slice == null ? slice : (slice.isa.method_msgSend["_reconfigureSubviews"] || _objj_forward)(slice, "_reconfigureSubviews"));
+                (slice == null ? slice : (slice.isa.method_msgSend["_updateButtonVisibilities"] || _objj_forward)(slice, "_updateButtonVisibilities"));
+            }
+            (self.isa.method_msgSend["_updatePredicate"] || _objj_forward)(self, "_updatePredicate");
+            (self.isa.method_msgSend["_sendRuleAction"] || _objj_forward)(self, "_sendRuleAction");
+            var ___r1;
+        }, nil, 0, [CPDefaultRunLoopMode]));
+    }
+    var ___r1;
+}
+
+,["void","CPNotification"]), new objj_method(sel_getUid("delegate"), function $CPRuleEditor__delegate(self, _cmd)
 {
     return self._ruleDelegate;
 }
@@ -66381,12 +66642,14 @@ class_addMethods(the_class, [new objj_method(sel_getUid("boundArrayKeyPath"), fu
 
 ,["void","float"]), new objj_method(sel_getUid("formattingDictionary"), function $CPRuleEditor__formattingDictionary(self, _cmd)
 {
-    return ((___r1 = self._standardLocalizer), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["dictionary"] || _objj_forward)(___r1, "dictionary"));
+    return ((___r1 = (self.isa.method_msgSend["standardLocalizer"] || _objj_forward)(self, "standardLocalizer")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["dictionary"] || _objj_forward)(___r1, "dictionary"));
     var ___r1;
 }
 
 ,["CPDictionary"]), new objj_method(sel_getUid("setFormattingDictionary:"), function $CPRuleEditor__setFormattingDictionary_(self, _cmd, dictionary)
 {
+    if (self._standardLocalizer == nil)
+        self._standardLocalizer = (_CPRuleEditorLocalizer.isa.method_msgSend["new"] || _objj_forward)(_CPRuleEditorLocalizer, "new");
     ((___r1 = self._standardLocalizer), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setDictionary:"] || _objj_forward)(___r1, "setDictionary:", dictionary));
     self._stringsFilename = nil;
     var ___r1;
@@ -66416,7 +66679,19 @@ class_addMethods(the_class, [new objj_method(sel_getUid("boundArrayKeyPath"), fu
     var ___r1;
 }
 
-,["void","CPString"]), new objj_method(sel_getUid("reloadCriteria"), function $CPRuleEditor__reloadCriteria(self, _cmd)
+,["void","CPString"]), new objj_method(sel_getUid("standardLocalizer"), function $CPRuleEditor__standardLocalizer(self, _cmd)
+{
+    if (self._standardLocalizer == nil)
+        self._standardLocalizer = (_CPRuleEditorLocalizer.isa.method_msgSend["new"] || _objj_forward)(_CPRuleEditorLocalizer, "new");
+    return self._standardLocalizer;
+}
+
+,["_CPRuleEditorLocalizer"]), new objj_method(sel_getUid("setStandardLocalizer:"), function $CPRuleEditor__setStandardLocalizer_(self, _cmd, aLocalizer)
+{
+    self._standardLocalizer = aLocalizer;
+}
+
+,["void","_CPRuleEditorLocalizer"]), new objj_method(sel_getUid("reloadCriteria"), function $CPRuleEditor__reloadCriteria(self, _cmd)
 {
     var current_rows = ((___r1 = self._boundArrayOwner), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["valueForKey:"] || _objj_forward)(___r1, "valueForKey:", self._boundArrayKeyPath));
     (self.isa.method_msgSend["_stopObservingRowObjectsRecursively:"] || _objj_forward)(self, "_stopObservingRowObjectsRecursively:", current_rows);
@@ -66471,7 +66746,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("boundArrayKeyPath"), fu
         if ((self.isa.method_msgSend["rowTypeForRow:"] || _objj_forward)(self, "rowTypeForRow:", current_index) === CPRuleEditorRowTypeCompound)
         {
             var candidate = ((___r1 = (self.isa.method_msgSend["_rowCacheForIndex:"] || _objj_forward)(self, "_rowCacheForIndex:", current_index)), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["rowObject"] || _objj_forward)(___r1, "rowObject")),
-                subObjects = ((___r1 = (self.isa.method_msgSend["_subrowObjectsOfObject:"] || _objj_forward)(self, "_subrowObjectsOfObject:", candidate)), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_representedObject"] || _objj_forward)(___r1, "_representedObject"));
+                subObjects = (self.isa.method_msgSend["_subrowObjectsOfObject:"] || _objj_forward)(self, "_subrowObjectsOfObject:", candidate);
             if ((subObjects == null ? subObjects : (subObjects.isa.method_msgSend["indexOfObjectIdenticalTo:"] || _objj_forward)(subObjects, "indexOfObjectIdenticalTo:", targetObject)) !== CPNotFound)
                 return current_index;
         }
@@ -66507,7 +66782,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("boundArrayKeyPath"), fu
     for (var i = rowIndex + 1; i < count; i++)
     {
         var candidate = ((___r1 = (self.isa.method_msgSend["_rowCacheForIndex:"] || _objj_forward)(self, "_rowCacheForIndex:", i)), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["rowObject"] || _objj_forward)(___r1, "rowObject")),
-            indexInSubrows = ((___r1 = (subobjects == null ? subobjects : (subobjects.isa.method_msgSend["_representedObject"] || _objj_forward)(subobjects, "_representedObject"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["indexOfObjectIdenticalTo:"] || _objj_forward)(___r1, "indexOfObjectIdenticalTo:", candidate));
+            indexInSubrows = (subobjects == null ? subobjects : (subobjects.isa.method_msgSend["indexOfObjectIdenticalTo:"] || _objj_forward)(subobjects, "indexOfObjectIdenticalTo:", candidate));
         if (indexInSubrows !== CPNotFound)
         {
             (indexes == null ? indexes : (indexes.isa.method_msgSend["addIndex:"] || _objj_forward)(indexes, "addIndex:", i));
@@ -66615,7 +66890,7 @@ default:
     while (current_index !== CPNotFound)
     {
         var rowObject = ((___r1 = (self.isa.method_msgSend["_rowCacheForIndex:"] || _objj_forward)(self, "_rowCacheForIndex:", current_index)), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["rowObject"] || _objj_forward)(___r1, "rowObject")),
-            relativeChildIndex = ((___r1 = (subrows == null ? subrows : (subrows.isa.method_msgSend["_representedObject"] || _objj_forward)(subrows, "_representedObject"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["indexOfObjectIdenticalTo:"] || _objj_forward)(___r1, "indexOfObjectIdenticalTo:", rowObject));
+            relativeChildIndex = (subrows == null ? subrows : (subrows.isa.method_msgSend["indexOfObjectIdenticalTo:"] || _objj_forward)(subrows, "indexOfObjectIdenticalTo:", rowObject));
         if (relativeChildIndex !== CPNotFound)
             (childsIndexes == null ? childsIndexes : (childsIndexes.isa.method_msgSend["addIndex:"] || _objj_forward)(childsIndexes, "addIndex:", relativeChildIndex));
         if (includeSubrows && (self.isa.method_msgSend["rowTypeForRow:"] || _objj_forward)(self, "rowTypeForRow:", current_index) === CPRuleEditorRowTypeCompound)
@@ -66939,14 +67214,16 @@ default:
         current_index = (indexes == null ? indexes : (indexes.isa.method_msgSend["firstIndex"] || _objj_forward)(indexes, "firstIndex"));
     while (current_index !== CPNotFound)
     {
-        var parentIndex = (self.isa.method_msgSend["parentRowForRow:"] || _objj_forward)(self, "parentRowForRow:", current_index),
-            subrowsIndexes = (self.isa.method_msgSend["subrowIndexesForRow:"] || _objj_forward)(self, "subrowIndexesForRow:", parentIndex);
-        if ((subrowsIndexes == null ? subrowsIndexes : (subrowsIndexes.isa.method_msgSend["count"] || _objj_forward)(subrowsIndexes, "count")) === 1)
+        var parentIndex = (self.isa.method_msgSend["parentRowForRow:"] || _objj_forward)(self, "parentRowForRow:", current_index);
+        if (parentIndex !== -1)
         {
-            if (parentIndex !== -1)
-                return (CPIndexSet.isa.method_msgSend["indexSetWithIndex:"] || _objj_forward)(CPIndexSet, "indexSetWithIndex:", 0);
-            var childlessGranPa = (self.isa.method_msgSend["_childlessParentsIfSlicesWereDeletedAtIndexes:"] || _objj_forward)(self, "_childlessParentsIfSlicesWereDeletedAtIndexes:", (CPIndexSet.isa.method_msgSend["indexSetWithIndex:"] || _objj_forward)(CPIndexSet, "indexSetWithIndex:", parentIndex));
-            (childlessParents == null ? childlessParents : (childlessParents.isa.method_msgSend["addIndexes:"] || _objj_forward)(childlessParents, "addIndexes:", childlessGranPa));
+            var subrowsIndexes = (self.isa.method_msgSend["subrowIndexesForRow:"] || _objj_forward)(self, "subrowIndexesForRow:", parentIndex);
+            if ((subrowsIndexes == null ? subrowsIndexes : (subrowsIndexes.isa.method_msgSend["count"] || _objj_forward)(subrowsIndexes, "count")) === 1)
+            {
+                (childlessParents == null ? childlessParents : (childlessParents.isa.method_msgSend["addIndex:"] || _objj_forward)(childlessParents, "addIndex:", parentIndex));
+                var childlessGranPa = (self.isa.method_msgSend["_childlessParentsIfSlicesWereDeletedAtIndexes:"] || _objj_forward)(self, "_childlessParentsIfSlicesWereDeletedAtIndexes:", (CPIndexSet.isa.method_msgSend["indexSetWithIndex:"] || _objj_forward)(CPIndexSet, "indexSetWithIndex:", parentIndex));
+                (childlessParents == null ? childlessParents : (childlessParents.isa.method_msgSend["addIndexes:"] || _objj_forward)(childlessParents, "addIndexes:", childlessGranPa));
+            }
         }
         current_index = (indexes == null ? indexes : (indexes.isa.method_msgSend["indexGreaterThanIndex:"] || _objj_forward)(indexes, "indexGreaterThanIndex:", current_index));
     }
@@ -67004,8 +67281,22 @@ default:
             itemIndex = (items == null ? items : (items.isa.method_msgSend["count"] || _objj_forward)(items, "count"));
         if ((self.isa.method_msgSend["rowTypeForRow:"] || _objj_forward)(self, "rowTypeForRow:", row) === type && itemIndex < (aCriteria == null ? aCriteria : (aCriteria.isa.method_msgSend["count"] || _objj_forward)(aCriteria, "count")))
         {
-            var crit = (aCriteria == null ? aCriteria : (aCriteria.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(aCriteria, "objectAtIndex:", itemIndex));
-            (current_criterions == null ? current_criterions : (current_criterions.isa.method_msgSend["addObject:"] || _objj_forward)(current_criterions, "addObject:", crit));
+            var pathMatches = true;
+            for (var p = 0; p < itemIndex; p++)
+            {
+                var criterionA = (aCriteria == null ? aCriteria : (aCriteria.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(aCriteria, "objectAtIndex:", p)),
+                    criterionB = (items == null ? items : (items.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(items, "objectAtIndex:", p));
+                if (criterionA !== criterionB && (typeof criterionA.isEqual !== "function" || !(criterionA == null ? criterionA : (criterionA.isa.method_msgSend["isEqual:"] || _objj_forward)(criterionA, "isEqual:", criterionB))))
+                {
+                    pathMatches = false;
+                    break;
+                }
+            }
+            if (pathMatches)
+            {
+                var crit = (aCriteria == null ? aCriteria : (aCriteria.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(aCriteria, "objectAtIndex:", itemIndex));
+                (current_criterions == null ? current_criterions : (current_criterions.isa.method_msgSend["addObject:"] || _objj_forward)(current_criterions, "addObject:", crit));
+            }
         }
     }
     while (foundIndex === CPNotFound)
@@ -67474,19 +67765,19 @@ default:
 
 ,["CPVerticalTextAlignment"]), new objj_method(sel_getUid("_toolTipForAddCompoundRowButton"), function $CPRuleEditor___toolTipForAddCompoundRowButton(self, _cmd)
 {
-    return ((___r1 = self._standardLocalizer), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", "Add compound row"));
+    return ((___r1 = (self.isa.method_msgSend["standardLocalizer"] || _objj_forward)(self, "standardLocalizer")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", "Add compound row"));
     var ___r1;
 }
 
 ,["CPString"]), new objj_method(sel_getUid("_toolTipForAddSimpleRowButton"), function $CPRuleEditor___toolTipForAddSimpleRowButton(self, _cmd)
 {
-    return ((___r1 = self._standardLocalizer), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", "Add row"));
+    return ((___r1 = (self.isa.method_msgSend["standardLocalizer"] || _objj_forward)(self, "standardLocalizer")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", "Add row"));
     var ___r1;
 }
 
 ,["CPString"]), new objj_method(sel_getUid("_toolTipForDeleteRowButton"), function $CPRuleEditor___toolTipForDeleteRowButton(self, _cmd)
 {
-    return ((___r1 = self._standardLocalizer), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", "Delete row"));
+    return ((___r1 = (self.isa.method_msgSend["standardLocalizer"] || _objj_forward)(self, "standardLocalizer")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["localizedStringForString:"] || _objj_forward)(___r1, "localizedStringForString:", "Delete row"));
     var ___r1;
 }
 
@@ -68251,11 +68542,11 @@ CPRuleEditorNestingModeSimple = 3;
 objj_registerTypeDef(the_typedef);
 }CPRuleEditorRowTypeSimple = 0;
 CPRuleEditorRowTypeCompound = 1;
-p;14;_CPRTFParser.jt;33053;@STATIC;1.0;I;31;Foundation/CPAttributedString.jI;23;Foundation/CPGeometry.ji;15;CPFontManager.ji;18;CPParagraphStyle.jt;32926;objj_executeFile("Foundation/CPAttributedString.j", NO);objj_executeFile("Foundation/CPGeometry.j", NO);objj_executeFile("CPFontManager.j", YES);objj_executeFile("CPParagraphStyle.j", YES);var hexTable = [];
+p;14;_CPRTFParser.jt;63365;@STATIC;1.0;I;31;Foundation/CPAttributedString.jI;23;Foundation/CPGeometry.ji;15;CPTextStorage.ji;15;CPFontManager.ji;18;CPParagraphStyle.ji;24;_CPTableTextAttachment.jt;63189;objj_executeFile("Foundation/CPAttributedString.j", NO);objj_executeFile("Foundation/CPGeometry.j", NO);objj_executeFile("CPTextStorage.j", YES);objj_executeFile("CPFontManager.j", YES);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("_CPTableTextAttachment.j", YES);var hexTable = [];
 var cp1252Map = {0x80: 0x20AC, 0x82: 0x201A, 0x83: 0x0192, 0x84: 0x201E, 0x85: 0x2026, 0x86: 0x2020, 0x87: 0x2021, 0x88: 0x02C6, 0x89: 0x2030, 0x8A: 0x0160, 0x8B: 0x2039, 0x8C: 0x0152, 0x8E: 0x017D, 0x91: 0x2018, 0x92: 0x2019, 0x93: 0x201C, 0x94: 0x201D, 0x95: 0x2022, 0x96: 0x2013, 0x97: 0x2014, 0x98: 0x02DC, 0x99: 0x2122, 0x9A: 0x0161, 0x9B: 0x203A, 0x9C: 0x0153, 0x9E: 0x017E, 0x9F: 0x0178};
 
 {var the_class = objj_allocateClassPair(CPObject, "_RTFAttribute"),
-meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_range", "CPRange"), new objj_ivar("paragraph", "CPParagraphStyle"), new objj_ivar("fgColour", "CPColor"), new objj_ivar("bgColour", "CPColor"), new objj_ivar("ulColour", "CPColor"), new objj_ivar("fontName", "CPString"), new objj_ivar("fontSize", "unsigned"), new objj_ivar("bold", "BOOL"), new objj_ivar("italic", "BOOL"), new objj_ivar("underline", "BOOL"), new objj_ivar("strikethrough", "BOOL"), new objj_ivar("script", "BOOL"), new objj_ivar("_tabChanged", "BOOL"), new objj_ivar("_nextTabType", "CPTabStopType")]);objj_registerClassPair(the_class);
+meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_range", "CPRange"), new objj_ivar("paragraph", "CPParagraphStyle"), new objj_ivar("fgColour", "CPColor"), new objj_ivar("bgColour", "CPColor"), new objj_ivar("ulColour", "CPColor"), new objj_ivar("fontName", "CPString"), new objj_ivar("fontSize", "unsigned"), new objj_ivar("bold", "BOOL"), new objj_ivar("italic", "BOOL"), new objj_ivar("underline", "BOOL"), new objj_ivar("strikethrough", "BOOL"), new objj_ivar("script", "BOOL"), new objj_ivar("_tabChanged", "BOOL"), new objj_ivar("_nextTabType", "CPTabStopType"), new objj_ivar("superscript", "int"), new objj_ivar("baselineOffset", "float")]);objj_registerClassPair(the_class);
 class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $_RTFAttribute__init(self, _cmd)
 {
     if (self = (objj_getClass("_RTFAttribute").super_class.method_dtable["init"] || _objj_forward)(self, "init"))
@@ -68284,6 +68575,8 @@ class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $_RTFA
     mynew.ulColour = self.ulColour;
     mynew._tabChanged = self._tabChanged;
     mynew._nextTabType = self._nextTabType;
+    mynew.superscript = self.superscript;
+    mynew.baselineOffset = self.baselineOffset;
     return mynew;
     var ___r1;
 }
@@ -68344,11 +68637,20 @@ class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $_RTFA
     self.underline = 0;
     self.strikethrough = 0;
     self.script = 0;
+    self.superscript = 0;
+    self.baselineOffset = 0.0;
 }
 
 ,["void"]), new objj_method(sel_getUid("addTab:type:"), function $_RTFAttribute__addTab_type_(self, _cmd, location, type)
 {
-    var tab = ((___r1 = (CPTextTab.isa.method_msgSend["alloc"] || _objj_forward)(CPTextTab, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithType:location:"] || _objj_forward)(___r1, "initWithType:location:", type, location));
+    var alignment = CPLeftTextAlignment;
+    if (type === CPCenterTabStopType || type === CPCenterTextAlignment)
+        alignment = CPCenterTextAlignment;
+    else if (type === CPRightTabStopType || type === CPRightTextAlignment)
+        alignment = CPRightTextAlignment;
+    else if (type === CPDecimalTabStopType)
+        alignment = CPRightTextAlignment;
+    var tab = ((___r1 = (CPTextTab.isa.method_msgSend["alloc"] || _objj_forward)(CPTextTab, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithType:location:"] || _objj_forward)(___r1, "initWithType:location:", alignment, location));
     if (!self._tabChanged)
     {
         ((___r1 = self.paragraph), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setTabStops:"] || _objj_forward)(___r1, "setTabStops:", [tab]));
@@ -68371,6 +68673,12 @@ class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $_RTFA
         (ret == null ? ret : (ret.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(ret, "setObject:forKey:", self.fgColour, CPForegroundColorAttributeName));
     if (self.bgColour)
         (ret == null ? ret : (ret.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(ret, "setObject:forKey:", self.bgColour, CPBackgroundColorAttributeName));
+    if (self.underline)
+        (ret == null ? ret : (ret.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(ret, "setObject:forKey:", (CPNumber.isa.method_msgSend["numberWithInt:"] || _objj_forward)(CPNumber, "numberWithInt:", 1), CPUnderlineStyleAttributeName));
+    if (self.superscript !== 0)
+        (ret == null ? ret : (ret.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(ret, "setObject:forKey:", (CPNumber.isa.method_msgSend["numberWithInt:"] || _objj_forward)(CPNumber, "numberWithInt:", self.superscript), CPSuperscriptAttributeName));
+    if (self.baselineOffset !== 0.0)
+        (ret == null ? ret : (ret.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(ret, "setObject:forKey:", (CPNumber.isa.method_msgSend["numberWithFloat:"] || _objj_forward)(CPNumber, "numberWithFloat:", self.baselineOffset), CPBaselineOffsetAttributeName));
     return ret;
     var ___r1;
 }
@@ -68381,10 +68689,10 @@ var kRTFParserType_char = 0,
     kRTFParserType_dest = 1,
     kRTFParserType_prop = 2,
     kRTFParserType_spec = 3;
-var kRgsymRtf = {"b": ["b", 1, false, kRTFParserType_prop, "propBold"], "ul": ["ul", 1, false, kRTFParserType_prop, "propUnderline"], "i": ["i", 1, false, kRTFParserType_prop, "propItalic"], "pgnucltr": ["pgnucltr", "pgULtr", true, kRTFParserType_prop, "propPgnFormat"], "pgnlcltr": ["pgnlcltr", "pgLLtr", true, kRTFParserType_prop, "propPgnFormat"], "qc": ["qc", "justC", true, kRTFParserType_prop, "propJust"], "ql": ["ql", "justL", true, kRTFParserType_prop, "propJust"], "qr": ["qr", "justR", true, kRTFParserType_prop, "propJust"], "qj": ["qj", "justF", true, kRTFParserType_prop, "propJust"], "paperw": ["paperw", 12240, false, kRTFParserType_prop, "propXaPage"], "paperh": ["paperh", 15480, false, kRTFParserType_prop, "propYaPage"], "margl": ["margl", 1800, false, kRTFParserType_prop, "propXaLeft"], "margr": ["margr", 1800, false, kRTFParserType_prop, "propXaRight"], "margt": ["margt", 1440, false, kRTFParserType_prop, "propYaTop"], "margb": ["margb", 1440, false, kRTFParserType_prop, "propYaBottom"], "pgnstart": ["pgnstart", 1, true, kRTFParserType_prop, "propPgnStart"], "facingp": ["facingp", 1, true, kRTFParserType_prop, "propFacingp"], "landscape": ["landscape", 1, true, kRTFParserType_prop, "propLandscape"], "par": ["par", 0, false, kRTFParserType_char, "\n"], "pard": ["pard", 0, false, kRTFParserType_prop, "propDefaultPara"], "\0x0a": ["\0x0a", 0, false, kRTFParserType_char, "\n"], "\0x0d": ["\0x0d", 0, false, kRTFParserType_char, ""], "tab": ["tab", 0, false, kRTFParserType_char, "\t"], "ldblquote": ["ldblquote", 0, false, kRTFParserType_char, '"'], "rdblquote": ["rdblquote", 0, false, kRTFParserType_char, '"'], "bin": ["bin", 0, false, kRTFParserType_spec, "ipfnBin"], "*": ["*", 0, false, kRTFParserType_spec, "ipfnDestSkip"], "'": ["'", 0, false, kRTFParserType_spec, "ipfnHex"], "author": ["author", 0, false, kRTFParserType_dest, "destSkip"], "buptim": ["buptim", 0, false, kRTFParserType_dest, "destSkip"], "colortbl": ["colortbl", 0, false, kRTFParserType_dest, "destSkip"], "comment": ["comment", 0, false, kRTFParserType_dest, "destSkip"], "creatim": ["creatim", 0, false, kRTFParserType_dest, "destSkip"], "doccomm": ["doccomm", 0, false, kRTFParserType_dest, "destSkip"], "fonttbl": ["fonttbl", 0, false, kRTFParserType_dest, "destSkip"], "footer": ["footer", 0, false, kRTFParserType_dest, "destSkip"], "footerf": ["footerf", 0, false, kRTFParserType_dest, "destSkip"], "footerl": ["footerl", 0, false, kRTFParserType_dest, "destSkip"], "footerr": ["footerr", 0, false, kRTFParserType_dest, "destSkip"], "footnote": ["footnote", 0, false, kRTFParserType_dest, "destSkip"], "ftncn": ["ftncn", 0, false, kRTFParserType_dest, "destSkip"], "ftnsep": ["ftnsep", 0, false, kRTFParserType_dest, "destSkip"], "ftnsepc": ["ftnsepc", 0, false, kRTFParserType_dest, "destSkip"], "fprq": ["fprq", 0, false, kRTFParserType_dest, "destSkip"], "rquote": ["rquote", 0, false, kRTFParserType_char, "'"], "header": ["header", 0, false, kRTFParserType_dest, "destSkip"], "headerf": ["headerf", 0, false, kRTFParserType_dest, "destSkip"], "headerl": ["headerl", 0, false, kRTFParserType_dest, "destSkip"], "headerr": ["headerr", 0, false, kRTFParserType_dest, "destSkip"], "info": ["info", 0, false, kRTFParserType_dest, "destSkip"], "keywords": ["keywords", 0, false, kRTFParserType_dest, "destSkip"], "operator": ["operator", 0, false, kRTFParserType_dest, "destSkip"], "pict": ["pict", 0, false, kRTFParserType_dest, "destSkip"], "printim": ["printim", 0, false, kRTFParserType_dest, "destSkip"], "private1": ["private1", 0, false, kRTFParserType_dest, "destSkip"], "revtim": ["revtim", 0, false, kRTFParserType_dest, "destSkip"], "rxe": ["rxe", 0, false, kRTFParserType_dest, "destSkip"], "stylesheet": ["stylesheet", 0, false, kRTFParserType_dest, "destSkip"], "subject": ["subject", 0, false, kRTFParserType_dest, "destSkip"], "tc": ["tc", 0, false, kRTFParserType_dest, "destSkip"], "title": ["title", 0, false, kRTFParserType_dest, "destSkip"], "txe": ["txe", 0, false, kRTFParserType_dest, "destSkip"], "xe": ["xe", 0, false, kRTFParserType_dest, "destSkip"], "[": ["[", 0, false, kRTFParserType_char, '['], " ": [" ", 0, false, kRTFParserType_char, ' '], "]": ["]", 0, false, kRTFParserType_char, ']'], "{": ["{", 0, false, kRTFParserType_char, '{'], "}": ["}", 0, false, kRTFParserType_char, '}'], "\\": ["\\", 0, false, kRTFParserType_char, '\\']};
+var kRgsymRtf = {"b": ["b", 1, false, kRTFParserType_prop, "propBold"], "ul": ["ul", 1, false, kRTFParserType_prop, "propUnderline"], "i": ["i", 1, false, kRTFParserType_prop, "propItalic"], "super": ["super", 1, true, kRTFParserType_prop, "propSuper"], "sub": ["sub", 1, true, kRTFParserType_prop, "propSub"], "nosupersub": ["nosupersub", 1, true, kRTFParserType_prop, "propNoSuperSub"], "up": ["up", 6, false, kRTFParserType_prop, "propUp"], "dn": ["dn", 6, false, kRTFParserType_prop, "propDn"], "plain": ["plain", 0, false, kRTFParserType_prop, "propPlain"], "pgnucltr": ["pgnucltr", "pgULtr", true, kRTFParserType_prop, "propPgnFormat"], "pgnlcltr": ["pgnlcltr", "pgLLtr", true, kRTFParserType_prop, "propPgnFormat"], "qc": ["qc", "justC", true, kRTFParserType_prop, "propJust"], "ql": ["ql", "justL", true, kRTFParserType_prop, "propJust"], "qr": ["qr", "justR", true, kRTFParserType_prop, "propJust"], "qj": ["qj", "justF", true, kRTFParserType_prop, "propJust"], "paperw": ["paperw", 12240, false, kRTFParserType_prop, "propXaPage"], "paperh": ["paperh", 15480, false, kRTFParserType_prop, "propYaPage"], "margl": ["margl", 1800, false, kRTFParserType_prop, "propXaLeft"], "margr": ["margr", 1800, false, kRTFParserType_prop, "propXaRight"], "margt": ["margt", 1440, false, kRTFParserType_prop, "propYaTop"], "margb": ["margb", 1440, false, kRTFParserType_prop, "propYaBottom"], "pgnstart": ["pgnstart", 1, true, kRTFParserType_prop, "propPgnStart"], "facingp": ["facingp", 1, true, kRTFParserType_prop, "propFacingp"], "landscape": ["landscape", 1, true, kRTFParserType_prop, "propLandscape"], "par": ["par", 0, false, kRTFParserType_char, "\n"], "pard": ["pard", 0, false, kRTFParserType_prop, "propDefaultPara"], "\0x0a": ["\0x0a", 0, false, kRTFParserType_char, "\n"], "\0x0d": ["\0x0d", 0, false, kRTFParserType_char, ""], "tab": ["tab", 0, false, kRTFParserType_char, "\t"], "ldblquote": ["ldblquote", 0, false, kRTFParserType_char, '"'], "rdblquote": ["rdblquote", 0, false, kRTFParserType_char, '"'], "bin": ["bin", 0, false, kRTFParserType_spec, "ipfnBin"], "*": ["*", 0, false, kRTFParserType_spec, "ipfnDestSkip"], "'": ["'", 0, false, kRTFParserType_spec, "ipfnHex"], "author": ["author", 0, false, kRTFParserType_dest, "destSkip"], "buptim": ["buptim", 0, false, kRTFParserType_dest, "destSkip"], "colortbl": ["colortbl", 0, false, kRTFParserType_dest, "destSkip"], "comment": ["comment", 0, false, kRTFParserType_dest, "destSkip"], "creatim": ["creatim", 0, false, kRTFParserType_dest, "destSkip"], "doccomm": ["doccomm", 0, false, kRTFParserType_dest, "destSkip"], "fonttbl": ["fonttbl", 0, false, kRTFParserType_dest, "destSkip"], "footer": ["footer", 0, false, kRTFParserType_dest, "destSkip"], "footerf": ["footerf", 0, false, kRTFParserType_dest, "destSkip"], "footerl": ["footerl", 0, false, kRTFParserType_dest, "destSkip"], "footerr": ["footerr", 0, false, kRTFParserType_dest, "destSkip"], "footnote": ["footnote", 0, false, kRTFParserType_dest, "destSkip"], "ftncn": ["ftncn", 0, false, kRTFParserType_dest, "destSkip"], "ftnsep": ["ftnsep", 0, false, kRTFParserType_dest, "destSkip"], "ftnsepc": ["ftnsepc", 0, false, kRTFParserType_dest, "destSkip"], "fprq": ["fprq", 0, false, kRTFParserType_dest, "destSkip"], "rquote": ["rquote", 0, false, kRTFParserType_char, "'"], "header": ["header", 0, false, kRTFParserType_dest, "destSkip"], "headerf": ["headerf", 0, false, kRTFParserType_dest, "destSkip"], "headerl": ["headerl", 0, false, kRTFParserType_dest, "destSkip"], "headerr": ["headerr", 0, false, kRTFParserType_dest, "destSkip"], "info": ["info", 0, false, kRTFParserType_dest, "destSkip"], "keywords": ["keywords", 0, false, kRTFParserType_dest, "destSkip"], "operator": ["operator", 0, false, kRTFParserType_dest, "destSkip"], "pict": ["pict", 0, false, kRTFParserType_dest, "destSkip"], "printim": ["printim", 0, false, kRTFParserType_dest, "destSkip"], "private1": ["private1", 0, false, kRTFParserType_dest, "destSkip"], "revtim": ["revtim", 0, false, kRTFParserType_dest, "destSkip"], "rxe": ["rxe", 0, false, kRTFParserType_dest, "destSkip"], "stylesheet": ["stylesheet", 0, false, kRTFParserType_dest, "destSkip"], "subject": ["subject", 0, false, kRTFParserType_dest, "destSkip"], "tc": ["tc", 0, false, kRTFParserType_dest, "destSkip"], "title": ["title", 0, false, kRTFParserType_dest, "destSkip"], "txe": ["txe", 0, false, kRTFParserType_dest, "destSkip"], "xe": ["xe", 0, false, kRTFParserType_dest, "destSkip"], "[": ["[", 0, false, kRTFParserType_char, '['], " ": [" ", 0, false, kRTFParserType_char, ' '], "]": ["]", 0, false, kRTFParserType_char, ']'], "{": ["{", 0, false, kRTFParserType_char, '{'], "}": ["}", 0, false, kRTFParserType_char, '}'], "\\": ["\\", 0, false, kRTFParserType_char, '\\'], "trowd": ["trowd", 0, false, kRTFParserType_spec, "ipfnTrowd"], "cell": ["cell", 0, false, kRTFParserType_spec, "ipfnCell"], "row": ["row", 0, false, kRTFParserType_spec, "ipfnRow"], "cellx": ["cellx", 0, false, kRTFParserType_spec, "ipfnCellx"], "intbl": ["intbl", 0, false, kRTFParserType_spec, "ipfnIntbl"]};
 
 {var the_class = objj_allocateClassPair(CPObject, "_CPRTFParser"),
-meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_codePage", "CPString"), new objj_ivar("_paper", "CGSize"), new objj_ivar("_rtf", "CPString"), new objj_ivar("_curState", "unsigned"), new objj_ivar("_states", "CPArray"), new objj_ivar("_currentParseIndex", "unsigned"), new objj_ivar("_hexreturn", "BOOL"), new objj_ivar("_currentRun", "_RTFAttribute"), new objj_ivar("_result", "CPAttributedString"), new objj_ivar("_colorArray", "CPArray"), new objj_ivar("_fontArray", "CPArray"), new objj_ivar("_freename", "CPString"), new objj_ivar("_parsingFontTable", "BOOL")]);objj_registerClassPair(the_class);
+meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_codePage", "CPString"), new objj_ivar("_paper", "CGSize"), new objj_ivar("_rtf", "CPString"), new objj_ivar("_curState", "unsigned"), new objj_ivar("_states", "CPArray"), new objj_ivar("_currentParseIndex", "unsigned"), new objj_ivar("_hexreturn", "BOOL"), new objj_ivar("_currentRun", "_RTFAttribute"), new objj_ivar("_result", "CPAttributedString"), new objj_ivar("_colorArray", "CPArray"), new objj_ivar("_fontArray", "CPArray"), new objj_ivar("_freename", "CPString"), new objj_ivar("_parsingFontTable", "BOOL"), new objj_ivar("_keywordIsControlWord", "BOOL"), new objj_ivar("_inTableActive", "BOOL"), new objj_ivar("_waitingForNextRow", "BOOL"), new objj_ivar("_tableRows", "CPMutableArray"), new objj_ivar("_currentRow", "CPMutableArray"), new objj_ivar("_currentCellText", "CPString")]);objj_registerClassPair(the_class);
 class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $_CPRTFParser__init(self, _cmd)
 {
     if (self = (objj_getClass("_CPRTFParser").super_class.method_dtable["init"] || _objj_forward)(self, "init"))
@@ -68395,11 +68703,18 @@ class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $_CPRT
         self._states = [];
         self._currentParseIndex = 0;
         self._hexreturn = NO;
+        self._keywordIsControlWord = NO;
         self._result = (CPAttributedString.isa.method_msgSend["new"] || _objj_forward)(CPAttributedString, "new");
         self._colorArray = [];
         self._fontArray = ['Arial'];
         self._freename = "";
         self._parsingFontTable = NO;
+        self._inTableActive = NO;
+        self._waitingForNextRow = NO;
+        self._tableRows = nil;
+        self._currentRow = nil;
+        self._currentCellText = "";
+        self._currentRun = (_RTFAttribute.isa.method_msgSend["new"] || _objj_forward)(_RTFAttribute, "new");
     }
     return self;
 }
@@ -68433,7 +68748,15 @@ default:
         self._curState = state.curState;
         (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
         self._currentRun = state.run;
+        if (!self._currentRun)
+        {
+            self._currentRun = (_RTFAttribute.isa.method_msgSend["new"] || _objj_forward)(_RTFAttribute, "new");
+        }
         self._currentRun._range = CPMakeRange(((___r1 = self._result), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["length"] || _objj_forward)(___r1, "length")), 0);
+        if (self._curState == 0)
+        {
+            self._parsingFontTable = NO;
+        }
     }
     return YES;
     var ___r1;
@@ -68478,11 +68801,78 @@ default:
             self._codePage = code;
             self._currentParseIndex--;
             break;
+        case "ipfnTrowd":
+            if (self._waitingForNextRow)
+            {
+                self._waitingForNextRow = NO;
+            }
+            if (!self._inTableActive)
+            {
+                self._inTableActive = YES;
+                self._tableRows = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+                self._currentRow = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+                self._currentCellText = "";
+            }
+            else
+            {
+                self._currentRow = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+            }
+            return '';
+        case "ipfnIntbl":
+            return '';
+        case "ipfnCell":
+            if (self._inTableActive)
+            {
+                if (!self._currentRow)
+                    self._currentRow = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+                ((___r1 = self._currentRow), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObject:"] || _objj_forward)(___r1, "addObject:", self._currentCellText));
+                self._currentCellText = "";
+            }
+            return '';
+        case "ipfnRow":
+            if (self._inTableActive)
+            {
+                if (!self._currentRow)
+                    self._currentRow = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+                ((___r1 = self._tableRows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObject:"] || _objj_forward)(___r1, "addObject:", self._currentRow));
+                self._waitingForNextRow = YES;
+            }
+            return '';
+        case "ipfnCellx":
+            return '';
     }
     return '';
+    var ___r1;
 }
 
-,["CPString","CPArray","CPString"]), new objj_method(sel_getUid("_flushCurrentRun"), function $_CPRTFParser___flushCurrentRun(self, _cmd)
+,["CPString","CPArray","CPString"]), new objj_method(sel_getUid("_flushTableIfAny"), function $_CPRTFParser___flushTableIfAny(self, _cmd)
+{
+    if (self._tableRows && ((___r1 = self._tableRows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) > 0)
+    {
+        (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+        var headers = ((___r1 = self._tableRows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", 0));
+        var rows = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+        for (var idx = 1; idx < ((___r1 = self._tableRows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")); idx++)
+        {
+            (rows == null ? rows : (rows.isa.method_msgSend["addObject:"] || _objj_forward)(rows, "addObject:", ((___r1 = self._tableRows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", idx))));
+        }
+        var attachment = ((___r1 = (_CPTableTextAttachment.isa.method_msgSend["alloc"] || _objj_forward)(_CPTableTextAttachment, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithHeaders:rows:width:"] || _objj_forward)(___r1, "initWithHeaders:rows:width:", headers, rows, 500.0));
+        var tableAttrStr = (CPTextStorage.isa.method_msgSend["attributedStringWithAttachment:"] || _objj_forward)(CPTextStorage, "attributedStringWithAttachment:", attachment);
+        ((___r1 = self._result), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(___r1, "appendAttributedString:", tableAttrStr));
+        if (self._currentRun)
+        {
+            self._currentRun._range = CPMakeRange(((___r1 = self._result), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["length"] || _objj_forward)(___r1, "length")), 0);
+        }
+        self._tableRows = nil;
+        self._currentRow = nil;
+        self._currentCellText = "";
+        self._inTableActive = NO;
+        self._waitingForNextRow = NO;
+    }
+    var ___r1;
+}
+
+,["void"]), new objj_method(sel_getUid("_flushCurrentRun"), function $_CPRTFParser___flushCurrentRun(self, _cmd)
 {
     var newOffset = 0;
     if (self._currentRun)
@@ -68538,6 +68928,44 @@ default:
                 self._currentRun.italic = YES;
             }
             break;
+        case "ul":
+            if (param === 0)
+            {
+                if (self._currentRun && self._currentRun.underline)
+                    (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+                self._currentRun.underline = NO;
+            }
+            else
+            {
+                if (self._currentRun && !self._currentRun.underline)
+                    (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+                self._currentRun.underline = YES;
+            }
+            break;
+        case "super":
+            (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+            self._currentRun.superscript = 1;
+            break;
+        case "sub":
+            (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+            self._currentRun.superscript = -1;
+            break;
+        case "nosupersub":
+            (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+            self._currentRun.superscript = 0;
+            break;
+        case "up":
+            (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+            self._currentRun.baselineOffset = parseFloat(param) / 2.0;
+            break;
+        case "dn":
+            (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+            self._currentRun.baselineOffset = -parseFloat(param) / 2.0;
+            break;
+        case "plain":
+            (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
+            ((___r1 = self._currentRun), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["resetFont"] || _objj_forward)(___r1, "resetFont"));
+            break;
         case "qc":
             ((___r1 = self._currentRun.paragraph), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setAlignment:"] || _objj_forward)(___r1, "setAlignment:", CPCenterTextAlignment));
             break;
@@ -68573,7 +69001,6 @@ default:
     }
     if (sym[4] == "destSkip")
     {
-        CPLogConsole("Dest skip start : [" + sym[0] + "]");
         self._curState++;
     }
     return '';
@@ -68581,6 +69008,13 @@ default:
 
 ,["CPString","CPArray"]), new objj_method(sel_getUid("_translateKeyword:parameter:fParameter:"), function $_CPRTFParser___translateKeyword_parameter_fParameter_(self, _cmd, keyword, param, fParam)
 {
+    if (self._waitingForNextRow)
+    {
+        if (keyword !== "trowd" && keyword !== "cell" && keyword !== "row" && keyword !== "intbl" && keyword !== "cellx")
+        {
+            (self.isa.method_msgSend["_flushTableIfAny"] || _objj_forward)(self, "_flushTableIfAny");
+        }
+    }
     if (kRgsymRtf[keyword] !== undefined)
     {
         var sym = kRgsymRtf[keyword];
@@ -68629,8 +69063,13 @@ default:
             case "cf":
                 (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
                 var fontIndex = parseInt(param) - 1;
-                if (self._currentRun && fontIndex >= 0)
-                    self._currentRun.fgColour = self._colorArray[fontIndex];
+                if (self._currentRun)
+                {
+                    if (fontIndex >= 0 && fontIndex < self._colorArray.length)
+                        self._currentRun.fgColour = self._colorArray[fontIndex];
+                    else
+                        self._currentRun.fgColour = nil;
+                }
                 break;
             case "cb":
             case "highlight":
@@ -68684,7 +69123,7 @@ default:
                     ((___r1 = self._currentRun), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addTab:type:"] || _objj_forward)(___r1, "addTab:type:", location, self._currentRun._nextTabType));
                 break;
 default:
-                CPLogConsole("skip : " + keyword + " param: " + param);
+                break;
         }
         return '';
     }
@@ -68703,7 +69142,11 @@ default:
         return len;
     ch = rtf.charAt(self._currentParseIndex);
     if (!/[a-zA-Z]/.test(ch))
+    {
+        self._keywordIsControlWord = NO;
         return (self.isa.method_msgSend["_translateKeyword:parameter:fParameter:"] || _objj_forward)(self, "_translateKeyword:parameter:fParameter:", ch, nil, fParam);
+    }
+    self._keywordIsControlWord = YES;
     while (new RegExp("[a-zA-Z]").test(ch))
     {
         keyword += ch;
@@ -68729,7 +69172,14 @@ default:
 
 ,["CPString","CPString","unsigned"]), new objj_method(sel_getUid("_appendPlainString:"), function $_CPRTFParser___appendPlainString_(self, _cmd, aString)
 {
-    ((___r1 = self._result), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["replaceCharactersInRange:withString:"] || _objj_forward)(___r1, "replaceCharactersInRange:withString:", CPMakeRange(((___r2 = self._result), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["length"] || _objj_forward)(___r2, "length")), 0), aString));
+    if (self._inTableActive)
+    {
+        self._currentCellText += aString;
+    }
+    else
+    {
+        ((___r1 = self._result), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["replaceCharactersInRange:withString:"] || _objj_forward)(___r1, "replaceCharactersInRange:withString:", CPMakeRange(((___r2 = self._result), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["length"] || _objj_forward)(___r2, "length")), 0), aString));
+    }
     var ___r1, ___r2;
 }
 
@@ -68747,6 +69197,10 @@ default:
     while (self._currentParseIndex < len)
     {
         tmp = rtf.charAt(++self._currentParseIndex);
+        if (self._waitingForNextRow && tmp !== "\\" && tmp !== " " && tmp !== "\n" && tmp !== "\r" && tmp !== "\t")
+        {
+            (self.isa.method_msgSend["_flushTableIfAny"] || _objj_forward)(self, "_flushTableIfAny");
+        }
         if (tmp !== "\\" && hex.length > 0)
         {
             (self.isa.method_msgSend["_appendPlainString:"] || _objj_forward)(self, "_appendPlainString:", String.fromCharCode(parseInt(hex, 16)));
@@ -68761,38 +69215,44 @@ default:
                 else
                 {
                     self._freename += tmp;
-                    (self.isa.method_msgSend["_appendPlainString:"] || _objj_forward)(self, "_appendPlainString:", tmp);
+                    if (self._curState == 0)
+                    {
+                        (self.isa.method_msgSend["_appendPlainString:"] || _objj_forward)(self, "_appendPlainString:", tmp);
+                    }
                 }
                 break;
             case "{":
+                lastchar = 0;
+                if (self._waitingForNextRow)
+                    (self.isa.method_msgSend["_flushTableIfAny"] || _objj_forward)(self, "_flushTableIfAny");
                 if ((self.isa.method_msgSend["pushState"] || _objj_forward)(self, "pushState"))
-                    CPLogConsole("push");
-                break;
+                    break;
             case "}":
+                lastchar = 0;
+                if (self._waitingForNextRow)
+                    (self.isa.method_msgSend["_flushTableIfAny"] || _objj_forward)(self, "_flushTableIfAny");
                 if ((self.isa.method_msgSend["popState"] || _objj_forward)(self, "popState"))
-                    CPLogConsole("pop");
-                if (self._freename)
-                {
-                    CPLogConsole(self._freename);
-                    if (self._parsingFontTable)
+                    if (self._freename)
                     {
-                        self._fontArray.push(self._freename);
-                        self._parsingFontTable = NO;
+                        if (self._parsingFontTable)
+                        {
+                            self._fontArray.push(self._freename);
+                            self._parsingFontTable = NO;
+                        }
+                        self._freename = "";
                     }
-                    self._freename = "";
-                }
                 (self.isa.method_msgSend["_flushCurrentRun"] || _objj_forward)(self, "_flushCurrentRun");
                 break;
             case "\\":
                 self._freename = '';
                 ch = (self.isa.method_msgSend["_parseKeyword:length:"] || _objj_forward)(self, "_parseKeyword:length:", rtf, len);
-                if (!self._hexreturn && ch.length == 0)
+                if (!self._hexreturn && self._keywordIsControlWord)
                     lastchar = 1;
                 else
                     lastchar = 0;
                 if (self._hexreturn)
                 {
-                    if (ch.length > 0)
+                    if (ch.length > 0 && self._curState === 0)
                     {
                         var byteVal = parseInt(ch, 16);
                         var unicodeVal = byteVal;
@@ -68813,22 +69273,334 @@ default:
             case 0x0a:
             case '\n':
             case '\r':
+                lastchar = 0;
                 break;
 default:
                 lastchar = 0;
                 if (self._curState == 0)
+                {
                     (self.isa.method_msgSend["_appendPlainString:"] || _objj_forward)(self, "_appendPlainString:", tmp);
-                else if (tmp !== ';')
-                    self._freename += tmp;
+                }
+                else
+                {
+                    if (tmp === ';')
+                    {
+                        if (self._parsingFontTable && self._freename)
+                        {
+                            var cleanFontName = self._freename.trim();
+                            var lastSpaceIdx = cleanFontName.lastIndexOf(' ');
+                            if (lastSpaceIdx !== -1)
+                            {
+                                cleanFontName = cleanFontName.substring(lastSpaceIdx + 1);
+                            }
+                            self._fontArray.push(cleanFontName);
+                            self._freename = "";
+                        }
+                    }
+                    else
+                    {
+                        self._freename += tmp;
+                    }
+                }
                 break;
         }
     }
+    (self.isa.method_msgSend["_flushTableIfAny"] || _objj_forward)(self, "_flushTableIfAny");
     return self._result;
 }
 
 ,["CPAttributedString","CPString"])]);
 }
-p;16;_CPRTFProducer.jt;27423;@STATIC;1.0;I;31;Foundation/CPAttributedString.ji;18;CPParagraphStyle.ji;9;CPColor.ji;12;CPGraphics.ji;15;CPFontManager.jt;27294;objj_executeFile("Foundation/CPAttributedString.j", NO);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("CPColor.j", YES);objj_executeFile("CPGraphics.j", YES);objj_executeFile("CPFontManager.j", YES);var PAPERSIZE = "PaperSize",
+
+{var the_class = objj_allocateClassPair(CPObject, "CPMarkdownParser"),
+meta_class = the_class.isa;objj_registerClassPair(the_class);
+class_addMethods(meta_class, [new objj_method(sel_getUid("attributedStringFromMarkdown:"), function $CPMarkdownParser__attributedStringFromMarkdown_(self, _cmd, markdown)
+{
+    if (!markdown)
+    {
+        return ((___r1 = (CPAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", ""));
+    }
+    var result = ((___r1 = (CPMutableAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPMutableAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", ""));
+    var lines = markdown.split(/\r?\n/);
+    var i = 0;
+    while (i < lines.length)
+    {
+        var line = lines[i];
+        if ((self.isa.method_msgSend["isTableHeaderLine:"] || _objj_forward)(self, "isTableHeaderLine:", line) && i + 1 < lines.length && (self.isa.method_msgSend["isTableSeparatorLine:"] || _objj_forward)(self, "isTableSeparatorLine:", lines[i + 1]))
+        {
+            var headers = (self.isa.method_msgSend["parseTableCells:"] || _objj_forward)(self, "parseTableCells:", line);
+            var separatorLine = lines[i + 1];
+            var rows = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+            i += 2;
+            while (i < lines.length && (self.isa.method_msgSend["isTableRowLine:"] || _objj_forward)(self, "isTableRowLine:", lines[i]))
+            {
+                (rows == null ? rows : (rows.isa.method_msgSend["addObject:"] || _objj_forward)(rows, "addObject:", (self.isa.method_msgSend["parseTableCells:"] || _objj_forward)(self, "parseTableCells:", lines[i])));
+                i++;
+            }
+            var numCols = (headers == null ? headers : (headers.isa.method_msgSend["count"] || _objj_forward)(headers, "count"));
+            if (numCols == 0 && (rows == null ? rows : (rows.isa.method_msgSend["count"] || _objj_forward)(rows, "count")) > 0)
+            {
+                numCols = ((___r1 = (rows == null ? rows : (rows.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(rows, "objectAtIndex:", 0))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+            }
+            var parsedHeaders = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+            for (var c = 0; c < (headers == null ? headers : (headers.isa.method_msgSend["count"] || _objj_forward)(headers, "count")); c++)
+            {
+                var cellText = (headers == null ? headers : (headers.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(headers, "objectAtIndex:", c));
+                (parsedHeaders == null ? parsedHeaders : (parsedHeaders.isa.method_msgSend["addObject:"] || _objj_forward)(parsedHeaders, "addObject:", (self.isa.method_msgSend["parseTableCellMarkdown:isHeader:"] || _objj_forward)(self, "parseTableCellMarkdown:isHeader:", cellText, YES)));
+            }
+            var parsedRows = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+            for (var r = 0; r < (rows == null ? rows : (rows.isa.method_msgSend["count"] || _objj_forward)(rows, "count")); r++)
+            {
+                var rowData = (rows == null ? rows : (rows.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(rows, "objectAtIndex:", r));
+                var parsedRow = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+                for (var c = 0; c < (rowData == null ? rowData : (rowData.isa.method_msgSend["count"] || _objj_forward)(rowData, "count")); c++)
+                {
+                    var cellText = (rowData == null ? rowData : (rowData.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(rowData, "objectAtIndex:", c));
+                    (parsedRow == null ? parsedRow : (parsedRow.isa.method_msgSend["addObject:"] || _objj_forward)(parsedRow, "addObject:", (self.isa.method_msgSend["parseTableCellMarkdown:isHeader:"] || _objj_forward)(self, "parseTableCellMarkdown:isHeader:", cellText, NO)));
+                }
+                (parsedRows == null ? parsedRows : (parsedRows.isa.method_msgSend["addObject:"] || _objj_forward)(parsedRows, "addObject:", parsedRow));
+            }
+            var totalNaturalW = 0.0;
+            var colNaturalWidths = [];
+            var measureTextField = ((___r1 = (CPTextField.isa.method_msgSend["alloc"] || _objj_forward)(CPTextField, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(0, 0, 10000.0, 24.0)));
+            (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setFont:"] || _objj_forward)(measureTextField, "setFont:", (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 11.0)));
+            for (var c = 0; c < numCols; c++)
+            {
+                var cellW = 80.0;
+                if (c < (parsedHeaders == null ? parsedHeaders : (parsedHeaders.isa.method_msgSend["count"] || _objj_forward)(parsedHeaders, "count")))
+                {
+                    var parsedText = (parsedHeaders == null ? parsedHeaders : (parsedHeaders.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(parsedHeaders, "objectAtIndex:", c));
+                    (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setStringValue:"] || _objj_forward)(measureTextField, "setStringValue:", parsedText._string));
+                    (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["sizeToFit"] || _objj_forward)(measureTextField, "sizeToFit"));
+                    cellW = Math.max(cellW, CGRectGetWidth((measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["frame"] || _objj_forward)(measureTextField, "frame"))) + 24.0);
+                }
+                for (var r = 0; r < (parsedRows == null ? parsedRows : (parsedRows.isa.method_msgSend["count"] || _objj_forward)(parsedRows, "count")); r++)
+                {
+                    var rowData = (parsedRows == null ? parsedRows : (parsedRows.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(parsedRows, "objectAtIndex:", r));
+                    if (c < (rowData == null ? rowData : (rowData.isa.method_msgSend["count"] || _objj_forward)(rowData, "count")))
+                    {
+                        var parsedText = (rowData == null ? rowData : (rowData.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(rowData, "objectAtIndex:", c));
+                        (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setStringValue:"] || _objj_forward)(measureTextField, "setStringValue:", parsedText._string));
+                        (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["sizeToFit"] || _objj_forward)(measureTextField, "sizeToFit"));
+                        cellW = Math.max(cellW, CGRectGetWidth((measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["frame"] || _objj_forward)(measureTextField, "frame"))) + 24.0);
+                    }
+                }
+                colNaturalWidths[c] = cellW;
+                totalNaturalW += cellW;
+            }
+            var matrixView = ((___r1 = (_CPTableTextAttachment.isa.method_msgSend["alloc"] || _objj_forward)(_CPTableTextAttachment, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithHeaders:rows:width:"] || _objj_forward)(___r1, "initWithHeaders:rows:width:", parsedHeaders, parsedRows, 500.0));
+            var tableAttrStr = (CPTextStorage.isa.method_msgSend["attributedStringWithAttachment:"] || _objj_forward)(CPTextStorage, "attributedStringWithAttachment:", matrixView);
+            (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", tableAttrStr));
+            continue;
+        }
+        var isHeader = false;
+        var headerLevel = 0;
+        var headerMatch = line.match(/^(#{1,6})\s+(.*)$/);
+        if (headerMatch)
+        {
+            headerLevel = headerMatch[1].length;
+            line = headerMatch[2];
+            isHeader = true;
+        }
+        var isListItem = false;
+        var listMatch = line.match(/^(\*|-)\s+(.*)$/);
+        if (listMatch)
+        {
+            line = "  • " + listMatch[2];
+            isListItem = true;
+        }
+        var parsedLine = (self.isa.method_msgSend["parseInlineMarkdown:isHeader:headerLevel:"] || _objj_forward)(self, "parseInlineMarkdown:isHeader:headerLevel:", line, isHeader, headerLevel);
+        (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", parsedLine));
+        if (i < lines.length - 1)
+        {
+            (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", ((___r1 = (CPAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", "\n"))));
+        }
+        i++;
+    }
+    return result;
+    var ___r1;
+}
+
+,["CPAttributedString","CPString"]), new objj_method(sel_getUid("parseTableCellMarkdown:isHeader:"), function $CPMarkdownParser__parseTableCellMarkdown_isHeader_(self, _cmd, cellText, isHeader)
+{
+    if (!cellText)
+    {
+        return ((___r1 = (CPAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", ""));
+    }
+    var cleanedText = cellText.replace(/<br\s*\/?>/gi, "\n");
+    var lines = cleanedText.split(/\r?\n/);
+    var cellResult = ((___r1 = (CPMutableAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPMutableAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", ""));
+    for (var i = 0; i < lines.length; i++)
+    {
+        var line = lines[i].trim();
+        var listMatch = line.match(/^(\*|-)\s+(.*)$/);
+        if (listMatch)
+        {
+            line = "  • " + listMatch[2];
+        }
+        var parsedLine = (self.isa.method_msgSend["parseInlineMarkdown:isHeader:headerLevel:"] || _objj_forward)(self, "parseInlineMarkdown:isHeader:headerLevel:", line, isHeader, 3);
+        (cellResult == null ? cellResult : (cellResult.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(cellResult, "appendAttributedString:", parsedLine));
+        if (i < lines.length - 1)
+        {
+            (cellResult == null ? cellResult : (cellResult.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(cellResult, "appendAttributedString:", ((___r1 = (CPAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", "\n"))));
+        }
+    }
+    return cellResult;
+    var ___r1;
+}
+
+,["CPAttributedString","CPString","BOOL"]), new objj_method(sel_getUid("isTableHeaderLine:"), function $CPMarkdownParser__isTableHeaderLine_(self, _cmd, line)
+{
+    var trimmed = line.trim();
+    return trimmed.indexOf('|') !== -1;
+}
+
+,["BOOL","CPString"]), new objj_method(sel_getUid("isTableSeparatorLine:"), function $CPMarkdownParser__isTableSeparatorLine_(self, _cmd, line)
+{
+    var trimmed = line.trim();
+    if (trimmed.indexOf('|') === -1)
+        return NO;
+    var stripped = trimmed.replace(/[\s|:\-]/g, '');
+    return stripped.length === 0;
+}
+
+,["BOOL","CPString"]), new objj_method(sel_getUid("isTableRowLine:"), function $CPMarkdownParser__isTableRowLine_(self, _cmd, line)
+{
+    var trimmed = line.trim();
+    return trimmed.indexOf('|') !== -1;
+}
+
+,["BOOL","CPString"]), new objj_method(sel_getUid("parseTableCells:"), function $CPMarkdownParser__parseTableCells_(self, _cmd, line)
+{
+    var parts = line.split('|');
+    var cells = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+    var startIdx = 0;
+    var endIdx = parts.length;
+    if (parts[0].trim() === "")
+        startIdx = 1;
+    if (parts[parts.length - 1].trim() === "")
+        endIdx = parts.length - 1;
+    for (var j = startIdx; j < endIdx; j++)
+    {
+        (cells == null ? cells : (cells.isa.method_msgSend["addObject:"] || _objj_forward)(cells, "addObject:", parts[j].trim()));
+    }
+    return cells;
+}
+
+,["CPArray","CPString"]), new objj_method(sel_getUid("parseInlineMarkdown:isHeader:headerLevel:"), function $CPMarkdownParser__parseInlineMarkdown_isHeader_headerLevel_(self, _cmd, text, isHeader, level)
+{
+    var baseFontSize = 11.0;
+    var fontSize = baseFontSize;
+    var isBold = isHeader;
+    var isItalic = NO;
+    if (isHeader)
+    {
+        if (level == 1)
+            fontSize = 15.0;
+        else if (level == 2)
+            fontSize = 13.0;
+        else
+            fontSize = 12.0;
+    }
+    var result = ((___r1 = (CPMutableAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPMutableAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:"] || _objj_forward)(___r1, "initWithString:", ""));
+    var currentSegment = "";
+    var i = 0;
+    var len = text.length;
+    var defaultFont = (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", fontSize);
+    if (isBold)
+    {
+        defaultFont = (CPFont.isa.method_msgSend["boldSystemFontOfSize:"] || _objj_forward)(CPFont, "boldSystemFontOfSize:", fontSize);
+    }
+    while (i < len)
+    {
+        if (i + 2 < len && text.substr(i, 3) === "***")
+        {
+            if (currentSegment.length > 0)
+            {
+                (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", (self.isa.method_msgSend["attributedStringWithText:font:bold:italic:code:"] || _objj_forward)(self, "attributedStringWithText:font:bold:italic:code:", currentSegment, defaultFont, isBold, isItalic, NO)));
+                currentSegment = "";
+            }
+            isBold = !isBold;
+            isItalic = !isItalic;
+            i += 3;
+            continue;
+        }
+        if (i + 1 < len && text.substr(i, 2) === "**")
+        {
+            if (currentSegment.length > 0)
+            {
+                (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", (self.isa.method_msgSend["attributedStringWithText:font:bold:italic:code:"] || _objj_forward)(self, "attributedStringWithText:font:bold:italic:code:", currentSegment, defaultFont, isBold, isItalic, NO)));
+                currentSegment = "";
+            }
+            isBold = !isBold;
+            i += 2;
+            continue;
+        }
+        if (text.charAt(i) === "*")
+        {
+            if (currentSegment.length > 0)
+            {
+                (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", (self.isa.method_msgSend["attributedStringWithText:font:bold:italic:code:"] || _objj_forward)(self, "attributedStringWithText:font:bold:italic:code:", currentSegment, defaultFont, isBold, isItalic, NO)));
+                currentSegment = "";
+            }
+            isItalic = !isItalic;
+            i++;
+            continue;
+        }
+        if (text.charAt(i) === "`")
+        {
+            if (currentSegment.length > 0)
+            {
+                (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", (self.isa.method_msgSend["attributedStringWithText:font:bold:italic:code:"] || _objj_forward)(self, "attributedStringWithText:font:bold:italic:code:", currentSegment, defaultFont, isBold, isItalic, NO)));
+                currentSegment = "";
+            }
+            var codeText = "";
+            i++;
+            while (i < len && text.charAt(i) !== "`")
+            {
+                codeText += text.charAt(i);
+                i++;
+            }
+            (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", (self.isa.method_msgSend["attributedStringWithText:font:bold:italic:code:"] || _objj_forward)(self, "attributedStringWithText:font:bold:italic:code:", codeText, defaultFont, NO, NO, YES)));
+            i++;
+            continue;
+        }
+        currentSegment += text.charAt(i);
+        i++;
+    }
+    if (currentSegment.length > 0)
+    {
+        (result == null ? result : (result.isa.method_msgSend["appendAttributedString:"] || _objj_forward)(result, "appendAttributedString:", (self.isa.method_msgSend["attributedStringWithText:font:bold:italic:code:"] || _objj_forward)(self, "attributedStringWithText:font:bold:italic:code:", currentSegment, defaultFont, isBold, isItalic, NO)));
+    }
+    return result;
+    var ___r1;
+}
+
+,["CPAttributedString","CPString","BOOL","int"]), new objj_method(sel_getUid("attributedStringWithText:font:bold:italic:code:"), function $CPMarkdownParser__attributedStringWithText_font_bold_italic_code_(self, _cmd, text, baseFont, b, it, c)
+{
+    var fontName = (baseFont == null ? baseFont : (baseFont.isa.method_msgSend["familyName"] || _objj_forward)(baseFont, "familyName"));
+    var fontSize = (baseFont == null ? baseFont : (baseFont.isa.method_msgSend["size"] || _objj_forward)(baseFont, "size"));
+    var finalFont = baseFont;
+    if (c)
+    {
+        finalFont = (CPFont.isa.method_msgSend["fontWithName:size:"] || _objj_forward)(CPFont, "fontWithName:size:", "Courier", fontSize);
+    }
+    else
+    {
+        finalFont = (CPFont.isa.method_msgSend["_fontWithName:size:bold:italic:"] || _objj_forward)(CPFont, "_fontWithName:size:bold:italic:", fontName, fontSize, b, it);
+    }
+    if (!finalFont)
+    {
+        finalFont = (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", fontSize);
+    }
+    var dict = (CPDictionary.isa.method_msgSend["dictionaryWithObjectsAndKeys:"] || _objj_forward)(CPDictionary, "dictionaryWithObjectsAndKeys:", finalFont, CPFontAttributeName, (CPColor.isa.method_msgSend["blackColor"] || _objj_forward)(CPColor, "blackColor"), CPForegroundColorAttributeName);
+    return ((___r1 = (CPAttributedString.isa.method_msgSend["alloc"] || _objj_forward)(CPAttributedString, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithString:attributes:"] || _objj_forward)(___r1, "initWithString:attributes:", text, dict));
+    var ___r1;
+}
+
+,["CPAttributedString","CPString","CPFont","BOOL","BOOL","BOOL"])]);
+}
+p;16;_CPRTFProducer.jt;39616;@STATIC;1.0;I;31;Foundation/CPAttributedString.ji;18;CPParagraphStyle.ji;9;CPColor.ji;12;CPGraphics.ji;15;CPFontManager.ji;24;_CPTableTextAttachment.jt;39458;objj_executeFile("Foundation/CPAttributedString.j", NO);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("CPColor.j", YES);objj_executeFile("CPGraphics.j", YES);objj_executeFile("CPFontManager.j", YES);objj_executeFile("_CPTableTextAttachment.j", YES);var PAPERSIZE = "PaperSize",
     LEFTMARGIN = "LeftMargin",
     RIGHTMARGIN = "RightMargin",
     TOPMARGIN = "TopMargin",
@@ -69042,8 +69814,23 @@ default:
     enumerator = ((___r1 = (paraStyle == null ? paraStyle : (paraStyle.isa.method_msgSend["tabStops"] || _objj_forward)(paraStyle, "tabStops"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectEnumerator"] || _objj_forward)(___r1, "objectEnumerator"));
     while (tab = (enumerator == null ? enumerator : (enumerator.isa.method_msgSend["nextObject"] || _objj_forward)(enumerator, "nextObject")))
     {
-        switch((tab == null ? tab : (tab.isa.method_msgSend["tabStopType"] || _objj_forward)(tab, "tabStopType"))) {
+        var tabType = (tab == null ? tab : (tab.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(tab, "respondsToSelector:", sel_getUid("tabStopType"))) ? (tab == null ? tab : (tab.isa.method_msgSend["tabStopType"] || _objj_forward)(tab, "tabStopType")) : nil;
+        if (tabType === nil && (tab == null ? tab : (tab.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(tab, "respondsToSelector:", sel_getUid("alignment"))))
+            tabType = (tab == null ? tab : (tab.isa.method_msgSend["alignment"] || _objj_forward)(tab, "alignment"));
+        switch(tabType) {
             case CPLeftTabStopType:
+            case CPLeftTextAlignment:
+                break;
+            case CPRightTabStopType:
+            case CPRightTextAlignment:
+                headerString += "\\tqr";
+                break;
+            case CPCenterTabStopType:
+            case CPCenterTextAlignment:
+                headerString += "\\tqc";
+                break;
+            case CPDecimalTabStopType:
+                headerString += "\\tqdec";
                 break;
         }
         headerString += (CPString.isa.method_msgSend["stringWithFormat:"] || _objj_forward)(CPString, "stringWithFormat:", "\\tx%d", _points2twips((tab == null ? tab : (tab.isa.method_msgSend["location"] || _objj_forward)(tab, "location"))));
@@ -69054,6 +69841,226 @@ default:
 
 ,["CPString","CPParagraphStyle"]), new objj_method(sel_getUid("runStringForString:attributes:paragraphStart:"), function $_CPRTFProducer__runStringForString_attributes_paragraphStart_(self, _cmd, substring, attributes, first)
 {
+    var unwrap =     function(obj)
+    {
+        if (!obj)
+            return null;
+        if (typeof obj.respondsToSelector === "function" && ((obj == null ? obj : (obj.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(obj, "respondsToSelector:", sel_getUid("headers"))) || (obj == null ? obj : (obj.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(obj, "respondsToSelector:", sel_getUid("rows")))) || obj.headers || obj._headers || obj.rows || obj._rows)
+        {
+            return obj;
+        }
+        var unwrapped = null;
+        if (typeof obj.respondsToSelector === "function")
+        {
+            if ((obj == null ? obj : (obj.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(obj, "respondsToSelector:", sel_getUid("attachmentCell"))))
+            {
+                unwrapped = (obj == null ? obj : (obj.isa.method_msgSend["attachmentCell"] || _objj_forward)(obj, "attachmentCell"));
+            }
+            else if ((obj == null ? obj : (obj.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(obj, "respondsToSelector:", sel_getUid("content"))))
+            {
+                unwrapped = (obj == null ? obj : (obj.isa.method_msgSend["content"] || _objj_forward)(obj, "content"));
+            }
+            else if ((obj == null ? obj : (obj.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(obj, "respondsToSelector:", sel_getUid("view"))))
+            {
+                unwrapped = (obj == null ? obj : (obj.isa.method_msgSend["view"] || _objj_forward)(obj, "view"));
+            }
+        }
+        if (!unwrapped)
+        {
+            unwrapped = obj._attachmentCell || obj._content || obj._view || obj.attachmentCell || obj.content || obj.view;
+        }
+        return unwrapped ? unwrapped : obj;
+    };
+    var tableAttachment = null;
+    if (typeof CPAttachmentAttributeName !== "undefined")
+    {
+        tableAttachment = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPAttachmentAttributeName));
+    }
+    if (!tableAttachment)
+    {
+        tableAttachment = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", "CPAttachmentAttributeName"));
+    }
+    if (!tableAttachment)
+    {
+        tableAttachment = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", "TableAttachmentAttribute"));
+    }
+    if (!tableAttachment)
+    {
+        tableAttachment = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", "_CPAttachmentView"));
+    }
+    if (!tableAttachment && typeof _CPAttachmentView !== "undefined")
+    {
+        tableAttachment = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", _CPAttachmentView));
+    }
+    tableAttachment = unwrap(tableAttachment);
+    if (!tableAttachment && (substring === "\uFFFC" || substring === "￼"))
+    {
+        var keys = (attributes == null ? attributes : (attributes.isa.method_msgSend["allKeys"] || _objj_forward)(attributes, "allKeys")),
+            count = (keys == null ? keys : (keys.isa.method_msgSend["count"] || _objj_forward)(keys, "count"));
+        for (var i = 0; i < count; i++)
+        {
+            var key = (keys == null ? keys : (keys.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(keys, "objectAtIndex:", i)),
+                val = unwrap((attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", key)));
+            if (val && (typeof val.respondsToSelector === "function" && (val == null ? val : (val.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(val, "respondsToSelector:", sel_getUid("headers"))) || val._headers || val.headers || typeof _CPTableTextAttachment !== "undefined" && (val == null ? val : (val.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(val, "isKindOfClass:", (_CPTableTextAttachment.isa.method_msgSend["class"] || _objj_forward)(_CPTableTextAttachment, "class")))))
+            {
+                tableAttachment = val;
+                break;
+            }
+        }
+    }
+    if (tableAttachment)
+    {
+        var headers = null,
+            rows = null;
+        var activeView = null;
+        if (typeof tableAttachment.respondsToSelector === "function" && (tableAttachment == null ? tableAttachment : (tableAttachment.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(tableAttachment, "respondsToSelector:", sel_getUid("view"))))
+        {
+            activeView = (tableAttachment == null ? tableAttachment : (tableAttachment.isa.method_msgSend["view"] || _objj_forward)(tableAttachment, "view"));
+        }
+        if (!activeView)
+        {
+            activeView = tableAttachment._view || tableAttachment.view;
+        }
+        if (activeView)
+        {
+            if (typeof activeView.respondsToSelector === "function")
+            {
+                if ((activeView == null ? activeView : (activeView.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(activeView, "respondsToSelector:", sel_getUid("headers"))))
+                {
+                    headers = (activeView == null ? activeView : (activeView.isa.method_msgSend["headers"] || _objj_forward)(activeView, "headers"));
+                }
+                if ((activeView == null ? activeView : (activeView.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(activeView, "respondsToSelector:", sel_getUid("rows"))))
+                {
+                    rows = (activeView == null ? activeView : (activeView.isa.method_msgSend["rows"] || _objj_forward)(activeView, "rows"));
+                }
+            }
+            if (!headers)
+            {
+                headers = activeView._headers || activeView.headers;
+            }
+            if (!rows)
+            {
+                rows = activeView._rows || activeView.rows;
+            }
+        }
+        if (!headers || !rows)
+        {
+            if (typeof tableAttachment.respondsToSelector === "function")
+            {
+                if ((tableAttachment == null ? tableAttachment : (tableAttachment.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(tableAttachment, "respondsToSelector:", sel_getUid("headers"))))
+                {
+                    headers = (tableAttachment == null ? tableAttachment : (tableAttachment.isa.method_msgSend["headers"] || _objj_forward)(tableAttachment, "headers"));
+                }
+                if ((tableAttachment == null ? tableAttachment : (tableAttachment.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(tableAttachment, "respondsToSelector:", sel_getUid("rows"))))
+                {
+                    rows = (tableAttachment == null ? tableAttachment : (tableAttachment.isa.method_msgSend["rows"] || _objj_forward)(tableAttachment, "rows"));
+                }
+            }
+            if (!headers)
+            {
+                headers = tableAttachment._headers || tableAttachment.headers;
+            }
+            if (!rows)
+            {
+                rows = tableAttachment._rows || tableAttachment.rows;
+            }
+        }
+        var getCount =         function(arr)
+        {
+            if (!arr)
+                return 0;
+            if (typeof arr.count === "function")
+                return (arr == null ? arr : (arr.isa.method_msgSend["count"] || _objj_forward)(arr, "count"));
+            return arr.length;
+        };
+        var getObjectAtIndex =         function(arr, idx)
+        {
+            if (!arr)
+                return null;
+            if (typeof arr.objectAtIndex === "function")
+                return (arr == null ? arr : (arr.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(arr, "objectAtIndex:", idx));
+            return arr[idx];
+        };
+        var numCols = getCount(headers);
+        if (numCols == 0 && getCount(rows) > 0)
+        {
+            numCols = getCount(getObjectAtIndex(rows, 0));
+        }
+        if (numCols > 0)
+        {
+            var totalWidthTwips = 10000;
+            var colWidthTwips = Math.floor(totalWidthTwips / numCols);
+            var cellBoundaries = [];
+            var currentBoundary = 0;
+            for (var i = 0; i < numCols; i++)
+            {
+                currentBoundary += colWidthTwips;
+                cellBoundaries.push(currentBoundary);
+            }
+            var tableRTF = "";
+            var writeRow =             function(rowData, isHeaderRow)
+            {
+                var rowRTF = "\\trowd\\trgaph115\\trleft0";
+                for (var c = 0; c < numCols; c++)
+                {
+                    rowRTF += "\\clbrdrt\\brdrs\\brdrw10\\clbrdrb\\brdrs\\brdrw10\\clbrdrl\\brdrs\\brdrw10\\clbrdrr\\brdrs\\brdrw10";
+                    rowRTF += "\\cellx" + cellBoundaries[c];
+                }
+                for (var c = 0; c < numCols; c++)
+                {
+                    var cellText = "";
+                    if (c < getCount(rowData))
+                    {
+                        cellText = getObjectAtIndex(rowData, c);
+                    }
+                    if (cellText === null || cellText === undefined)
+                    {
+                        cellText = "";
+                    }
+                    if (cellText && typeof cellText === "object")
+                    {
+                        if (typeof cellText.string === "function")
+                        {
+                            cellText = (cellText == null ? cellText : (cellText.isa.method_msgSend["string"] || _objj_forward)(cellText, "string"));
+                        }
+                        else if (cellText._string !== undefined)
+                        {
+                            cellText = cellText._string;
+                        }
+                        else if (cellText.string !== undefined)
+                        {
+                            cellText = cellText.string;
+                        }
+                    }
+                    cellText = String(cellText);
+                    cellText = cellText.replace(/\\/g, '\\\\');
+                    cellText = cellText.replace(/{/g, '\\{');
+                    cellText = cellText.replace(/}/g, '\\}');
+                    cellText = cellText.replace(/\n/g, '\\line ');
+                    if (isHeaderRow)
+                    {
+                        rowRTF += "{\\intbl\\b " + cellText + "\\b0\\cell}";
+                    }
+                    else
+                    {
+                        rowRTF += "{\\intbl " + cellText + "\\cell}";
+                    }
+                }
+                rowRTF += "\\row\n";
+                return rowRTF;
+            };
+            if (getCount(headers) > 0)
+            {
+                tableRTF += writeRow(headers, YES);
+            }
+            var rowCount = getCount(rows);
+            for (var r = 0; r < rowCount; r++)
+            {
+                tableRTF += writeRow(getObjectAtIndex(rows, r), NO);
+            }
+            return tableRTF;
+        }
+    }
     var result = "",
         headerString = "",
         trailerString = "",
@@ -69118,27 +70125,28 @@ default:
         else if ((currAttrib == null ? currAttrib : (currAttrib.isa.method_msgSend["isEqualToString:"] || _objj_forward)(currAttrib, "isEqualToString:", CPUnderlineStyleAttributeName)))
         {
             headerString += "\\ul";
-            trailerString += "\\ulnone";
+            trailerString += "\\ulnone ";
         }
         else if ((currAttrib == null ? currAttrib : (currAttrib.isa.method_msgSend["isEqualToString:"] || _objj_forward)(currAttrib, "isEqualToString:", CPSuperscriptAttributeName)))
         {
             var value = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPSuperscriptAttributeName)),
-                svalue = (value == null ? value : (value.isa.method_msgSend["intValue"] || _objj_forward)(value, "intValue")) * 6;
-            if (svalue > 0)
+                ivalue = (value == null ? value : (value.isa.method_msgSend["intValue"] || _objj_forward)(value, "intValue"));
+            if (ivalue > 0)
             {
-                headerString += (CPString.isa.method_msgSend["stringWithFormat:"] || _objj_forward)(CPString, "stringWithFormat:", "\\up%d", svalue);
-                trailerString += "\\up0";
+                headerString += "\\super";
+                trailerString += "\\nosupersub ";
             }
-            else if (svalue < 0)
+            else if (ivalue < 0)
             {
-                headerString += (CPString.isa.method_msgSend["stringWithFormat:"] || _objj_forward)(CPString, "stringWithFormat:", "\\dn-%d", svalue);
-                trailerString += "\\dn0";
+                headerString += "\\sub";
+                trailerString += "\\nosupersub ";
             }
         }
         else if ((currAttrib == null ? currAttrib : (currAttrib.isa.method_msgSend["isEqualToString:"] || _objj_forward)(currAttrib, "isEqualToString:", CPBaselineOffsetAttributeName)))
         {
             var value = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPBaselineOffsetAttributeName)),
-                svalue = (value == null ? value : (value.isa.method_msgSend["floatValue"] || _objj_forward)(value, "floatValue")) * 2;
+                fvalue = (value == null ? value : (value.isa.method_msgSend["floatValue"] || _objj_forward)(value, "floatValue")),
+                svalue = Math.round(fvalue * 2.0);
             if (svalue > 0)
             {
                 headerString += (CPString.isa.method_msgSend["stringWithFormat:"] || _objj_forward)(CPString, "stringWithFormat:", "\\up%d", svalue);
@@ -69146,7 +70154,7 @@ default:
             }
             else if (svalue < 0)
             {
-                headerString += (CPString.isa.method_msgSend["stringWithFormat:"] || _objj_forward)(CPString, "stringWithFormat:", "\\dn-%d", svalue);
+                headerString += (CPString.isa.method_msgSend["stringWithFormat:"] || _objj_forward)(CPString, "stringWithFormat:", "\\dn%d", Math.abs(svalue));
                 trailerString += "\\dn0";
             }
         }
@@ -69162,7 +70170,7 @@ default:
     }
     substring = substring.replace(/\\/g, '\\\\');
     substring = substring.replace(/\n/g, '\\par\n');
-    substring = substring.replace(/\t/g, '\\tab');
+    substring = substring.replace(/\t/g, '\\tab ');
     substring = substring.replace(/{/g, '\\{');
     substring = substring.replace(/}/g, '\\}');
     if (!first)
@@ -69195,7 +70203,7 @@ default:
         length = (string == null ? string : (string.isa.method_msgSend["length"] || _objj_forward)(string, "length")),
         currRange = CPMakeRange(loc, 0),
         completeRange = CPMakeRange(0, length),
-        first = YES;
+        paragraphStart = YES;
     while (CPMaxRange(currRange) < CPMaxRange(completeRange))
     {
         var attributes,
@@ -69203,9 +70211,12 @@ default:
             runString;
         attributes = ((___r1 = self.text), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["attributesAtIndex:longestEffectiveRange:inRange:"] || _objj_forward)(___r1, "attributesAtIndex:longestEffectiveRange:inRange:", CPMaxRange(currRange), currRange, completeRange));
         substring = (string == null ? string : (string.isa.method_msgSend["substringWithRange:"] || _objj_forward)(string, "substringWithRange:", currRange));
-        runString = (self.isa.method_msgSend["runStringForString:attributes:paragraphStart:"] || _objj_forward)(self, "runStringForString:attributes:paragraphStart:", substring, attributes, YES);
+        runString = (self.isa.method_msgSend["runStringForString:attributes:paragraphStart:"] || _objj_forward)(self, "runStringForString:attributes:paragraphStart:", substring, attributes, paragraphStart);
         result += runString;
-        first = NO;
+        if (substring.length > 0 && substring.charAt(substring.length - 1) === '\n')
+            paragraphStart = YES;
+        else
+            paragraphStart = NO;
     }
     return result;
     var ___r1;
@@ -69236,6 +70247,464 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("produceRTF:documentAtt
 }
 
 ,["CPString","CPAttributedString","CPDictionary"])]);
+}
+p;24;_CPTableTextAttachment.jt;32135;@STATIC;1.0;i;8;CPView.ji;12;CPTextView.ji;13;CPTextField.jI;31;Foundation/CPAttributedString.jt;32032;objj_executeFile("CPView.j", YES);objj_executeFile("CPTextView.j", YES);objj_executeFile("CPTextField.j", YES);objj_executeFile("Foundation/CPAttributedString.j", NO);
+{var the_class = objj_allocateClassPair(CPView, "_CPTableTextAttachment"),
+meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_headers", "CPArray"), new objj_ivar("_rows", "CPArray"), new objj_ivar("_isResizing", "BOOL"), new objj_ivar("_isEditable", "BOOL"), new objj_ivar("_acceptsRichText", "BOOL")]);objj_registerClassPair(the_class);
+class_addMethods(the_class, [new objj_method(sel_getUid("initWithHeaders:rows:"), function $_CPTableTextAttachment__initWithHeaders_rows_(self, _cmd, headers, rows)
+{
+    return (self.isa.method_msgSend["initWithHeaders:rows:width:isEditable:acceptsRichText:"] || _objj_forward)(self, "initWithHeaders:rows:width:isEditable:acceptsRichText:", headers, rows, 500.0, YES, YES);
+}
+
+,["id","CPArray","CPArray"]), new objj_method(sel_getUid("initWithHeaders:rows:width:"), function $_CPTableTextAttachment__initWithHeaders_rows_width_(self, _cmd, headers, rows, totalWidth)
+{
+    return (self.isa.method_msgSend["initWithHeaders:rows:width:isEditable:acceptsRichText:"] || _objj_forward)(self, "initWithHeaders:rows:width:isEditable:acceptsRichText:", headers, rows, totalWidth, YES, YES);
+}
+
+,["id","CPArray","CPArray","float"]), new objj_method(sel_getUid("initWithHeaders:rows:width:isEditable:acceptsRichText:"), function $_CPTableTextAttachment__initWithHeaders_rows_width_isEditable_acceptsRichText_(self, _cmd, headers, rows, totalWidth, isEditable, acceptsRichText)
+{
+    self = (objj_getClass("_CPTableTextAttachment").super_class.method_dtable["initWithFrame:"] || _objj_forward)(self, "initWithFrame:", CGRectMake(0, 0, totalWidth, 20));
+    if (self)
+    {
+        self._headers = headers;
+        self._rows = rows;
+        self._isEditable = isEditable;
+        self._acceptsRichText = acceptsRichText;
+        self._isResizing = NO;
+        (self == null ? self : (self.isa.method_msgSend["_rebuildTableWithWidth:"] || _objj_forward)(self, "_rebuildTableWithWidth:", totalWidth));
+    }
+    return self;
+}
+
+,["id","CPArray","CPArray","float","BOOL","BOOL"]), new objj_method(sel_getUid("_rebuildTableWithWidth:"), function $_CPTableTextAttachment___rebuildTableWithWidth_(self, _cmd, totalWidth)
+{
+    var numCols = self._headers ? ((___r1 = self._headers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) : 0;
+    if (numCols == 0 && self._rows && ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) > 0)
+        numCols = ((___r1 = ((___r2 = self._rows), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r2, "objectAtIndex:", 0))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+    if (self._DOMElement)
+    {
+        self._DOMElement.style.borderTop = "1px solid #e0e0e0";
+        self._DOMElement.style.borderLeft = "1px solid #e0e0e0";
+        self._DOMElement.style.boxSizing = "border-box";
+    }
+    if (self._headers && ((___r1 = self._headers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) > 0)
+    {
+        for (var c = 0; c < numCols; c++)
+        {
+            var headerText = ((___r1 = self._headers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", c));
+            var cellView = (self.isa.method_msgSend["createCellWithText:frame:isHeader:"] || _objj_forward)(self, "createCellWithText:frame:isHeader:", headerText, CGRectMakeZero(), YES);
+            (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", cellView);
+        }
+    }
+    if (self._rows)
+    {
+        for (var r = 0; r < ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")); r++)
+        {
+            var rowData = ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", r));
+            for (var c = 0; c < numCols; c++)
+            {
+                var cellText = "";
+                if (c < (rowData == null ? rowData : (rowData.isa.method_msgSend["count"] || _objj_forward)(rowData, "count")))
+                    cellText = (rowData == null ? rowData : (rowData.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(rowData, "objectAtIndex:", c));
+                var cellView = (self.isa.method_msgSend["createCellWithText:frame:isHeader:"] || _objj_forward)(self, "createCellWithText:frame:isHeader:", cellText, CGRectMakeZero(), NO);
+                (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", cellView);
+            }
+        }
+    }
+    (self.isa.method_msgSend["resizeToWidth:"] || _objj_forward)(self, "resizeToWidth:", totalWidth);
+    var textView = (self.isa.method_msgSend["superview"] || _objj_forward)(self, "superview");
+    if (textView && (textView == null ? textView : (textView.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(textView, "isKindOfClass:", (CPTextView == null ? CPTextView : (CPTextView.isa.method_msgSend["class"] || _objj_forward)(CPTextView, "class")))))
+    {
+        var layoutManager = (textView == null ? textView : (textView.isa.method_msgSend["layoutManager"] || _objj_forward)(textView, "layoutManager"));
+        if (layoutManager)
+        {
+            var charRange = (self.isa.method_msgSend["_findCharacterRangeInLayoutManager:"] || _objj_forward)(self, "_findCharacterRangeInLayoutManager:", layoutManager);
+            if (charRange && charRange.location !== CPNotFound)
+            {
+                (layoutManager == null ? layoutManager : (layoutManager.isa.method_msgSend["invalidateLayoutForCharacterRange:isSoft:actualCharacterRange:"] || _objj_forward)(layoutManager, "invalidateLayoutForCharacterRange:isSoft:actualCharacterRange:", charRange, NO, nil));
+                (layoutManager == null ? layoutManager : (layoutManager.isa.method_msgSend["invalidateDisplayForGlyphRange:"] || _objj_forward)(layoutManager, "invalidateDisplayForGlyphRange:", charRange));
+                (layoutManager == null ? layoutManager : (layoutManager.isa.method_msgSend["_validateLayoutAndGlyphs"] || _objj_forward)(layoutManager, "_validateLayoutAndGlyphs"));
+                (textView == null ? textView : (textView.isa.method_msgSend["sizeToFit"] || _objj_forward)(textView, "sizeToFit"));
+            }
+        }
+    }
+    var ___r1, ___r2;
+}
+
+,["void","float"]), new objj_method(sel_getUid("_findCharacterRangeInLayoutManager:"), function $_CPTableTextAttachment___findCharacterRangeInLayoutManager_(self, _cmd, layoutManager)
+{
+    var lineFragments = layoutManager._lineFragments;
+    if (lineFragments)
+    {
+        var l = lineFragments.length;
+        for (var i = 0; i < l; i++)
+        {
+            var fragment = lineFragments[i];
+            var runs = fragment._runs;
+            if (runs)
+            {
+                var rc = runs.length;
+                for (var j = 0; j < rc; j++)
+                {
+                    if (runs[j].view === self)
+                    {
+                        return runs[j]._range;
+                    }
+                }
+            }
+        }
+    }
+    return CPMakeRange(CPNotFound, 0);
+}
+
+,["CPRange","CPLayoutManager"]), new objj_method(sel_getUid("headers"), function $_CPTableTextAttachment__headers(self, _cmd)
+{
+    var numCols = self._headers ? ((___r1 = self._headers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) : 0;
+    if (numCols == 0 && self._rows && ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) > 0)
+        numCols = ((___r1 = ((___r2 = self._rows), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r2, "objectAtIndex:", 0))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+    if (numCols == 0)
+        return self._headers;
+    var subviews = (self.isa.method_msgSend["subviews"] || _objj_forward)(self, "subviews");
+    if ((subviews == null ? subviews : (subviews.isa.method_msgSend["count"] || _objj_forward)(subviews, "count")) < numCols)
+        return self._headers;
+    var currentHeaders = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+    for (var c = 0; c < numCols; c++)
+    {
+        var cellView = (subviews == null ? subviews : (subviews.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(subviews, "objectAtIndex:", c));
+        var textView = (self.isa.method_msgSend["getTextViewFromCell:"] || _objj_forward)(self, "getTextViewFromCell:", cellView);
+        var text = "";
+        if (textView)
+        {
+            text = self._acceptsRichText ? ((___r1 = (textView == null ? textView : (textView.isa.method_msgSend["textStorage"] || _objj_forward)(textView, "textStorage"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["copy"] || _objj_forward)(___r1, "copy")) : (textView == null ? textView : (textView.isa.method_msgSend["string"] || _objj_forward)(textView, "string"));
+        }
+        (currentHeaders == null ? currentHeaders : (currentHeaders.isa.method_msgSend["addObject:"] || _objj_forward)(currentHeaders, "addObject:", text));
+    }
+    self._headers = currentHeaders;
+    return self._headers;
+    var ___r1, ___r2;
+}
+
+,["CPArray"]), new objj_method(sel_getUid("rows"), function $_CPTableTextAttachment__rows(self, _cmd)
+{
+    var numCols = self._headers ? ((___r1 = self._headers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) : 0;
+    if (numCols == 0 && self._rows && ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) > 0)
+        numCols = ((___r1 = ((___r2 = self._rows), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r2, "objectAtIndex:", 0))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+    if (numCols == 0 || !self._rows)
+        return self._rows;
+    var subviews = (self.isa.method_msgSend["subviews"] || _objj_forward)(self, "subviews");
+    var headerOffset = self._headers && ((___r1 = self._headers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) > 0 ? numCols : 0;
+    var expectedCount = headerOffset + ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")) * numCols;
+    if ((subviews == null ? subviews : (subviews.isa.method_msgSend["count"] || _objj_forward)(subviews, "count")) < expectedCount)
+        return self._rows;
+    var currentRows = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+    var cellIndex = headerOffset;
+    for (var r = 0; r < ((___r1 = self._rows), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")); r++)
+    {
+        var rowData = (CPMutableArray.isa.method_msgSend["array"] || _objj_forward)(CPMutableArray, "array");
+        for (var c = 0; c < numCols; c++)
+        {
+            var cellView = (subviews == null ? subviews : (subviews.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(subviews, "objectAtIndex:", cellIndex++));
+            var textView = (self.isa.method_msgSend["getTextViewFromCell:"] || _objj_forward)(self, "getTextViewFromCell:", cellView);
+            var text = "";
+            if (textView)
+            {
+                text = self._acceptsRichText ? ((___r1 = (textView == null ? textView : (textView.isa.method_msgSend["textStorage"] || _objj_forward)(textView, "textStorage"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["copy"] || _objj_forward)(___r1, "copy")) : (textView == null ? textView : (textView.isa.method_msgSend["string"] || _objj_forward)(textView, "string"));
+            }
+            (rowData == null ? rowData : (rowData.isa.method_msgSend["addObject:"] || _objj_forward)(rowData, "addObject:", text));
+        }
+        (currentRows == null ? currentRows : (currentRows.isa.method_msgSend["addObject:"] || _objj_forward)(currentRows, "addObject:", rowData));
+    }
+    self._rows = currentRows;
+    return self._rows;
+    var ___r1, ___r2;
+}
+
+,["CPArray"]), new objj_method(sel_getUid("viewForWidth:"), function $_CPTableTextAttachment__viewForWidth_(self, _cmd, width)
+{
+    (self.isa.method_msgSend["resizeToWidth:"] || _objj_forward)(self, "resizeToWidth:", width);
+    return self;
+}
+
+,["CPView","float"]), new objj_method(sel_getUid("createCellWithText:frame:isHeader:"), function $_CPTableTextAttachment__createCellWithText_frame_isHeader_(self, _cmd, text, frame, isHeader)
+{
+    var initialWidth = frame.size.width > 0 ? frame.size.width : 120.0;
+    var initialHeight = frame.size.height > 0 ? frame.size.height : 28.0;
+    var cellContainer = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(frame.origin.x, frame.origin.y, initialWidth, initialHeight)));
+    (cellContainer == null ? cellContainer : (cellContainer.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(cellContainer, "setBackgroundColor:", isHeader ? (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.92, 1.0) : (CPColor.isa.method_msgSend["whiteColor"] || _objj_forward)(CPColor, "whiteColor")));
+    var borderView = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(0, 0, initialWidth, initialHeight)));
+    (borderView == null ? borderView : (borderView.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(borderView, "setBackgroundColor:", (CPColor.isa.method_msgSend["clearColor"] || _objj_forward)(CPColor, "clearColor")));
+    (borderView == null ? borderView : (borderView.isa.method_msgSend["setAutoresizingMask:"] || _objj_forward)(borderView, "setAutoresizingMask:", CPViewWidthSizable | CPViewHeightSizable));
+    if (borderView._DOMElement)
+    {
+        borderView._DOMElement.style.borderBottom = "1px solid #e0e0e0";
+        borderView._DOMElement.style.borderRight = "1px solid #e0e0e0";
+        borderView._DOMElement.style.boxSizing = "border-box";
+    }
+    (cellContainer == null ? cellContainer : (cellContainer.isa.method_msgSend["addSubview:"] || _objj_forward)(cellContainer, "addSubview:", borderView));
+    var textContainer = ((___r1 = (CPTextContainer.isa.method_msgSend["alloc"] || _objj_forward)(CPTextContainer, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithContainerSize:"] || _objj_forward)(___r1, "initWithContainerSize:", CGSizeMake(initialWidth - 8, 1e7)));
+    var textView = ((___r1 = (CPTextView == null ? CPTextView : (CPTextView.isa.method_msgSend["alloc"] || _objj_forward)(CPTextView, "alloc"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:textContainer:"] || _objj_forward)(___r1, "initWithFrame:textContainer:", CGRectMake(4, 2, initialWidth - 8, initialHeight - 4), textContainer));
+    (textView == null ? textView : (textView.isa.method_msgSend["setTextContainerInset:"] || _objj_forward)(textView, "setTextContainerInset:", CGSizeMake(0, 0)));
+    (textView == null ? textView : (textView.isa.method_msgSend["setEditable:"] || _objj_forward)(textView, "setEditable:", self._isEditable));
+    (textView == null ? textView : (textView.isa.method_msgSend["setSelectable:"] || _objj_forward)(textView, "setSelectable:", YES));
+    (textView == null ? textView : (textView.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(textView, "setBackgroundColor:", (CPColor.isa.method_msgSend["clearColor"] || _objj_forward)(CPColor, "clearColor")));
+    (textView == null ? textView : (textView.isa.method_msgSend["setVerticallyResizable:"] || _objj_forward)(textView, "setVerticallyResizable:", YES));
+    (textView == null ? textView : (textView.isa.method_msgSend["setHorizontallyResizable:"] || _objj_forward)(textView, "setHorizontallyResizable:", NO));
+    ((___r1 = (textView == null ? textView : (textView.isa.method_msgSend["textContainer"] || _objj_forward)(textView, "textContainer"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setWidthTracksTextView:"] || _objj_forward)(___r1, "setWidthTracksTextView:", YES));
+    (textView == null ? textView : (textView.isa.method_msgSend["setRichText:"] || _objj_forward)(textView, "setRichText:", self._acceptsRichText));
+    (textView == null ? textView : (textView.isa.method_msgSend["setDelegate:"] || _objj_forward)(textView, "setDelegate:", self));
+    var cellFont = isHeader ? (CPFont.isa.method_msgSend["boldSystemFontOfSize:"] || _objj_forward)(CPFont, "boldSystemFontOfSize:", 11.0) : (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 11.0);
+    (textView == null ? textView : (textView.isa.method_msgSend["setFont:"] || _objj_forward)(textView, "setFont:", cellFont));
+    (textView == null ? textView : (textView.isa.method_msgSend["setTextColor:"] || _objj_forward)(textView, "setTextColor:", (CPColor.isa.method_msgSend["blackColor"] || _objj_forward)(CPColor, "blackColor")));
+    if (text)
+        (textView == null ? textView : (textView.isa.method_msgSend["insertText:"] || _objj_forward)(textView, "insertText:", text));
+    (cellContainer == null ? cellContainer : (cellContainer.isa.method_msgSend["addSubview:"] || _objj_forward)(cellContainer, "addSubview:", textView));
+    return cellContainer;
+    var ___r1;
+}
+
+,["CPView","id","CGRect","BOOL"]), new objj_method(sel_getUid("textDidChange:"), function $_CPTableTextAttachment__textDidChange_(self, _cmd, aNotification)
+{
+    (self.isa.method_msgSend["resizeToWidth:"] || _objj_forward)(self, "resizeToWidth:", CGRectGetWidth((self.isa.method_msgSend["frame"] || _objj_forward)(self, "frame")));
+}
+
+,["void","CPNotification"]), new objj_method(sel_getUid("getTextViewFromCell:"), function $_CPTableTextAttachment__getTextViewFromCell_(self, _cmd, cellView)
+{
+    var subviews = (cellView == null ? cellView : (cellView.isa.method_msgSend["subviews"] || _objj_forward)(cellView, "subviews"));
+    for (var i = 0; i < (subviews == null ? subviews : (subviews.isa.method_msgSend["count"] || _objj_forward)(subviews, "count")); i++)
+    {
+        var sub = (subviews == null ? subviews : (subviews.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(subviews, "objectAtIndex:", i));
+        if ((sub == null ? sub : (sub.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(sub, "isKindOfClass:", (CPTextView == null ? CPTextView : (CPTextView.isa.method_msgSend["class"] || _objj_forward)(CPTextView, "class")))))
+        {
+            return sub;
+        }
+    }
+    return nil;
+}
+
+,["CPTextView","CPView"]), new objj_method(sel_getUid("resizeToWidth:"), function $_CPTableTextAttachment__resizeToWidth_(self, _cmd, newWidth)
+{
+    if (self._isResizing)
+        return;
+    self._isResizing = YES;
+    var currentHeaders = (self.isa.method_msgSend["headers"] || _objj_forward)(self, "headers");
+    var currentRows = (self.isa.method_msgSend["rows"] || _objj_forward)(self, "rows");
+    var numCols = currentHeaders ? (currentHeaders == null ? currentHeaders : (currentHeaders.isa.method_msgSend["count"] || _objj_forward)(currentHeaders, "count")) : 0;
+    if (numCols == 0 && currentRows && (currentRows == null ? currentRows : (currentRows.isa.method_msgSend["count"] || _objj_forward)(currentRows, "count")) > 0)
+    {
+        numCols = ((___r1 = (currentRows == null ? currentRows : (currentRows.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(currentRows, "objectAtIndex:", 0))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count"));
+    }
+    if (numCols == 0)
+    {
+        self._isResizing = NO;
+        return;
+    }
+    var subviews = (self.isa.method_msgSend["subviews"] || _objj_forward)(self, "subviews");
+    var colNaturalWidths = [];
+    var colMinWidths = [];
+    for (var c = 0; c < numCols; c++)
+    {
+        colNaturalWidths[c] = 80.0;
+        colMinWidths[c] = 60.0;
+    }
+    var measureTextField = ((___r1 = (CPTextField.isa.method_msgSend["alloc"] || _objj_forward)(CPTextField, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(0, 0, 10000.0, 24.0)));
+    (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setFont:"] || _objj_forward)(measureTextField, "setFont:", (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 13.0)));
+    var measureCell =     function(cellText, isHeader, colIndex)
+    {
+        var cellFont = isHeader ? (CPFont.isa.method_msgSend["boldSystemFontOfSize:"] || _objj_forward)(CPFont, "boldSystemFontOfSize:", 11.0) : (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 11.0);
+        (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setFont:"] || _objj_forward)(measureTextField, "setFont:", cellFont));
+        var plainText = cellText && typeof cellText.string === "function" ? (cellText == null ? cellText : (cellText.isa.method_msgSend["string"] || _objj_forward)(cellText, "string")) : cellText || "";
+        plainText = String(plainText);
+        if (cellText && typeof cellText.string === "function")
+        {
+            if ((measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["respondsToSelector:"] || _objj_forward)(measureTextField, "respondsToSelector:", sel_getUid("setAttributedStringValue:"))))
+            {
+                (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setAttributedStringValue:"] || _objj_forward)(measureTextField, "setAttributedStringValue:", cellText));
+            }
+            else
+            {
+                (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setStringValue:"] || _objj_forward)(measureTextField, "setStringValue:", plainText));
+            }
+        }
+        else
+        {
+            (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setStringValue:"] || _objj_forward)(measureTextField, "setStringValue:", plainText));
+        }
+        (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["sizeToFit"] || _objj_forward)(measureTextField, "sizeToFit"));
+        var naturalW = CGRectGetWidth((measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["frame"] || _objj_forward)(measureTextField, "frame"))) + 24.0;
+        if (naturalW > colNaturalWidths[colIndex])
+        {
+            colNaturalWidths[colIndex] = naturalW;
+        }
+        var words = plainText.split(/[\s\-]/);
+        var maxWordW = 50.0;
+        for (var w = 0; w < words.length; w++)
+        {
+            var word = words[w].trim();
+            if (word.length === 0)
+                continue;
+            (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["setStringValue:"] || _objj_forward)(measureTextField, "setStringValue:", word));
+            (measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["sizeToFit"] || _objj_forward)(measureTextField, "sizeToFit"));
+            var wordW = CGRectGetWidth((measureTextField == null ? measureTextField : (measureTextField.isa.method_msgSend["frame"] || _objj_forward)(measureTextField, "frame"))) + 30.0;
+            if (wordW > maxWordW)
+            {
+                maxWordW = wordW;
+            }
+        }
+        if (maxWordW > colMinWidths[colIndex])
+        {
+            colMinWidths[colIndex] = maxWordW;
+        }
+    };
+    if (currentHeaders)
+    {
+        for (var c = 0; c < (currentHeaders == null ? currentHeaders : (currentHeaders.isa.method_msgSend["count"] || _objj_forward)(currentHeaders, "count")); c++)
+        {
+            measureCell((currentHeaders == null ? currentHeaders : (currentHeaders.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(currentHeaders, "objectAtIndex:", c)), YES, c);
+        }
+    }
+    if (currentRows)
+    {
+        for (var r = 0; r < (currentRows == null ? currentRows : (currentRows.isa.method_msgSend["count"] || _objj_forward)(currentRows, "count")); r++)
+        {
+            var rowData = (currentRows == null ? currentRows : (currentRows.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(currentRows, "objectAtIndex:", r));
+            for (var c = 0; c < numCols; c++)
+            {
+                var cellText = "";
+                if (c < (rowData == null ? rowData : (rowData.isa.method_msgSend["count"] || _objj_forward)(rowData, "count")))
+                {
+                    cellText = (rowData == null ? rowData : (rowData.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(rowData, "objectAtIndex:", c));
+                }
+                measureCell(cellText, NO, c);
+            }
+        }
+    }
+    var totalMinWidth = 0.0;
+    for (var c = 0; c < numCols; c++)
+    {
+        totalMinWidth += colMinWidths[c];
+    }
+    var colWidths = [];
+    if (newWidth <= totalMinWidth)
+    {
+        var remainingWidth = newWidth;
+        for (var c = 0; c < numCols; c++)
+        {
+            var w = Math.floor(colMinWidths[c] / totalMinWidth * newWidth);
+            colWidths[c] = w;
+            remainingWidth -= w;
+        }
+        if (numCols > 0)
+            colWidths[numCols - 1] += remainingWidth;
+    }
+    else
+    {
+        for (var c = 0; c < numCols; c++)
+        {
+            colWidths[c] = colMinWidths[c];
+        }
+        var totalGrowthCapacity = 0.0;
+        var growthCapacities = [];
+        for (var c = 0; c < numCols; c++)
+        {
+            var capacity = Math.max(0.0, colNaturalWidths[c] - colMinWidths[c]);
+            growthCapacities[c] = capacity;
+            totalGrowthCapacity += capacity;
+        }
+        var extraWidth = newWidth - totalMinWidth;
+        var remainingExtra = extraWidth;
+        for (var c = 0; c < numCols; c++)
+        {
+            if (totalGrowthCapacity > 0)
+            {
+                var w = Math.floor(growthCapacities[c] / totalGrowthCapacity * extraWidth);
+                colWidths[c] += w;
+                remainingExtra -= w;
+            }
+        }
+        if (numCols > 0)
+        {
+            colWidths[numCols - 1] += remainingExtra;
+        }
+    }
+    var cellIndex = 0;
+    var currentY = 0;
+    var layoutRow =     function(startIndex)
+    {
+        var maxCellHeight = 28.0;
+        for (var c = 0; c < numCols; c++)
+        {
+            var idx = startIndex + c;
+            if (idx < (subviews == null ? subviews : (subviews.isa.method_msgSend["count"] || _objj_forward)(subviews, "count")))
+            {
+                var cellView = (subviews == null ? subviews : (subviews.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(subviews, "objectAtIndex:", idx));
+                var textView = (self.isa.method_msgSend["getTextViewFromCell:"] || _objj_forward)(self, "getTextViewFromCell:", cellView);
+                if (textView)
+                {
+                    var targetWidth = Math.max(10.0, colWidths[c] - 8);
+                    (textView == null ? textView : (textView.isa.method_msgSend["setFrameSize:"] || _objj_forward)(textView, "setFrameSize:", CGSizeMake(targetWidth, 1e7)));
+                    var layoutManager = (textView == null ? textView : (textView.isa.method_msgSend["layoutManager"] || _objj_forward)(textView, "layoutManager"));
+                    if (layoutManager)
+                    {
+                        (layoutManager == null ? layoutManager : (layoutManager.isa.method_msgSend["glyphRangeForTextContainer:"] || _objj_forward)(layoutManager, "glyphRangeForTextContainer:", (textView == null ? textView : (textView.isa.method_msgSend["textContainer"] || _objj_forward)(textView, "textContainer"))));
+                    }
+                    var usedRect = layoutManager ? (layoutManager == null ? layoutManager : (layoutManager.isa.method_msgSend["usedRectForTextContainer:"] || _objj_forward)(layoutManager, "usedRectForTextContainer:", (textView == null ? textView : (textView.isa.method_msgSend["textContainer"] || _objj_forward)(textView, "textContainer")))) : nil;
+                    var textHeight = usedRect ? CGRectGetHeight(usedRect) : 0.0;
+                    var wrappedHeight = textHeight + 8.0;
+                    if (wrappedHeight > maxCellHeight)
+                        maxCellHeight = wrappedHeight;
+                }
+            }
+        }
+        var currentX = 0;
+        for (var c = 0; c < numCols; c++)
+        {
+            var idx = startIndex + c;
+            if (idx < (subviews == null ? subviews : (subviews.isa.method_msgSend["count"] || _objj_forward)(subviews, "count")))
+            {
+                var cellView = (subviews == null ? subviews : (subviews.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(subviews, "objectAtIndex:", idx));
+                (cellView == null ? cellView : (cellView.isa.method_msgSend["setFrame:"] || _objj_forward)(cellView, "setFrame:", CGRectMake(currentX, currentY, colWidths[c], maxCellHeight)));
+                var textView = (self.isa.method_msgSend["getTextViewFromCell:"] || _objj_forward)(self, "getTextViewFromCell:", cellView);
+                if (textView)
+                {
+                    var targetWidth = Math.max(10.0, colWidths[c] - 8);
+                    var textY = 4.0;
+                    var finalTextViewHeight = maxCellHeight - 8.0;
+                    (textView == null ? textView : (textView.isa.method_msgSend["setFrame:"] || _objj_forward)(textView, "setFrame:", CGRectMake(4, textY, targetWidth, finalTextViewHeight)));
+                }
+                var cellSubviews = (cellView == null ? cellView : (cellView.isa.method_msgSend["subviews"] || _objj_forward)(cellView, "subviews"));
+                if ((cellSubviews == null ? cellSubviews : (cellSubviews.isa.method_msgSend["count"] || _objj_forward)(cellSubviews, "count")) > 0)
+                    ((___r1 = (cellSubviews == null ? cellSubviews : (cellSubviews.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(cellSubviews, "objectAtIndex:", 0))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setFrame:"] || _objj_forward)(___r1, "setFrame:", CGRectMake(0, 0, colWidths[c], maxCellHeight)));
+            }
+            currentX += colWidths[c];
+        }
+        return maxCellHeight;
+        var ___r1;
+    };
+    if (currentHeaders && (currentHeaders == null ? currentHeaders : (currentHeaders.isa.method_msgSend["count"] || _objj_forward)(currentHeaders, "count")) > 0)
+    {
+        var headerHeight = layoutRow(cellIndex);
+        cellIndex += numCols;
+        currentY += headerHeight;
+    }
+    if (currentRows)
+    {
+        for (var r = 0; r < (currentRows == null ? currentRows : (currentRows.isa.method_msgSend["count"] || _objj_forward)(currentRows, "count")); r++)
+        {
+            var rowHeight = layoutRow(cellIndex);
+            cellIndex += numCols;
+            currentY += rowHeight;
+        }
+    }
+    var currentSize = (self.isa.method_msgSend["frame"] || _objj_forward)(self, "frame").size;
+    if (ABS(currentSize.width - newWidth) > 0.1 || ABS(currentSize.height - currentY) > 0.1)
+    {
+        (self.isa.method_msgSend["setFrameSize:"] || _objj_forward)(self, "setFrameSize:", CGSizeMake(newWidth, currentY));
+    }
+    self._isResizing = NO;
+    var ___r1;
+}
+
+,["void","float"])]);
 }
 p;18;CPFontDescriptor.jt;13127;@STATIC;1.0;I;21;Foundation/CPObject.jt;13081;objj_executeFile("Foundation/CPObject.j", NO);CPFontNameAttribute = "CPFontNameAttribute";
 CPFontSizeAttribute = "CPFontSizeAttribute";
@@ -69868,7 +71337,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("initWithFrame:"), funct
 ,["void","CPEvent"])]);
 }
 (CPFontManager == null ? CPFontManager : (CPFontManager.isa.method_msgSend["setFontPanelFactory:"] || _objj_forward)(CPFontManager, "setFontPanelFactory:", (CPFontPanel.isa.method_msgSend["class"] || _objj_forward)(CPFontPanel, "class")));
-p;17;CPLayoutManager.jt;62709;@STATIC;1.0;i;8;CPText.ji;17;CPTextContainer.ji;11;CGContext.ji;14;CPTypesetter.ji;8;CPFont.jt;62608;objj_executeFile("CPText.j", YES);objj_executeFile("CPTextContainer.j", YES);objj_executeFile("CGContext.j", YES);objj_executeFile("CPTypesetter.j", YES);objj_executeFile("CPFont.j", YES);_isNewlineCharacter = function(chr)
+p;17;CPLayoutManager.jt;67817;@STATIC;1.0;i;8;CPText.ji;17;CPTextContainer.ji;11;CGContext.ji;14;CPTypesetter.ji;8;CPFont.jt;67716;objj_executeFile("CPText.j", YES);objj_executeFile("CPTextContainer.j", YES);objj_executeFile("CGContext.j", YES);objj_executeFile("CPTypesetter.j", YES);objj_executeFile("CPFont.j", YES);_isNewlineCharacter = function(chr)
 {
     return chr === '\n' || chr === '\r';
 }
@@ -70316,13 +71785,18 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
         {
             var frames = (fragment == null ? fragment : (fragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(fragment, "glyphFrames")),
                 len = fragment._range.length;
-            for (var j = 0; j < len; j++)
+            if (frames)
             {
-                if (CGRectContainsPoint(frames[j], point))
+                var maxLen = MIN(len, frames.length);
+                for (var j = 0; j < maxLen; j++)
                 {
-                    if (partialFraction)
-                        partialFraction[0] = (point.x - frames[j].origin.x) / frames[j].size.width;
-                    return fragment._range.location + j;
+                    var frame = frames[j];
+                    if (frame && CGRectContainsPoint(frame, point))
+                    {
+                        if (partialFraction)
+                            partialFraction[0] = (point.x - frame.origin.x) / frame.size.width;
+                        return fragment._range.location + j;
+                    }
                 }
             }
         }
@@ -70339,16 +71813,23 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
                     if (i < c - 1 && self._lineFragments[i + 1]._fragmentRect.origin.y === fragment._fragmentRect.origin.y)
                         continue;
                     var nlLoc = CPMaxRange(fragment._range),
-                        lastFrame = (fragment == null ? fragment : (fragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(fragment, "glyphFrames"))[fragment._range.length - 1],
-                        firstFrame = (fragment == null ? fragment : (fragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(fragment, "glyphFrames"))[0];
-                    if (_isNewlineCharacter(((___r1 = ((___r2 = self._textStorage), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["string"] || _objj_forward)(___r2, "string"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["characterAtIndex:"] || _objj_forward)(___r1, "characterAtIndex:", nlLoc > 0 ? nlLoc - 1 : 0))))
-                        nlLoc--;
-                    if (point.x > CGRectGetMaxX(lastFrame))
-                        return nlLoc;
-                    else if (point.x <= CGRectGetMinX(firstFrame))
-                        return fragment._range.location;
-                    else
-                        return nlLoc;
+                        frames = (fragment == null ? fragment : (fragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(fragment, "glyphFrames"));
+                    if (frames && frames.length > 0)
+                    {
+                        var lastFrame = frames[frames.length - 1],
+                            firstFrame = frames[0];
+                        if (lastFrame && firstFrame)
+                        {
+                            if (_isNewlineCharacter(((___r1 = ((___r2 = self._textStorage), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["string"] || _objj_forward)(___r2, "string"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["characterAtIndex:"] || _objj_forward)(___r1, "characterAtIndex:", nlLoc > 0 ? nlLoc - 1 : 0))))
+                                nlLoc--;
+                            if (point.x > CGRectGetMaxX(lastFrame))
+                                return nlLoc;
+                            else if (point.x <= CGRectGetMinX(firstFrame))
+                                return fragment._range.location;
+                            else
+                                return nlLoc;
+                        }
+                    }
                 }
             }
         }
@@ -70462,7 +71943,10 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
     if (!lineFragment)
         return 0.0;
     var index = location - lineFragment._range.location;
-    return lineFragment._glyphsOffsets[index];
+    if (index < 0 || !lineFragment._glyphsOffsets || index >= lineFragment._glyphsOffsets.length)
+        return 0.0;
+    var offset = lineFragment._glyphsOffsets[index];
+    return offset === undefined ? 0.0 : offset;
 }
 
 ,["double","unsigned"]), new objj_method(sel_getUid("_descentAtLocation:"), function $CPLayoutManager___descentAtLocation_(self, _cmd, location)
@@ -70471,7 +71955,10 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
     if (!lineFragment)
         return 0.0;
     var index = location - lineFragment._range.location;
-    return lineFragment._glyphsFrames[index]._descent;
+    if (index < 0 || !lineFragment._glyphsFrames || index >= lineFragment._glyphsFrames.length)
+        return 0.0;
+    var frame = lineFragment._glyphsFrames[index];
+    return frame && frame._descent !== undefined ? frame._descent : 0.0;
 }
 
 ,["double","unsigned"]), new objj_method(sel_getUid("setLineFragmentRect:forGlyphRange:usedRect:"), function $CPLayoutManager__setLineFragmentRect_forGlyphRange_usedRect_(self, _cmd, fragmentRect, glyphRange, usedRect)
@@ -70583,8 +72070,12 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
     {
         var lineFragment = self._lineFragments[self._lineFragments.length - 1],
             glyphFrames = (lineFragment == null ? lineFragment : (lineFragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(lineFragment, "glyphFrames"));
-        if (glyphFrames.length > 0)
-            return CGPointCreateCopy(glyphFrames[glyphFrames.length - 1].origin);
+        if (glyphFrames && glyphFrames.length > 0)
+        {
+            var frame = glyphFrames[glyphFrames.length - 1];
+            if (frame)
+                return CGPointCreateCopy(frame.origin);
+        }
     }
     var lineFragment = _objectWithLocationInRange(self._lineFragments, index);
     if (lineFragment)
@@ -70592,7 +72083,14 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
         if (index == lineFragment._range.location)
             return CGPointCreateCopy(lineFragment._location);
         var glyphFrames = (lineFragment == null ? lineFragment : (lineFragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(lineFragment, "glyphFrames"));
-        return CGPointCreateCopy(glyphFrames[index - lineFragment._range.location].origin);
+        var relativeIndex = index - lineFragment._range.location;
+        if (glyphFrames && relativeIndex >= 0 && relativeIndex < glyphFrames.length)
+        {
+            var frame = glyphFrames[relativeIndex];
+            if (frame)
+                return CGPointCreateCopy(frame.origin);
+        }
+        return CGPointCreateCopy(lineFragment._location);
     }
     return CGPointMakeZero();
 }
@@ -70643,19 +72141,22 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
             var frames = (fragment == null ? fragment : (fragment.isa.method_msgSend["glyphFrames"] || _objj_forward)(fragment, "glyphFrames")),
                 rect = nil,
                 len = fragment._range.length;
-            for (var j = 0; j < len; j++)
+            if (frames)
             {
-                if (CPLocationInRange(fragment._range.location + j, selectedCharRange))
+                for (var j = 0; j < len; j++)
                 {
-                    var correctedRect = CGRectCreateCopy(frames[j]);
-                    correctedRect.size.height -= frames[j]._descent;
-                    correctedRect.origin.y -= frames[j]._descent;
-                    if (!rect)
-                        rect = CGRectCreateCopy(correctedRect);
-                    else
-                        rect = CGRectUnion(rect, correctedRect);
-                    if (_isNewlineCharacter(((___r1 = ((___r2 = self._textStorage), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["string"] || _objj_forward)(___r2, "string"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["characterAtIndex:"] || _objj_forward)(___r1, "characterAtIndex:", MAX(0, CPMaxRange(selectedCharRange) - 1)))))
-                        rect.size.width = containerSize.width - rect.origin.x;
+                    if (j < frames.length && CPLocationInRange(fragment._range.location + j, selectedCharRange))
+                    {
+                        var frame = frames[j];
+                        if (frame)
+                        {
+                            var correctedRect = CGRectCreateCopy(frame);
+                            if (!rect)
+                                rect = CGRectCreateCopy(correctedRect);
+                            else
+                                rect = CGRectUnion(rect, correctedRect);
+                        }
+                    }
                 }
             }
             if (rect)
@@ -70670,7 +72171,6 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
         rectArray[i].size.width = containerSize.width - rectArray[i].origin.x;
     }
     return rectArray;
-    var ___r1, ___r2;
 }
 
 ,["CPArray","CPRange","CPRange","CPTextContainer","CGRectPointer"])]);
@@ -70784,6 +72284,8 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
 
 ,["id","CPString","CPFont","CPColor"]), new objj_method(sel_getUid("createDOMElementWithText:andFont:andColor:andBackgroundColor:andUnderline:"), function $_CPLineFragment__createDOMElementWithText_andFont_andColor_andBackgroundColor_andUnderline_(self, _cmd, aString, aFont, fgColor, bgColor, aUnderline)
 {
+    if (!aString || aString.length === 0)
+        return nil;
     var style,
         span = document.createElement("span");
     span.oncontextmenu = span.onmousedown = span.onselectstart = _oncontextmenuhandler;
@@ -70844,15 +72346,14 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
             var attributes = (textStorage == null ? textStorage : (textStorage.isa.method_msgSend["attributesAtIndex:effectiveRange:"] || _objj_forward)(textStorage, "attributesAtIndex:effectiveRange:", location, effectiveRange));
             effectiveRange = attributes ? CPIntersectionRange(aRange, effectiveRange) : aRange;
             var string = ((___r1 = textStorage._string), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["substringWithRange:"] || _objj_forward)(___r1, "substringWithRange:", effectiveRange)),
-                underline = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPUnderlineStyleAttributeName)) || CPUnderlineStyleNone;
+                underline = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPUnderlineStyleAttributeName)) || CPUnderlineStyleNone,
+                paragraphStyle = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPParagraphStyleAttributeName)) || (CPParagraphStyle.isa.method_msgSend["defaultParagraphStyle"] || _objj_forward)(CPParagraphStyle, "defaultParagraphStyle");
             if (string === _CPAttachmentCharacterAsString)
             {
                 if (!(attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", _CPAttachmentInvisible)))
                 {
-                    var view = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", _CPAttachmentView)),
-                        viewCopy = (CPKeyedUnarchiver.isa.method_msgSend["unarchiveObjectWithData:"] || _objj_forward)(CPKeyedUnarchiver, "unarchiveObjectWithData:", (CPKeyedArchiver.isa.method_msgSend["archivedDataWithRootObject:"] || _objj_forward)(CPKeyedArchiver, "archivedDataWithRootObject:", view)),
-                        elem = viewCopy._DOMElement,
-                        run = {_range: CPMakeRangeCopy(effectiveRange), color: nil, font: nil, elem: elem, string: nil, view: viewCopy};
+                    var view = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", _CPAttachmentView));
+                    var run = {_range: CPMakeRangeCopy(effectiveRange), color: nil, font: nil, elem: nil, string: nil, view: view, paragraphStyle: paragraphStyle, underline: underline, baselineOffset: 0.0};
                     self._runs.push(run);
                 }
             }
@@ -70860,9 +72361,56 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
             {
                 var color = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPForegroundColorAttributeName)),
                     bgcolor = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPBackgroundColorAttributeName)),
-                    font = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPFontAttributeName)) || (textStorage == null ? textStorage : (textStorage.isa.method_msgSend["font"] || _objj_forward)(textStorage, "font")) || (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 12.0),
-                    run = {_range: CPMakeRangeCopy(effectiveRange), color: color, font: font, elem: nil, string: string, bgcolor: bgcolor};
-                self._runs.push(run);
+                    font = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPFontAttributeName)) || (textStorage == null ? textStorage : (textStorage.isa.method_msgSend["font"] || _objj_forward)(textStorage, "font")) || (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 12.0);
+                var baselineOffset = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPBaselineOffsetAttributeName)),
+                    superscript = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPSuperscriptAttributeName));
+                if (baselineOffset === nil || baselineOffset === undefined || typeof baselineOffset !== "number")
+                    baselineOffset = 0.0;
+                if (superscript === nil || superscript === undefined || typeof superscript !== "number")
+                    superscript = 0;
+                if (superscript !== 0)
+                {
+                    var size = (font == null ? font : (font.isa.method_msgSend["size"] || _objj_forward)(font, "size")),
+                        scaledSize = size * 0.65,
+                        fontName = (font == null ? font : (font.isa.method_msgSend["familyName"] || _objj_forward)(font, "familyName")),
+                        isBold = (font == null ? font : (font.isa.method_msgSend["isBold"] || _objj_forward)(font, "isBold")),
+                        isItalic = (font == null ? font : (font.isa.method_msgSend["isItalic"] || _objj_forward)(font, "isItalic"));
+                    font = (CPFont.isa.method_msgSend["_fontWithName:size:bold:italic:"] || _objj_forward)(CPFont, "_fontWithName:size:bold:italic:", fontName, scaledSize, isBold, isItalic);
+                    if (baselineOffset === 0.0)
+                    {
+                        if (superscript > 0)
+                            baselineOffset = size * 0.35;
+                        else
+                            baselineOffset = -size * 0.15;
+                    }
+                }
+                var currentLoc = effectiveRange.location,
+                    strLen = string.length,
+                    startIdx = 0;
+                for (var i = 0; i < strLen; i++)
+                {
+                    if (string.charCodeAt(i) === 9)
+                    {
+                        if (i > startIdx)
+                        {
+                            var subString = string.substring(startIdx, i),
+                                subRange = CPMakeRange(currentLoc + startIdx, i - startIdx),
+                                run = {_range: subRange, color: color, font: font, elem: nil, string: subString, bgcolor: bgcolor, paragraphStyle: paragraphStyle, underline: underline, baselineOffset: baselineOffset};
+                            self._runs.push(run);
+                        }
+                        var tabRange = CPMakeRange(currentLoc + i, 1),
+                            tabRun = {_range: tabRange, color: nil, font: nil, elem: nil, string: nil, bgcolor: nil, paragraphStyle: paragraphStyle, underline: underline, baselineOffset: 0.0};
+                        self._runs.push(tabRun);
+                        startIdx = i + 1;
+                    }
+                }
+                if (startIdx < strLen)
+                {
+                    var subString = string.substring(startIdx, strLen),
+                        subRange = CPMakeRange(currentLoc + startIdx, strLen - startIdx),
+                        run = {_range: subRange, color: color, font: font, elem: nil, string: subString, bgcolor: bgcolor, paragraphStyle: paragraphStyle, underline: underline, baselineOffset: baselineOffset};
+                    self._runs.push(run);
+                }
             }
             if (!CPMaxRange(effectiveRange))
                 break;
@@ -70883,7 +72431,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
     {
         self._glyphsFrames[i] = CGRectMake(origin.x, origin.y, someAdvancements[i].width, height);
         self._glyphsFrames[i]._descent = someAdvancements[i].descent;
-        self._glyphsOffsets[i] = height - someAdvancements[i].height;
+        self._glyphsOffsets[i] = self._location.y - someAdvancements[i].height;
         origin.x += someAdvancements[i].width;
     }
 }
@@ -70920,13 +72468,10 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
     var l = self._runs.length;
     for (var i = 0; i < l; i++)
     {
+        if (self._runs[i].view && self._runs[i].DOMactive)
+            ((___r1 = self._runs[i].view), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["removeFromSuperview"] || _objj_forward)(___r1, "removeFromSuperview"));
         if (self._runs[i].elem && self._runs[i].DOMactive)
-        {
-            if (self._runs[i].view)
-                ((___r1 = self._runs[i].view), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["removeFromSuperview"] || _objj_forward)(___r1, "removeFromSuperview"));
-            else
-                self._textContainer._textView._DOMElement.removeChild(self._runs[i].elem);
-        }
+            self._textContainer._textView._DOMElement.removeChild(self._runs[i].elem);
         self._runs[i].elem = nil;
         self._runs[i].DOMactive = NO;
     }
@@ -70938,6 +72483,8 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
     var runs = _objectsInRange(self._runs, aRange),
         c = runs.length,
         orig = CGPointMake(self._fragmentRect.origin.x, self._fragmentRect.origin.y);
+    if (self._runs.length === 0)
+        return;
     for (var i = 0; i < c; i++)
     {
         var run = runs[i];
@@ -70948,19 +72495,24 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
         if (!self._glyphsFrames)
             continue;
         var loc = run._range.location - self._runs[0]._range.location;
+        if (loc < 0 || loc >= self._glyphsFrames.length || !self._glyphsFrames[loc] || !self._glyphsOffsets || loc >= self._glyphsOffsets.length)
+            continue;
         orig.x = self._glyphsFrames[loc].origin.x + aPoint.x;
         orig.y = self._glyphsFrames[loc].origin.y + aPoint.y + self._glyphsOffsets[loc];
-        if (run.elem)
+        if (run.elem || run.view)
         {
-            run.elem.style.left = orig.x + "px";
-            run.elem.style.top = orig.y + "px";
+            if (run.elem)
+            {
+                run.elem.style.left = orig.x + "px";
+                run.elem.style.top = orig.y + "px";
+            }
             if (run.view)
                 ((___r1 = run.view), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setFrameOrigin:"] || _objj_forward)(___r1, "setFrameOrigin:", orig));
             if (!run.DOMactive)
             {
                 if (run.view)
                     ((___r1 = self._textContainer._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addSubview:"] || _objj_forward)(___r1, "addSubview:", run.view));
-                else
+                if (run.elem)
                     self._textContainer._textView._DOMElement.appendChild(run.elem);
             }
             run.DOMactive = YES;
@@ -70991,7 +72543,11 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
             return NO;
         if (!_RectEqualToRectHorizontally(newLineFragment._fragmentRect, self._fragmentRect))
             return NO;
-        if (newFragmentRuns[i].color !== oldFragmentRuns[i].color || newFragmentRuns[i].bgcolor !== oldFragmentRuns[i].bgcolor || newFragmentRuns[i].font !== oldFragmentRuns[i].font)
+        if (newFragmentRuns[i].color !== oldFragmentRuns[i].color || newFragmentRuns[i].bgcolor !== oldFragmentRuns[i].bgcolor || newFragmentRuns[i].font !== oldFragmentRuns[i].font || newFragmentRuns[i].baselineOffset !== oldFragmentRuns[i].baselineOffset)
+            return NO;
+        var oldStyle = oldFragmentRuns[i].paragraphStyle || (CPParagraphStyle.isa.method_msgSend["defaultParagraphStyle"] || _objj_forward)(CPParagraphStyle, "defaultParagraphStyle"),
+            newStyle = newFragmentRuns[i].paragraphStyle || (CPParagraphStyle.isa.method_msgSend["defaultParagraphStyle"] || _objj_forward)(CPParagraphStyle, "defaultParagraphStyle");
+        if (!(oldStyle == null ? oldStyle : (oldStyle.isa.method_msgSend["isEqual:"] || _objj_forward)(oldStyle, "isEqual:", newStyle)))
             return NO;
     }
     return YES;
@@ -71004,11 +72560,12 @@ class_addMethods(the_class, [new objj_method(sel_getUid("glyphFrames"), function
     for (var i = 0; i < l; i++)
     {
         self._runs[i]._range.location += rangeOffset;
-        if (verticalOffset && self._runs[i].elem)
+        if (verticalOffset)
         {
             if (self._runs[i].view)
                 self._runs[i].view._frame.origin.y += verticalOffset;
-            self._runs[i].elem.top = self._runs[i].elem.top + verticalOffset + 'px';
+            if (self._runs[i].elem)
+                self._runs[i].elem.top = self._runs[i].elem.top + verticalOffset + 'px';
             self._runs[i].DOMpatched = YES;
         }
     }
@@ -71448,11 +73005,11 @@ class_addMethods(the_class, [new objj_method(sel_getUid("initWithParagraphStyle:
 
 ,["id","CPZone"])]);
 }
-p;13;CPRulerView.jt;37335;@STATIC;1.0;I;21;Foundation/CPObject.ji;8;CPView.ji;13;CPTextField.ji;9;CPColor.ji;8;CPFont.ji;8;CPMenu.ji;12;CPMenuItem.jt;37205;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("CPView.j", YES);objj_executeFile("CPTextField.j", YES);objj_executeFile("CPColor.j", YES);objj_executeFile("CPFont.j", YES);objj_executeFile("CPMenu.j", YES);objj_executeFile("CPMenuItem.j", YES);(CPHorizontalRuler = 0, CPVerticalRuler = 1, CPRulerOrientationHorizontal = 0, CPRulerOrientationVertical = 1);
+p;13;CPRulerView.jt;44796;@STATIC;1.0;I;21;Foundation/CPObject.ji;8;CPView.ji;13;CPTextField.ji;9;CPColor.ji;8;CPFont.ji;8;CPMenu.ji;12;CPMenuItem.jt;44666;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("CPView.j", YES);objj_executeFile("CPTextField.j", YES);objj_executeFile("CPColor.j", YES);objj_executeFile("CPFont.j", YES);objj_executeFile("CPMenu.j", YES);objj_executeFile("CPMenuItem.j", YES);(CPHorizontalRuler = 0, CPVerticalRuler = 1, CPRulerOrientationHorizontal = 0, CPRulerOrientationVertical = 1);
 ;
 
 {var the_class = objj_allocateClassPair(CPView, "CPRulerMarker"),
-meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_rulerView", "CPRulerView"), new objj_ivar("_imageValue", "float"), new objj_ivar("_representedObject", "id"), new objj_ivar("_label", "CPTextField")]);objj_registerClassPair(the_class);
+meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_rulerView", "CPRulerView"), new objj_ivar("_imageValue", "float"), new objj_ivar("_representedObject", "id"), new objj_ivar("_label", "CPTextField"), new objj_ivar("_customHandleView", "CPView")]);objj_registerClassPair(the_class);
 class_addMethods(the_class, [new objj_method(sel_getUid("rulerView"), function $CPRulerMarker__rulerView(self, _cmd)
 {
     return self._rulerView;
@@ -71495,6 +73052,8 @@ class_addMethods(the_class, [new objj_method(sel_getUid("rulerView"), function $
         ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setTextColor:"] || _objj_forward)(___r1, "setTextColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.2, 1.0)));
         ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setAlignment:"] || _objj_forward)(___r1, "setAlignment:", CPCenterTextAlignment));
         (self == null ? self : (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", self._label));
+        self._customHandleView = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMakeZero()));
+        (self == null ? self : (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", self._customHandleView));
         (self == null ? self : (self.isa.method_msgSend["updateMarkerIcon"] || _objj_forward)(self, "updateMarkerIcon"));
     }
     return self;
@@ -71512,34 +73071,62 @@ class_addMethods(the_class, [new objj_method(sel_getUid("rulerView"), function $
     (self.isa.method_msgSend["updateMarkerIcon"] || _objj_forward)(self, "updateMarkerIcon");
 }
 
-,["void","id"]), new objj_method(sel_getUid("updateMarkerIcon"), function $CPRulerMarker__updateMarkerIcon(self, _cmd)
+,["void","id"]), new objj_method(sel_getUid("setFrame:"), function $CPRulerMarker__setFrame_(self, _cmd, aFrame)
 {
-    if (((___r1 = self._representedObject), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(___r1, "isKindOfClass:", (CPTextTab == null ? CPTextTab : (CPTextTab.isa.method_msgSend["class"] || _objj_forward)(CPTextTab, "class")))))
+    (objj_getClass("CPRulerMarker").super_class.method_dtable["setFrame:"] || _objj_forward)(self, "setFrame:", aFrame);
+    (self.isa.method_msgSend["updateMarkerIcon"] || _objj_forward)(self, "updateMarkerIcon");
+}
+
+,["void","CGRect"]), new objj_method(sel_getUid("updateMarkerIcon"), function $CPRulerMarker__updateMarkerIcon(self, _cmd)
+{
+    var isIndentMarker = self._representedObject === "CPFirstLineIndent" || self._representedObject === "CPHeadIndent";
+    if (isIndentMarker)
     {
-        var align = ((___r1 = self._representedObject), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["alignment"] || _objj_forward)(___r1, "alignment"));
-        if (align === CPLeftTextAlignment)
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "▶"));
-        else if (align === CPCenterTextAlignment)
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "▼"));
-        else if (align === CPRightTextAlignment)
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "◀"));
-    }
-    else if (((___r1 = self._representedObject), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(___r1, "isKindOfClass:", (CPString.isa.method_msgSend["class"] || _objj_forward)(CPString, "class"))))
-    {
-        if (self._representedObject === "CPFirstLineIndent")
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⥔"));
-        else if (self._representedObject === "CPHeadIndent")
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⥜"));
-        else if (self._representedObject === "CPTailIndent")
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⥘"));
+        ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setHidden:"] || _objj_forward)(___r1, "setHidden:", YES));
+        ((___r1 = self._customHandleView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setHidden:"] || _objj_forward)(___r1, "setHidden:", NO));
+        var frame = (self.isa.method_msgSend["bounds"] || _objj_forward)(self, "bounds");
+        ((___r1 = self._customHandleView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setFrame:"] || _objj_forward)(___r1, "setFrame:", CGRectMake(0, 0, frame.size.width, frame.size.height)));
+        ((___r1 = ((___r2 = self._customHandleView), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["subviews"] || _objj_forward)(___r2, "subviews"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["makeObjectsPerformSelector:"] || _objj_forward)(___r1, "makeObjectsPerformSelector:", sel_getUid("removeFromSuperview")));
+        var isFirstLine = self._representedObject === "CPFirstLineIndent";
+        ((___r1 = self._customHandleView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(___r1, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.5, 1.0)));
+        var innerView = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(1.0, 1.0, frame.size.width - 2.0, frame.size.height - 2.0)));
+        if (isFirstLine)
+            (innerView == null ? innerView : (innerView.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(innerView, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.92, 1.0)));
         else
-            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⇡"));
+            (innerView == null ? innerView : (innerView.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(innerView, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.80, 1.0)));
+        ((___r1 = self._customHandleView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addSubview:"] || _objj_forward)(___r1, "addSubview:", innerView));
+        var gripLine = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(Math.floor(frame.size.width / 2.0) - 1.0, 2.0, 1.0, frame.size.height - 4.0)));
+        (gripLine == null ? gripLine : (gripLine.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(gripLine, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.6, 1.0)));
+        (innerView == null ? innerView : (innerView.isa.method_msgSend["addSubview:"] || _objj_forward)(innerView, "addSubview:", gripLine));
     }
     else
     {
-        ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⇡"));
+        ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setHidden:"] || _objj_forward)(___r1, "setHidden:", NO));
+        ((___r1 = self._customHandleView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setHidden:"] || _objj_forward)(___r1, "setHidden:", YES));
+        ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setFrame:"] || _objj_forward)(___r1, "setFrame:", (self.isa.method_msgSend["bounds"] || _objj_forward)(self, "bounds")));
+        if (((___r1 = self._representedObject), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(___r1, "isKindOfClass:", (CPTextTab == null ? CPTextTab : (CPTextTab.isa.method_msgSend["class"] || _objj_forward)(CPTextTab, "class")))))
+        {
+            var align = ((___r1 = self._representedObject), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["alignment"] || _objj_forward)(___r1, "alignment"));
+            if (align === CPLeftTextAlignment)
+                ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "▶"));
+            else if (align === CPCenterTextAlignment)
+                ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "▼"));
+            else if (align === CPRightTextAlignment)
+                ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "◀"));
+        }
+        else if (((___r1 = self._representedObject), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["isKindOfClass:"] || _objj_forward)(___r1, "isKindOfClass:", (CPString.isa.method_msgSend["class"] || _objj_forward)(CPString, "class"))))
+        {
+            if (self._representedObject === "CPTailIndent")
+                ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⥘"));
+            else
+                ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⇡"));
+        }
+        else
+        {
+            ((___r1 = self._label), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setStringValue:"] || _objj_forward)(___r1, "setStringValue:", "⇡"));
+        }
     }
-    var ___r1;
+    var ___r1, ___r2;
 }
 
 ,["void"]), new objj_method(sel_getUid("menuForEvent:"), function $CPRulerMarker__menuForEvent_(self, _cmd, anEvent)
@@ -71741,12 +73328,27 @@ class_addMethods(the_class, [new objj_method(sel_getUid("scrollView"), function 
     if (isHorizontal)
     {
         var x = markerLocation - scrollPoint.x - 6.0,
-            y = rulerHeight - 11.0;
-        if (x < 0.0)
-            x = 0.0;
-        else if (x + 12.0 > rulerWidth)
-            x = rulerWidth - 12.0;
-        (aMarker == null ? aMarker : (aMarker.isa.method_msgSend["setFrame:"] || _objj_forward)(aMarker, "setFrame:", CGRectMake(x, y, 12.0, 12.0)));
+            y = rulerHeight - 11.0,
+            w = 12.0,
+            h = 12.0;
+        if ((aMarker == null ? aMarker : (aMarker.isa.method_msgSend["representedObject"] || _objj_forward)(aMarker, "representedObject")) === "CPFirstLineIndent")
+        {
+            y = 0.0;
+            h = Math.floor(rulerHeight / 2.0);
+        }
+        else if ((aMarker == null ? aMarker : (aMarker.isa.method_msgSend["representedObject"] || _objj_forward)(aMarker, "representedObject")) === "CPHeadIndent")
+        {
+            y = Math.floor(rulerHeight / 2.0);
+            h = rulerHeight - y - 1.0;
+        }
+        else
+        {
+            if (x < 0.0)
+                x = 0.0;
+            else if (x + 12.0 > rulerWidth)
+                x = rulerWidth - 12.0;
+        }
+        (aMarker == null ? aMarker : (aMarker.isa.method_msgSend["setFrame:"] || _objj_forward)(aMarker, "setFrame:", CGRectMake(x, y, w, h)));
     }
     else
     {
@@ -71802,7 +73404,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("scrollView"), function 
     if (newLocation < 0)
         newLocation = 0;
     ((___r1 = self._draggingMarker), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setImageValue:"] || _objj_forward)(___r1, "setImageValue:", newLocation));
-    (self.isa.method_msgSend["_positionMarker:"] || _objj_forward)(self, "_positionMarker:", self._draggingMarker);
+    (self.isa.method_msgSend["updateRuler"] || _objj_forward)(self, "updateRuler");
     var draggedOff = isHorizontal ? localPoint.y < -15 || localPoint.y > CGRectGetHeight((self.isa.method_msgSend["bounds"] || _objj_forward)(self, "bounds")) + 15 : localPoint.x < -15 || localPoint.x > CGRectGetWidth((self.isa.method_msgSend["bounds"] || _objj_forward)(self, "bounds")) + 15;
     if (draggedOff)
     {
@@ -71840,6 +73442,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("scrollView"), function 
         ((___r1 = ((___r2 = self._draggingMarker), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["label"] || _objj_forward)(___r2, "label"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setTextColor:"] || _objj_forward)(___r1, "setTextColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.2, 1.0)));
     }
     self._draggingMarker = nil;
+    (self.isa.method_msgSend["updateRuler"] || _objj_forward)(self, "updateRuler");
     var ___r1, ___r2;
 }
 
@@ -71862,6 +73465,37 @@ class_addMethods(the_class, [new objj_method(sel_getUid("scrollView"), function 
         var bottomBorder = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(0, rulerHeight - 1, rulerWidth, 1)));
         (bottomBorder == null ? bottomBorder : (bottomBorder.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(bottomBorder, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.75, 1.0)));
         (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", bottomBorder);
+        var firstLineMarker = nil,
+            headMarker = nil;
+        for (var i = 0; i < ((___r1 = self._markers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["count"] || _objj_forward)(___r1, "count")); i++)
+        {
+            var m = ((___r1 = self._markers), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectAtIndex:"] || _objj_forward)(___r1, "objectAtIndex:", i));
+            if ((m == null ? m : (m.isa.method_msgSend["representedObject"] || _objj_forward)(m, "representedObject")) === "CPFirstLineIndent")
+                firstLineMarker = m;
+            else if ((m == null ? m : (m.isa.method_msgSend["representedObject"] || _objj_forward)(m, "representedObject")) === "CPHeadIndent")
+                headMarker = m;
+        }
+        var halfHeight = Math.floor(rulerHeight / 2.0);
+        if (firstLineMarker)
+        {
+            var firstLineX = (firstLineMarker == null ? firstLineMarker : (firstLineMarker.isa.method_msgSend["imageValue"] || _objj_forward)(firstLineMarker, "imageValue")) - scrollPoint.x;
+            if (firstLineX > 0)
+            {
+                var firstLineBg = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(0, 0, firstLineX, halfHeight)));
+                (firstLineBg == null ? firstLineBg : (firstLineBg.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(firstLineBg, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.93, 1.0)));
+                (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", firstLineBg);
+            }
+        }
+        if (headMarker)
+        {
+            var headX = (headMarker == null ? headMarker : (headMarker.isa.method_msgSend["imageValue"] || _objj_forward)(headMarker, "imageValue")) - scrollPoint.x;
+            if (headX > 0)
+            {
+                var headBg = ((___r1 = (CPView.isa.method_msgSend["alloc"] || _objj_forward)(CPView, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["initWithFrame:"] || _objj_forward)(___r1, "initWithFrame:", CGRectMake(0, halfHeight, headX, rulerHeight - halfHeight - 1.0)));
+                (headBg == null ? headBg : (headBg.isa.method_msgSend["setBackgroundColor:"] || _objj_forward)(headBg, "setBackgroundColor:", (CPColor.isa.method_msgSend["colorWithWhite:alpha:"] || _objj_forward)(CPColor, "colorWithWhite:alpha:", 0.86, 1.0)));
+                (self.isa.method_msgSend["addSubview:"] || _objj_forward)(self, "addSubview:", headBg);
+            }
+        }
         for (var val = start; val <= end; val += 10)
         {
             if (val < 0)
@@ -71944,7 +73578,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("scrollView"), function 
 
 ,["void"])]);
 }
-p;17;CPTextContainer.jt;11744;@STATIC;1.0;I;23;Foundation/CPGeometry.ji;17;CPLayoutManager.jt;11674;objj_executeFile("Foundation/CPGeometry.j", NO);objj_executeFile("CPLayoutManager.j", YES);CPLineSweepLeft = 0;
+p;17;CPTextContainer.jt;13101;@STATIC;1.0;I;23;Foundation/CPGeometry.ji;17;CPLayoutManager.jt;13031;objj_executeFile("Foundation/CPGeometry.j", NO);objj_executeFile("CPLayoutManager.j", YES);CPLineSweepLeft = 0;
 CPLineSweepRight = 1;
 CPLineSweepDown = 2;
 CPLineSweepUp = 3;
@@ -72042,22 +73676,47 @@ class_addMethods(the_class, [new objj_method(sel_getUid("lineFragmentPadding"), 
 
 ,["BOOL"]), new objj_method(sel_getUid("setWidthTracksTextView:"), function $CPTextContainer__setWidthTracksTextView_(self, _cmd, flag)
 {
+    if (self._widthTracksTextView === flag)
+        return;
     self._widthTracksTextView = flag;
-    ((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setPostsFrameChangedNotifications:"] || _objj_forward)(___r1, "setPostsFrameChangedNotifications:", flag));
-    if (flag && self._textView)
-    {
-        ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObserver:selector:name:object:"] || _objj_forward)(___r1, "addObserver:selector:name:object:", self, sel_getUid("textViewFrameChanged:"), CPViewFrameDidChangeNotification, self._textView));
-    }
-    else
+    (self.isa.method_msgSend["_updateFrameObserver"] || _objj_forward)(self, "_updateFrameObserver");
+}
+
+,["void","BOOL"]), new objj_method(sel_getUid("heightTracksTextView"), function $CPTextContainer__heightTracksTextView(self, _cmd)
+{
+    return self._heightTracksTextView;
+}
+
+,["BOOL"]), new objj_method(sel_getUid("setHeightTracksTextView:"), function $CPTextContainer__setHeightTracksTextView_(self, _cmd, flag)
+{
+    if (self._heightTracksTextView === flag)
+        return;
+    self._heightTracksTextView = flag;
+    (self.isa.method_msgSend["_updateFrameObserver"] || _objj_forward)(self, "_updateFrameObserver");
+}
+
+,["void","BOOL"]), new objj_method(sel_getUid("_updateFrameObserver"), function $CPTextContainer___updateFrameObserver(self, _cmd)
+{
+    if (self._textView)
     {
         ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["removeObserver:name:object:"] || _objj_forward)(___r1, "removeObserver:name:object:", self, CPViewFrameDidChangeNotification, self._textView));
+        var flag = self._widthTracksTextView || self._heightTracksTextView;
+        ((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setPostsFrameChangedNotifications:"] || _objj_forward)(___r1, "setPostsFrameChangedNotifications:", flag));
+        if (flag)
+        {
+            ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addObserver:selector:name:object:"] || _objj_forward)(___r1, "addObserver:selector:name:object:", self, sel_getUid("textViewFrameChanged:"), CPViewFrameDidChangeNotification, self._textView));
+        }
     }
     var ___r1;
 }
 
-,["void","BOOL"]), new objj_method(sel_getUid("textViewFrameChanged:"), function $CPTextContainer__textViewFrameChanged_(self, _cmd, aNotification)
+,["void"]), new objj_method(sel_getUid("textViewFrameChanged:"), function $CPTextContainer__textViewFrameChanged_(self, _cmd, aNotification)
 {
-    var newSize = CGSizeMake(((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["frame"] || _objj_forward)(___r1, "frame")).size.width, self._size.height);
+    var newSize = CGSizeMake(self._size.width, self._size.height);
+    if (self._widthTracksTextView)
+        newSize.width = ((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["frame"] || _objj_forward)(___r1, "frame")).size.width;
+    if (self._heightTracksTextView)
+        newSize.height = ((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["frame"] || _objj_forward)(___r1, "frame")).size.height;
     (self.isa.method_msgSend["setContainerSize:"] || _objj_forward)(self, "setContainerSize:", newSize);
     var ___r1;
 }
@@ -72066,13 +73725,13 @@ class_addMethods(the_class, [new objj_method(sel_getUid("lineFragmentPadding"), 
 {
     if (self._textView)
     {
-        (self.isa.method_msgSend["setWidthTracksTextView:"] || _objj_forward)(self, "setWidthTracksTextView:", NO);
+        ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["removeObserver:name:object:"] || _objj_forward)(___r1, "removeObserver:name:object:", self, CPViewFrameDidChangeNotification, self._textView));
         ((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setTextContainer:"] || _objj_forward)(___r1, "setTextContainer:", nil));
     }
     self._textView = aTextView;
     if (self._textView)
     {
-        (self.isa.method_msgSend["setWidthTracksTextView:"] || _objj_forward)(self, "setWidthTracksTextView:", self._widthTracksTextView);
+        (self.isa.method_msgSend["_updateFrameObserver"] || _objj_forward)(self, "_updateFrameObserver");
         ((___r1 = self._textView), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setTextContainer:"] || _objj_forward)(___r1, "setTextContainer:", self));
     }
     ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["textContainerChangedTextView:"] || _objj_forward)(___r1, "textContainerChangedTextView:", self));
@@ -72432,7 +74091,7 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
 
 ,["void"])]);
 }
-p;12;CPTextView.jt;225626;@STATIC;1.0;i;8;CPText.ji;14;CPPasteboard.ji;14;CPColorPanel.ji;15;CPFontManager.ji;15;CPTextStorage.ji;17;CPTextContainer.ji;17;CPLayoutManager.ji;18;CPParagraphStyle.ji;14;_CPRTFParser.ji;16;_CPRTFProducer.jt;225408;objj_executeFile("CPText.j", YES);objj_executeFile("CPPasteboard.j", YES);objj_executeFile("CPColorPanel.j", YES);objj_executeFile("CPFontManager.j", YES);objj_executeFile("CPTextStorage.j", YES);objj_executeFile("CPTextContainer.j", YES);objj_executeFile("CPLayoutManager.j", YES);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("_CPRTFParser.j", YES);objj_executeFile("_CPRTFProducer.j", YES);;
+p;12;CPTextView.jt;230209;@STATIC;1.0;i;8;CPText.ji;14;CPPasteboard.ji;14;CPColorPanel.ji;15;CPFontManager.ji;15;CPTextStorage.ji;17;CPTextContainer.ji;17;CPLayoutManager.ji;18;CPParagraphStyle.ji;14;_CPRTFParser.ji;16;_CPRTFProducer.jt;229991;objj_executeFile("CPText.j", YES);objj_executeFile("CPPasteboard.j", YES);objj_executeFile("CPColorPanel.j", YES);objj_executeFile("CPFontManager.j", YES);objj_executeFile("CPTextStorage.j", YES);objj_executeFile("CPTextContainer.j", YES);objj_executeFile("CPLayoutManager.j", YES);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("_CPRTFParser.j", YES);objj_executeFile("_CPRTFProducer.j", YES);;
 ;
 ;
 ;
@@ -72821,6 +74480,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
 ,["void","CPNotification"]), new objj_method(sel_getUid("superviewFrameChanged:"), function $CPTextView__superviewFrameChanged_(self, _cmd, aNotification)
 {
     self._exposedRect = nil;
+    (self.isa.method_msgSend["sizeToFit"] || _objj_forward)(self, "sizeToFit");
 }
 
 ,["void","CPNotification"]), new objj_method(sel_getUid("viewWillMoveToSuperview:"), function $CPTextView__viewWillMoveToSuperview_(self, _cmd, aView)
@@ -73304,6 +74964,20 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
             isNewSelection = !CPEqualRanges(newSelectionRange, self._mouseDownOldSelection);
         if (doOverwrite && self._placeholderString == nil && isNewSelection)
             (self.isa.method_msgSend["setTypingAttributes:"] || _objj_forward)(self, "setTypingAttributes:", ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["attributesAtIndex:effectiveRange:"] || _objj_forward)(___r1, "attributesAtIndex:effectiveRange:", CPMaxRange(range), nil)));
+        if ((self.isa.method_msgSend["_isFirstResponder"] || _objj_forward)(self, "_isFirstResponder") && ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["length"] || _objj_forward)(___r1, "length")) > 0)
+        {
+            var currentTextColor = (self.isa.method_msgSend["textColor"] || _objj_forward)(self, "textColor") || (CPColor.isa.method_msgSend["blackColor"] || _objj_forward)(CPColor, "blackColor");
+            if ((self.isa.method_msgSend["isRichText"] || _objj_forward)(self, "isRichText"))
+            {
+                var charIndex = self._selectionRange.location;
+                if (charIndex >= ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["length"] || _objj_forward)(___r1, "length")))
+                    charIndex = MAX(0, charIndex - 1);
+                var attributes = ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["attributesAtIndex:effectiveRange:"] || _objj_forward)(___r1, "attributesAtIndex:effectiveRange:", charIndex, nil));
+                if ((attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPForegroundColorAttributeName)))
+                    currentTextColor = (attributes == null ? attributes : (attributes.isa.method_msgSend["objectForKey:"] || _objj_forward)(attributes, "objectForKey:", CPForegroundColorAttributeName));
+            }
+            ((___r1 = (CPColorPanel.isa.method_msgSend["sharedColorPanel"] || _objj_forward)(CPColorPanel, "sharedColorPanel")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setColor:"] || _objj_forward)(___r1, "setColor:", currentTextColor));
+        }
         ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["postNotificationName:object:"] || _objj_forward)(___r1, "postNotificationName:object:", CPTextViewDidChangeSelectionNotification, self));
     }
     if (!selecting && newSelectionRange.length > 0)
@@ -73606,7 +75280,10 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
 ,["void","int","CPSelectionGranularity"]), new objj_method(sel_getUid("moveLeftAndModifySelection:"), function $CPTextView__moveLeftAndModifySelection_(self, _cmd, sender)
 {
     if ((self.isa.method_msgSend["isSelectable"] || _objj_forward)(self, "isSelectable"))
+    {
         (self.isa.method_msgSend["_extendSelectionIntoDirection:granularity:"] || _objj_forward)(self, "_extendSelectionIntoDirection:granularity:", -1, CPSelectByCharacter);
+        (self.isa.method_msgSend["scrollRangeToVisible:"] || _objj_forward)(self, "scrollRangeToVisible:", self._selectionRange);
+    }
 }
 
 ,["void","id"]), new objj_method(sel_getUid("moveBackward:"), function $CPTextView__moveBackward_(self, _cmd, sender)
@@ -73628,7 +75305,10 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
 ,["void","id"]), new objj_method(sel_getUid("moveLeft:"), function $CPTextView__moveLeft_(self, _cmd, sender)
 {
     if ((self.isa.method_msgSend["isSelectable"] || _objj_forward)(self, "isSelectable"))
+    {
         (self.isa.method_msgSend["_establishSelection:byExtending:"] || _objj_forward)(self, "_establishSelection:byExtending:", CPMakeRange(self._selectionRange.location - (self._selectionRange.length ? 0 : 1), 0), NO);
+        (self.isa.method_msgSend["scrollRangeToVisible:"] || _objj_forward)(self, "scrollRangeToVisible:", self._selectionRange);
+    }
 }
 
 ,["void","id"]), new objj_method(sel_getUid("moveToEndOfParagraph:"), function $CPTextView__moveToEndOfParagraph_(self, _cmd, sender)
@@ -73853,7 +75533,10 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
 ,["void","id"]), new objj_method(sel_getUid("moveRight:"), function $CPTextView__moveRight_(self, _cmd, sender)
 {
     if ((self.isa.method_msgSend["isSelectable"] || _objj_forward)(self, "isSelectable"))
+    {
         (self.isa.method_msgSend["_establishSelection:byExtending:"] || _objj_forward)(self, "_establishSelection:byExtending:", CPMakeRange(CPMaxRange(self._selectionRange) + (self._selectionRange.length ? 0 : 1), 0), NO);
+        (self.isa.method_msgSend["scrollRangeToVisible:"] || _objj_forward)(self, "scrollRangeToVisible:", self._selectionRange);
+    }
 }
 
 ,["void","id"]), new objj_method(sel_getUid("_deleteForRange:"), function $CPTextView___deleteForRange_(self, _cmd, changedRange)
@@ -73971,6 +75654,11 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
         (self.isa.method_msgSend["_enrichEssentialTypingAttributes:"] || _objj_forward)(self, "_enrichEssentialTypingAttributes:", self._typingAttributes);
     }
     (self.isa.method_msgSend["updateRuler"] || _objj_forward)(self, "updateRuler");
+    if ((self.isa.method_msgSend["_isFirstResponder"] || _objj_forward)(self, "_isFirstResponder"))
+    {
+        var currentTextColor = ((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectForKey:"] || _objj_forward)(___r1, "objectForKey:", CPForegroundColorAttributeName)) || (self.isa.method_msgSend["textColor"] || _objj_forward)(self, "textColor") || (CPColor.isa.method_msgSend["blackColor"] || _objj_forward)(CPColor, "blackColor");
+        ((___r1 = (CPColorPanel.isa.method_msgSend["sharedColorPanel"] || _objj_forward)(CPColorPanel, "sharedColorPanel")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setColor:"] || _objj_forward)(___r1, "setColor:", currentTextColor));
+    }
     ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["postNotificationName:object:"] || _objj_forward)(___r1, "postNotificationName:object:", CPTextViewDidChangeTypingAttributesNotification, self));
     self._mouseDownOldSelection = nil;
     var ___r1;
@@ -74203,8 +75891,15 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
     (self.isa.method_msgSend["setFrameSize:"] || _objj_forward)(self, "setFrameSize:", (self.isa.method_msgSend["frameSize"] || _objj_forward)(self, "frameSize"));
 }
 
-,["void"]), new objj_method(sel_getUid("setFrameSize:"), function $CPTextView__setFrameSize_(self, _cmd, aSize)
+,["void"]), new objj_method(sel_getUid("setBoundsSize:"), function $CPTextView__setBoundsSize_(self, _cmd, aSize)
 {
+    self._exposedRect = nil;
+    (objj_getClass("CPTextView").super_class.method_dtable["setBoundsSize:"] || _objj_forward)(self, "setBoundsSize:", aSize);
+}
+
+,["void","CGSize"]), new objj_method(sel_getUid("setFrameSize:"), function $CPTextView__setFrameSize_(self, _cmd, aSize)
+{
+    self._exposedRect = nil;
     var desiredSize = CGSizeCreateCopy(aSize);
     if (self._isHorizontallyResizable || self._isVerticallyResizable)
     {
@@ -74249,9 +75944,15 @@ class_addMethods(the_class, [new objj_method(sel_getUid("allowsUndo"), function 
     if (CPEmptyRange(aRange))
     {
         if (aRange.location >= ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["numberOfCharacters"] || _objj_forward)(___r1, "numberOfCharacters")))
-            rect = ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["extraLineFragmentRect"] || _objj_forward)(___r1, "extraLineFragmentRect"));
+        {
+            rect = CGRectCreateCopy(((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["extraLineFragmentRect"] || _objj_forward)(___r1, "extraLineFragmentRect")));
+            rect.size.width = 1.0;
+        }
         else
-            rect = ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["lineFragmentRectForGlyphAtIndex:effectiveRange:"] || _objj_forward)(___r1, "lineFragmentRectForGlyphAtIndex:effectiveRange:", aRange.location, nil));
+        {
+            rect = CGRectCreateCopy(((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["boundingRectForGlyphRange:inTextContainer:"] || _objj_forward)(___r1, "boundingRectForGlyphRange:inTextContainer:", CPMakeRange(aRange.location, 1), self._textContainer)));
+            rect.size.width = 1.0;
+        }
     }
     else
     {
@@ -74358,21 +76059,18 @@ default:
     var caretRect = ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["boundingRectForGlyphRange:inTextContainer:"] || _objj_forward)(___r1, "boundingRectForGlyphRange:inTextContainer:", CPMakeRange(self._selectionRange.location, 1), self._textContainer));
     var loc = self._selectionRange.location == numberOfGlyphs ? self._selectionRange.location - 1 : self._selectionRange.location,
         caretOffset = ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_characterOffsetAtLocation:"] || _objj_forward)(___r1, "_characterOffsetAtLocation:", loc)),
-        oldYPosition = CGRectGetMaxY(caretRect),
-        caretDescend = ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_descentAtLocation:"] || _objj_forward)(___r1, "_descentAtLocation:", loc));
+        font = ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["attribute:atIndex:effectiveRange:"] || _objj_forward)(___r1, "attribute:atIndex:effectiveRange:", CPFontAttributeName, loc, nil)) || (self.isa.method_msgSend["font"] || _objj_forward)(self, "font");
     if (caretOffset > 0)
     {
         caretRect.origin.y += caretOffset;
-        caretRect.size.height = oldYPosition - caretRect.origin.y;
     }
-    if (caretDescend < 0)
-        caretRect.size.height -= caretDescend;
+    caretRect.size.height = (font == null ? font : (font.isa.method_msgSend["size"] || _objj_forward)(font, "size"));
     if (self._selectionRange.location == numberOfGlyphs)
         caretRect.origin.x += caretRect.size.width;
     caretRect.origin.x += self._textContainerOrigin.x;
     caretRect.origin.y += self._textContainerOrigin.y;
     caretRect.size.width = MAX(1.0, caretRect.size.width);
-    caretRect.size.height = MAX(1.0, caretRect.size.height);
+    caretRect.size.height = MAX(1.0, caretRect.size.height) + 2;
     return caretRect;
     var ___r1, ___r2;
 }
@@ -74647,6 +76345,9 @@ class_addMethods(the_class, [new objj_method(sel_getUid("updateRuler"), function
         ((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(___r1, "setObject:forKey:", mutableStyle, CPParagraphStyleAttributeName));
         ((___r1 = (CPNotificationCenter.isa.method_msgSend["defaultCenter"] || _objj_forward)(CPNotificationCenter, "defaultCenter")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["postNotificationName:object:"] || _objj_forward)(___r1, "postNotificationName:object:", CPTextViewDidChangeTypingAttributesNotification, self));
     }
+    ((___r1 = self._layoutManager), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["_validateLayoutAndGlyphs"] || _objj_forward)(___r1, "_validateLayoutAndGlyphs"));
+    (self.isa.method_msgSend["sizeToFit"] || _objj_forward)(self, "sizeToFit");
+    (self.isa.method_msgSend["setNeedsDisplay:"] || _objj_forward)(self, "setNeedsDisplay:", YES);
     var ___r1;
 }
 
@@ -74822,10 +76523,13 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
         var container = (aCoder == null ? aCoder : (aCoder.isa.method_msgSend["decodeObjectForKey:"] || _objj_forward)(aCoder, "decodeObjectForKey:", CPTextViewContainerKey));
         (container == null ? container : (container.isa.method_msgSend["setTextView:"] || _objj_forward)(container, "setTextView:", self));
         self._typingAttributes = ((___r1 = ((___r2 = self._textStorage), ___r2 == null ? ___r2 : (___r2.isa.method_msgSend["attributesAtIndex:effectiveRange:"] || _objj_forward)(___r2, "attributesAtIndex:effectiveRange:", 0, nil))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["copy"] || _objj_forward)(___r1, "copy"));
+        if (!self._typingAttributes)
+            self._typingAttributes = (CPMutableDictionary.isa.method_msgSend["dictionary"] || _objj_forward)(CPMutableDictionary, "dictionary");
         if (!((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["valueForKey:"] || _objj_forward)(___r1, "valueForKey:", CPForegroundColorAttributeName)))
             ((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setObject:forKey:"] || _objj_forward)(___r1, "setObject:forKey:", (CPColor.isa.method_msgSend["blackColor"] || _objj_forward)(CPColor, "blackColor"), CPForegroundColorAttributeName));
         self._textColor = ((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["valueForKey:"] || _objj_forward)(___r1, "valueForKey:", CPForegroundColorAttributeName));
-        (self == null ? self : (self.isa.method_msgSend["setFont:"] || _objj_forward)(self, "setFont:", ((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["valueForKey:"] || _objj_forward)(___r1, "valueForKey:", CPFontAttributeName))));
+        var decodedFont = ((___r1 = self._typingAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["valueForKey:"] || _objj_forward)(___r1, "valueForKey:", CPFontAttributeName)) || (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 12.0);
+        (self == null ? self : (self.isa.method_msgSend["setFont:"] || _objj_forward)(self, "setFont:", decodedFont));
         (self == null ? self : (self.isa.method_msgSend["setString:"] || _objj_forward)(self, "setString:", ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["string"] || _objj_forward)(___r1, "string"))));
         (self == null ? self : (self.isa.method_msgSend["setMaxSize:"] || _objj_forward)(self, "setMaxSize:", (aCoder == null ? aCoder : (aCoder.isa.method_msgSend["decodeSizeForKey:"] || _objj_forward)(aCoder, "decodeSizeForKey:", CPMaxSize))));
         (self == null ? self : (self.isa.method_msgSend["setHorizontallyResizable:"] || _objj_forward)(self, "setHorizontallyResizable:", (aCoder == null ? aCoder : (aCoder.isa.method_msgSend["decodeBoolForKey:"] || _objj_forward)(aCoder, "decodeBoolForKey:", CPTextViewHorizontallyResizableKey))));
@@ -75092,6 +76796,9 @@ class_addMethods(meta_class, [new objj_method(sel_getUid("isDeadKey:"), function
             }
             if (richtext)
             {
+                var shouldPastePlainText = ((___r1 = (CPApp == null ? CPApp : (CPApp.isa.method_msgSend["currentEvent"] || _objj_forward)(CPApp, "currentEvent"))), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["modifierFlags"] || _objj_forward)(___r1, "modifierFlags")) & (CPShiftKeyMask | CPAlternateKeyMask);
+                if (shouldPastePlainText && richtext._string)
+                    richtext = richtext._string;
                 (currentFirstResponder == null ? currentFirstResponder : (currentFirstResponder.isa.method_msgSend["_pasteString:"] || _objj_forward)(currentFirstResponder, "_pasteString:", richtext));
                 return;
             }
@@ -75190,7 +76897,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("setPlaceholderValue:wit
 
 ,["void","id","CPString"])]);
 }
-p;14;CPTypesetter.jt;27398;@STATIC;1.0;I;21;Foundation/CPObject.ji;18;CPParagraphStyle.ji;15;CPTextStorage.ji;8;CPFont.jt;27297;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("CPTextStorage.j", YES);objj_executeFile("CPFont.j", YES);CPTypesetterZeroAdvancementAction = 1 << 0;
+p;14;CPTypesetter.jt;29623;@STATIC;1.0;I;21;Foundation/CPObject.ji;18;CPParagraphStyle.ji;15;CPTextStorage.ji;8;CPFont.jt;29522;objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("CPParagraphStyle.j", YES);objj_executeFile("CPTextStorage.j", YES);objj_executeFile("CPFont.j", YES);CPTypesetterZeroAdvancementAction = 1 << 0;
 CPTypesetterWhitespaceAction = 1 << 1;
 CPSTypesetterHorizontalTabAction = 1 << 2;
 CPTypesetterLineBreakAction = 1 << 3;
@@ -75434,9 +77141,33 @@ class_addMethods(the_class, [new objj_method(sel_getUid("layoutManager"), functi
             }
             if (!currentFont)
                 currentFont = ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["font"] || _objj_forward)(___r1, "font")) || (CPFont.isa.method_msgSend["systemFontOfSize:"] || _objj_forward)(CPFont, "systemFontOfSize:", 12.0);
-            ascent = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["ascender"] || _objj_forward)(currentFont, "ascender"));
-            descent = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["descender"] || _objj_forward)(currentFont, "descender"));
-            leading = (ascent - descent) * 0.2;
+            var baselineOffset = ((___r1 = self._currentAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectForKey:"] || _objj_forward)(___r1, "objectForKey:", CPBaselineOffsetAttributeName));
+            if (baselineOffset === nil || baselineOffset === undefined || typeof baselineOffset !== "number")
+                baselineOffset = 0.0;
+            var superscript = ((___r1 = self._currentAttributes), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["objectForKey:"] || _objj_forward)(___r1, "objectForKey:", CPSuperscriptAttributeName));
+            if (superscript === nil || superscript === undefined || typeof superscript !== "number")
+                superscript = 0;
+            if (superscript !== 0)
+            {
+                var size = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["size"] || _objj_forward)(currentFont, "size")),
+                    scaledSize = size * 0.65,
+                    fontName = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["familyName"] || _objj_forward)(currentFont, "familyName")),
+                    isBold = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["isBold"] || _objj_forward)(currentFont, "isBold")),
+                    isItalic = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["isItalic"] || _objj_forward)(currentFont, "isItalic"));
+                currentFont = (CPFont.isa.method_msgSend["_fontWithName:size:bold:italic:"] || _objj_forward)(CPFont, "_fontWithName:size:bold:italic:", fontName, scaledSize, isBold, isItalic);
+                if (baselineOffset === 0.0)
+                {
+                    if (superscript > 0)
+                        baselineOffset = size * 0.35;
+                    else
+                        baselineOffset = -size * 0.15;
+                }
+            }
+            var fontAscent = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["ascender"] || _objj_forward)(currentFont, "ascender")) || 0.0,
+                fontDescent = (currentFont == null ? currentFont : (currentFont.isa.method_msgSend["descender"] || _objj_forward)(currentFont, "descender")) || 0.0;
+            ascent = fontAscent + baselineOffset;
+            descent = fontDescent + baselineOffset;
+            leading = (fontAscent - fontDescent) * 0.2;
             currentFontLineHeight = ascent - descent + leading;
             if (previousFont !== currentFont)
             {
@@ -75445,10 +77176,12 @@ class_addMethods(the_class, [new objj_method(sel_getUid("layoutManager"), functi
                 previousFont = currentFont;
             }
         }
-        if (currentFontLineHeight > self._lineHeight)
-            self._lineHeight = currentFontLineHeight;
-        if (ascent > self._lineBase)
-            self._lineBase = ascent;
+        var currentAscent = ascent === undefined || isNaN(ascent) ? 0.0 : ascent,
+            currentLineHeight = currentFontLineHeight === undefined || isNaN(currentFontLineHeight) ? 12.0 : currentFontLineHeight;
+        if (currentLineHeight > self._lineHeight)
+            self._lineHeight = currentLineHeight;
+        if (currentAscent > self._lineBase)
+            self._lineBase = currentAscent;
         lineRange.length++;
         measuringRange.length++;
         isStartOfPhysicalLine = NO;
@@ -75576,7 +77309,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("layoutManager"), functi
                 isNewline = NO;
                 self._lineFragments = [];
                 self._lineHeight = 0;
-                self._lineBase = ascent;
+                self._lineBase = 0;
                 isStartOfPhysicalLine = YES;
             }
             isTabStop = NO;
@@ -81435,7 +83168,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("init"), function $CPPla
 
 ,["BOOL","DOMEvent"])]);
 }
-p;22;CPPlatformWindow+DOM.jt;86626;@STATIC;1.0;I;33;Foundation/CPNotificationCenter.jI;21;Foundation/CPObject.jI;22;Foundation/CPRunLoop.jI;18;Foundation/CPSet.jI;20;Foundation/CPTimer.ji;25;CPApplication_Constants.ji;17;CPCompatibility.ji;10;CPCursor.ji;18;CPDOMWindowLayer.ji;24;CPDragServer_Constants.ji;9;CPEvent.ji;14;CPPasteboard.ji;12;CPPlatform.ji;22;CPPlatformPasteboard.ji;26;CPPlatformWindow+DOMKeys.ji;18;CPPlatformWindow.ji;8;CPText.ji;20;CPWindow_Constants.jt;86181;objj_executeFile("Foundation/CPNotificationCenter.j", NO);objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPRunLoop.j", NO);objj_executeFile("Foundation/CPSet.j", NO);objj_executeFile("Foundation/CPTimer.j", NO);objj_executeFile("CPApplication_Constants.j", YES);objj_executeFile("CPCompatibility.j", YES);objj_executeFile("CPCursor.j", YES);objj_executeFile("CPDOMWindowLayer.j", YES);objj_executeFile("CPDragServer_Constants.j", YES);objj_executeFile("CPEvent.j", YES);objj_executeFile("CPPasteboard.j", YES);objj_executeFile("CPPlatform.j", YES);objj_executeFile("CPPlatformPasteboard.j", YES);objj_executeFile("CPPlatformWindow+DOMKeys.j", YES);objj_executeFile("CPPlatformWindow.j", YES);objj_executeFile("CPText.j", YES);objj_executeFile("CPWindow_Constants.j", YES);var PlatformWindows = (CPSet.isa.method_msgSend["set"] || _objj_forward)(CPSet, "set");
+p;22;CPPlatformWindow+DOM.jt;86710;@STATIC;1.0;I;33;Foundation/CPNotificationCenter.jI;21;Foundation/CPObject.jI;22;Foundation/CPRunLoop.jI;18;Foundation/CPSet.jI;20;Foundation/CPTimer.ji;25;CPApplication_Constants.ji;17;CPCompatibility.ji;10;CPCursor.ji;18;CPDOMWindowLayer.ji;24;CPDragServer_Constants.ji;9;CPEvent.ji;14;CPPasteboard.ji;12;CPPlatform.ji;22;CPPlatformPasteboard.ji;26;CPPlatformWindow+DOMKeys.ji;18;CPPlatformWindow.ji;8;CPText.ji;20;CPWindow_Constants.jt;86265;objj_executeFile("Foundation/CPNotificationCenter.j", NO);objj_executeFile("Foundation/CPObject.j", NO);objj_executeFile("Foundation/CPRunLoop.j", NO);objj_executeFile("Foundation/CPSet.j", NO);objj_executeFile("Foundation/CPTimer.j", NO);objj_executeFile("CPApplication_Constants.j", YES);objj_executeFile("CPCompatibility.j", YES);objj_executeFile("CPCursor.j", YES);objj_executeFile("CPDOMWindowLayer.j", YES);objj_executeFile("CPDragServer_Constants.j", YES);objj_executeFile("CPEvent.j", YES);objj_executeFile("CPPasteboard.j", YES);objj_executeFile("CPPlatform.j", YES);objj_executeFile("CPPlatformPasteboard.j", YES);objj_executeFile("CPPlatformWindow+DOMKeys.j", YES);objj_executeFile("CPPlatformWindow.j", YES);objj_executeFile("CPText.j", YES);objj_executeFile("CPWindow_Constants.j", YES);var PlatformWindows = (CPSet.isa.method_msgSend["set"] || _objj_forward)(CPSet, "set");
 var CPDOMEventGetClickCount,
     StopDOMEventPropagation,
     StopContextMenuDOMEventPropagation;
@@ -81711,9 +83444,9 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
         theDocument.addEventListener("touchend", touchEventCallback, {passive: false});
         theDocument.addEventListener("touchmove", touchEventCallback, {passive: false});
         theDocument.addEventListener("touchcancel", touchEventCallback, {passive: false});
-        self._DOMWindow.addEventListener("DOMMouseScroll", scrollEventCallback, NO);
-        self._DOMWindow.addEventListener("wheel", scrollEventCallback, NO);
-        self._DOMWindow.addEventListener("mousewheel", scrollEventCallback, NO);
+        self._DOMWindow.addEventListener("DOMMouseScroll", scrollEventCallback, {passive: false});
+        self._DOMWindow.addEventListener("wheel", scrollEventCallback, {passive: false});
+        self._DOMWindow.addEventListener("mousewheel", scrollEventCallback, {passive: false});
         self._DOMWindow.addEventListener("resize", resizeEventCallback, NO);
         self._DOMWindow.addEventListener("blur", onBlurEventCallback, NO);
         self._DOMWindow.addEventListener("focus", onFocusEventCallback, NO);
@@ -81736,9 +83469,9 @@ var meta_class = the_class.isa;class_addMethods(the_class, [new objj_method(sel_
             self._DOMWindow.removeEventListener("resize", resizeEventCallback, NO);
             self._DOMWindow.removeEventListener("blur", onBlurEventCallback, NO);
             self._DOMWindow.removeEventListener("focus", onFocusEventCallback, NO);
-            self._DOMWindow.removeEventListener("DOMMouseScroll", scrollEventCallback, NO);
-            self._DOMWindow.removeEventListener("wheel", scrollEventCallback, NO);
-            self._DOMWindow.removeEventListener("mousewheel", scrollEventCallback, NO);
+            self._DOMWindow.removeEventListener("DOMMouseScroll", scrollEventCallback, {passive: false});
+            self._DOMWindow.removeEventListener("wheel", scrollEventCallback, {passive: false});
+            self._DOMWindow.removeEventListener("mousewheel", scrollEventCallback, {passive: false});
             (PlatformWindows == null ? PlatformWindows : (PlatformWindows.isa.method_msgSend["removeObject:"] || _objj_forward)(PlatformWindows, "removeObject:", self));
             ((___r1 = self._platformPasteboard), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["setDOMWindow:"] || _objj_forward)(___r1, "setDOMWindow:", nil));
             self._DOMWindow = nil;
