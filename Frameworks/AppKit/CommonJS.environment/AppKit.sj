@@ -69209,7 +69209,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("initWithFrame:"), funct
 ,["void","CPEvent"])]);
 }
 (CPFontManager == null ? CPFontManager : (CPFontManager.isa.method_msgSend["setFontPanelFactory:"] || _objj_forward)(CPFontManager, "setFontPanelFactory:", (CPFontPanel.isa.method_msgSend["class"] || _objj_forward)(CPFontPanel, "class")));
-p;17;CPLayoutManager.jt;66138;@STATIC;1.0;i;8;CPText.ji;17;CPTextContainer.ji;11;CGContext.ji;14;CPTypesetter.ji;8;CPFont.jt;66037;objj_executeFile("CPText.j", YES);objj_executeFile("CPTextContainer.j", YES);objj_executeFile("CGContext.j", YES);objj_executeFile("CPTypesetter.j", YES);objj_executeFile("CPFont.j", YES);_isNewlineCharacter = function(chr)
+p;17;CPLayoutManager.jt;66578;@STATIC;1.0;i;8;CPText.ji;17;CPTextContainer.ji;11;CGContext.ji;14;CPTypesetter.ji;8;CPFont.jt;66477;objj_executeFile("CPText.j", YES);objj_executeFile("CPTextContainer.j", YES);objj_executeFile("CGContext.j", YES);objj_executeFile("CPTypesetter.j", YES);objj_executeFile("CPFont.j", YES);_isNewlineCharacter = function(chr)
 {
     return chr === '\n' || chr === '\r';
 }
@@ -69223,7 +69223,7 @@ _oncontextmenuhandler = function()
 };
 
 {var the_class = objj_allocateClassPair(CPObject, "CPLayoutManager"),
-meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_lineFragmentFactory", "Class"), new objj_ivar("_textContainers", "CPMutableArray"), new objj_ivar("_textStorage", "CPTextStorage"), new objj_ivar("_typesetter", "CPTypesetter"), new objj_ivar("_lineFragments", "CPMutableArray"), new objj_ivar("_lineFragmentsForRescue", "CPMutableArray"), new objj_ivar("_extraLineFragment", "id"), new objj_ivar("_temporaryAttributes", "CPMutableArray"), new objj_ivar("_isValidatingLayoutAndGlyphs", "BOOL"), new objj_ivar("_removeInvalidLineFragmentsRange", "CPRange")]);objj_registerClassPair(the_class);
+meta_class = the_class.isa;class_addIvars(the_class, [new objj_ivar("_lineFragmentFactory", "Class"), new objj_ivar("_textContainers", "CPMutableArray"), new objj_ivar("_textStorage", "CPTextStorage"), new objj_ivar("_typesetter", "CPTypesetter"), new objj_ivar("_lineFragments", "CPMutableArray"), new objj_ivar("_lineFragmentsForRescue", "CPMutableArray"), new objj_ivar("_extraLineFragment", "id"), new objj_ivar("_temporaryAttributes", "CPMutableArray"), new objj_ivar("_isValidatingLayoutAndGlyphs", "BOOL"), new objj_ivar("_removeInvalidLineFragmentsRange", "CPRange"), new objj_ivar("_lastEditedRange", "CPRange")]);objj_registerClassPair(the_class);
 class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"), function $CPLayoutManager___lineFragmentFactory(self, _cmd)
 {
     return self._lineFragmentFactory;
@@ -69281,6 +69281,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
     self._textContainers = ((___r1 = (CPMutableArray.isa.method_msgSend["alloc"] || _objj_forward)(CPMutableArray, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["init"] || _objj_forward)(___r1, "init"));
     self._textStorage = ((___r1 = (CPTextStorage.isa.method_msgSend["alloc"] || _objj_forward)(CPTextStorage, "alloc")), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["init"] || _objj_forward)(___r1, "init"));
     self._typesetter = (CPTypesetter.isa.method_msgSend["sharedSystemTypesetter"] || _objj_forward)(CPTypesetter, "sharedSystemTypesetter");
+    self._lastEditedRange = nil;
     ((___r1 = self._textStorage), ___r1 == null ? ___r1 : (___r1.isa.method_msgSend["addLayoutManager:"] || _objj_forward)(___r1, "addLayoutManager:", self));
     var ___r1;
 }
@@ -69512,6 +69513,12 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
         var verticalOffset = CGRectGetMaxY(self._lineFragments[targetLine]._fragmentRect) - CGRectGetMaxY(self._lineFragmentsForRescue[startLineForDOMRemoval]._fragmentRect),
             l = self._lineFragmentsForRescue.length,
             newTargetLine = startLineForDOMRemoval + removalSkip;
+        if (newTargetLine < l && self._lastEditedRange)
+        {
+            var firstRescuedLineNewLocation = self._lineFragmentsForRescue[newTargetLine]._range.location + rangeOffset;
+            if (firstRescuedLineNewLocation < CPMaxRange(self._lastEditedRange))
+                return NO;
+        }
         for (; newTargetLine < l; newTargetLine++)
         {
             self._lineFragmentsForRescue[newTargetLine]._isInvalid = NO;
@@ -69575,6 +69582,7 @@ class_addMethods(the_class, [new objj_method(sel_getUid("_lineFragmentFactory"),
 ,["void","CPRange","BOOL","CPRangePointer"]), new objj_method(sel_getUid("textStorage:edited:range:changeInLength:invalidatedRange:"), function $CPLayoutManager__textStorage_edited_range_changeInLength_invalidatedRange_(self, _cmd, textStorage, mask, charRange, delta, invalidatedRange)
 {
     var actualRange = CPMakeRange(CPNotFound, 0);
+    self._lastEditedRange = CPMakeRangeCopy(charRange);
     (self.isa.method_msgSend["invalidateLayoutForCharacterRange:isSoft:actualCharacterRange:"] || _objj_forward)(self, "invalidateLayoutForCharacterRange:isSoft:actualCharacterRange:", invalidatedRange, NO, actualRange);
     (self.isa.method_msgSend["invalidateDisplayForGlyphRange:"] || _objj_forward)(self, "invalidateDisplayForGlyphRange:", actualRange);
     (self.isa.method_msgSend["_validateLayoutAndGlyphs"] || _objj_forward)(self, "_validateLayoutAndGlyphs");
